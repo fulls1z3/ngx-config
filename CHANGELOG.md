@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## v0.2.0-rc.2 - 2017-02-20
+### Added
+- Added `ConfigStaticLoader`
+
 ## v0.2.0-rc.1 - 2017-02-17
 ### Changed
 - Code refactoring

@@ -2,7 +2,7 @@
 
 > This repository holds the TypeScript source code and distributable bundle of **`@nglibs/config`**, the configuration utility for **Angular**.
 
-**`@nglibs/config`** uses `APP_INITIALIZER` which executes a function when **Angular** app is initialized, and delay the initialization completion until configuration settings have been provided.
+**`@nglibs/config`** uses `APP_INITIALIZER` which executes a function when **Angular** app is initialized, and delay the completion of initialization process until application settings have been provided.
 
 #### NOTICE
 **`@nglibs/config`** is the successor of **`ng2-config`**, and the current latest version number is **`v0.2.x`**. Releases with version number **`1.X.x`** refer to **`ng2-config`**, and are being kept in order to maintain backwards compability - until **Angular** v4.0 (stable) gets released.
@@ -12,9 +12,12 @@
 - [Getting started](#getting-started)
     - [Installation](#installation)
 	- [Examples](#examples)
-	- [@nglibs packages](#nglibs-packages)
-	- [Adding @nglibs/config to your project (SystemJS)](#adding-nglibsconfig-to-your-project-systemjs)
+	- [`@nglibs` packages](#nglibs-packages)
+	- [Adding `@nglibs/config` to your project (SystemJS)](#adding-nglibsconfig-to-your-project-systemjs)
     - [app.module configuration](#appmodule-configuration)
+- [Settings](#settings)
+	- [Setting up `ConfigModule` to use `ConfigStaticLoader`](#setting-up-configmodule-to-use-configstaticloader)
+	- [Setting up `ConfigModule` to use `ConfigHttpLoader`](#setting-up-configmodule-to-use-confighttploader)
 - [Usage](#usage)
 - [License](#license)
 
@@ -33,14 +36,14 @@ npm install @nglibs/config --save
 ### Examples
 - [@nglibs/example-app] is an officially maintained example application showcasing best practices for **[@nglibs]** utilities.
 
-### @nglibs packages
+### `@nglibs` packages
 
 - [@nglibs/config]
 - [@nglibs/metadata]
 - [@nglibs/i18n-router]
 - [@nglibs/i18n-router-config-loader]
 
-### Adding @nglibs/config to your project (SystemJS)
+### Adding `@nglibs/config` to your project (SystemJS)
 Add `map` for **`@nglibs/config`** in your `systemjs.config`
 ```javascript
 '@nglibs/config': 'node_modules/@nglibs/config/bundles/config.umd.min.js'
@@ -49,19 +52,38 @@ Add `map` for **`@nglibs/config`** in your `systemjs.config`
 ### app.module configuration
 Import `ConfigModule` using the mapping `'@nglibs/config'` and append `ConfigModule.forRoot({...})` within the imports property of **app.module** (*considering the app.module is the core module in Angular application*).
 
-You can call the [forRoot] static method using the `ConfigHttpLoader`. By default, it is configured to fetch **config** from the path `/config.json` (if no endpoint is specified).
+## Settings
 
-You can customize this behavior (*and ofc other settings*) by supplying a path/api endpoint to `ConfigHttpLoader`.
+You can call the [forRoot] static method using `ConfigStaticLoader`. By default, it is configured to pass **application settings** to **`@nglibs/config`**.
 
-The following example shows the use of an exported function (*instead of an inline function*) for [AoT compilation].
+> You can customize this behavior (*and ofc other settings*) by supplying **application settings** to `ConfigStaticLoader`.
+
+If you provide application settings using a `JSON` file or an `API`, you can call the [forRoot] static method using the `ConfigHttpLoader`. By default, it is configured to retrieve **application settings** from the path `/config.json` (*if not specified*).
+
+> You can customize this behavior (*and ofc other settings*) by supplying a **file path/api endpoint** to `ConfigHttpLoader`.
+
+The following examples show the use of an exported function (*instead of an inline function*) for [AoT compilation].
+
+### Setting up `ConfigModule` to use `ConfigStaticLoader`
 
 ```TypeScript
 ...
-import { ConfigModule, ConfigLoader, ConfigHttpLoader } from '@nglibs/config';
+import { ConfigModule, ConfigLoader, ConfigStaticLoader } from '@nglibs/config';
 ...
 
 export function configFactory() {
-  return new ConfigHttpLoader('/config.json'); // PATH || API ENDPOINT
+  return new ConfigStaticLoader({
+    "system": {
+      "applicationName": "Mighty Mouse",
+      "applicationUrl": "http://localhost:8000"
+    },
+    "seo": {
+      "pageTitle": "Tweeting bird"
+    },
+    "i18n":{
+      "locale": "en"
+    }
+  });
 }
 
 @NgModule({
@@ -80,15 +102,11 @@ export function configFactory() {
 })
 ```
 
+`ConfigStaticLoader` has one parameter:
 
-Cool! **`@nglibs/config`** will retrieve the configuration settings before **Angular** initializes the app.
+- **settings**: `any` : application settings
 
-## Usage
-`ConfigService` has the `getSettings` method, which you can fetch the configuration settings loaded during application initialization.
-
-When the `getSettings` method is invoked without parameters, it returns entire application configuration. However, the `getSettings` method can be invoked using two optional parameters: **`group`** and **`key`**.
-
-The following example shows how to read configuration setttings using all available overloads of `getSettings` method.
+### Setting up `ConfigModule` to use `ConfigHttpLoader`
 
 #### config.json
 ```json
@@ -105,6 +123,45 @@ The following example shows how to read configuration setttings using all availa
   }
 }
 ```
+
+#### app.module.ts
+```TypeScript
+...
+import { ConfigModule, ConfigLoader, ConfigHttpLoader } from '@nglibs/config';
+...
+
+export function configFactory() {
+  return new ConfigHttpLoader('/config.json'); // FILE PATH || API ENDPOINT
+}
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    ...
+  ],
+  imports: [
+    ConfigModule.forRoot({
+      provide: ConfigLoader,
+      useFactory: (configFactory)
+    }),
+    ...
+  ],
+  bootstrap: [AppComponent]
+})
+```
+
+`ConfigHttpLoader` has one parameter:
+
+- **path**: `string` : path to `JSON file`/`API endpoint`, to retrieve application settings from (*by default, `config.json`*)
+
+> :+1: Cool! **`@nglibs/config`** will retrieve application settings before **Angular** initializes the app.
+
+## Usage
+`ConfigService` has the `getSettings` method, which you can fetch settings loaded during application initialization.
+
+When the `getSettings` method is invoked without parameters, it returns entire application configuration. However, the `getSettings` method can be invoked using two optional parameters: **`group`** and **`key`**.
+
+The following example shows how to read configuration setttings using all available overloads of `getSettings` method.
 
 #### anyclass.ts
 ```TypeScript
