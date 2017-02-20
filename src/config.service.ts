@@ -1,44 +1,33 @@
 // angular
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-
-// libs
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
 
 // module
 import { ConfigLoader } from './config.loader';
 
 @Injectable()
 export class ConfigService {
-    private settingsRepository: any = undefined;
+    private settings: any;
 
-    constructor(private readonly http: Http,
-                public loader: ConfigLoader) {}
+    constructor(public loader: ConfigLoader) {}
 
     init(): any {
-        return this.http.get(this.loader.getApiEndpoint())
-            .map((res: any) => res.json())
-            .toPromise()
-            .then((settings: any) => this.settingsRepository = settings)
-            .catch(() => {
-                throw new Error('Error: apiEndpoint unreachable!');
-            });
+        return this.loader.loadSettings()
+            .then((res: any) => this.settings = res);
     }
 
     getSettings(group?: string, key?: string): any {
         if (!group)
-            return this.settingsRepository;
+            return this.settings;
 
-        if (!this.settingsRepository[group])
-            throw new Error(`Error: No setting found with the specified group [${group}]!`);
+        if (!this.settings[group])
+            throw new Error(`No setting found with the specified group [${group}]!`);
 
         if (!key)
-            return this.settingsRepository[group];
+            return this.settings[group];
 
-        if (!this.settingsRepository[group][key])
-            throw new Error(`Error: No setting found with the specified group/key [${group}/${key}]!`);
+        if (!this.settings[group][key])
+            throw new Error(`No setting found with the specified group/key [${group}/${key}]!`);
 
-        return this.settingsRepository[group][key];
+        return this.settings[group][key];
     }
 }

@@ -54,7 +54,7 @@ Import `ConfigModule` using the mapping `'@nglibs/config'` and append `ConfigMod
 
 ## Settings
 
-You can call the [forRoot] static method using `ConfigStaticLoader`. By default, it is configured to pass **application settings** to **`@nglibs/config`**.
+You can call the [forRoot] static method using `ConfigStaticLoader`. By default, it is configured to have no settings.
 
 > You can customize this behavior (*and ofc other settings*) by supplying **application settings** to `ConfigStaticLoader`.
 
@@ -71,7 +71,7 @@ The following examples show the use of an exported function (*instead of an inli
 import { ConfigModule, ConfigLoader, ConfigStaticLoader } from '@nglibs/config';
 ...
 
-export function configFactory() {
+export function configFactory(): ConfigLoader {
   return new ConfigStaticLoader({
     "system": {
       "applicationName": "Mighty Mouse",
@@ -127,11 +127,12 @@ export function configFactory() {
 #### app.module.ts
 ```TypeScript
 ...
+import { Http } from '@angular/http';
 import { ConfigModule, ConfigLoader, ConfigHttpLoader } from '@nglibs/config';
 ...
 
-export function configFactory() {
-  return new ConfigHttpLoader('/config.json'); // FILE PATH || API ENDPOINT
+export function configFactory(http: Http): ConfigLoader {
+  return new ConfigHttpLoader(http, '/config.json'); // FILE PATH || API ENDPOINT
 }
 
 @NgModule({
@@ -142,7 +143,8 @@ export function configFactory() {
   imports: [
     ConfigModule.forRoot({
       provide: ConfigLoader,
-      useFactory: (configFactory)
+      useFactory: (configFactory),
+	  deps: [Http]
     }),
     ...
   ],
@@ -150,8 +152,9 @@ export function configFactory() {
 })
 ```
 
-`ConfigHttpLoader` has one parameter:
+`ConfigHttpLoader` has two parameters:
 
+- **http**: `Http` : Http instance
 - **path**: `string` : path to `JSON file`/`API endpoint`, to retrieve application settings from (*by default, `config.json`*)
 
 > :+1: Cool! **`@nglibs/config`** will retrieve application settings before **Angular** initializes the app.
