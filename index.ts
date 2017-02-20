@@ -2,18 +2,18 @@
 import { APP_INITIALIZER, NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
 
 // module
-import { ConfigLoader, ConfigHttpLoader } from './src/config.loader';
+import { ConfigLoader, ConfigStaticLoader } from './src/config.loader';
 import { ConfigService } from './src/config.service';
 
 export * from './src/config.loader';
 export * from './src/config.service';
 
 export function configFactory(): ConfigLoader {
-    return new ConfigHttpLoader('');
+    return new ConfigStaticLoader();
 }
 
-function initializerFactory(config: ConfigService): any {
-    return () => config.init();
+function initializerFactory(loader: ConfigLoader): any {
+    return () => loader.init();
 }
 
 /**
@@ -33,7 +33,7 @@ export class ConfigModule {
                 {
                     provide: APP_INITIALIZER,
                     useFactory: (initializerFactory),
-                    deps: [ConfigService],
+                    deps: [ConfigLoader],
                     multi: true
                 }
             ]
