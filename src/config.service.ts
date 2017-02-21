@@ -1,21 +1,18 @@
 // angular
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-
-// libs
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
 
 // module
 import { ConfigLoader } from './config.loader';
 
 @Injectable()
 export class ConfigService {
-    private readonly settings: any;
+    private settings: any;
 
-    constructor(private readonly http: Http,
-                public loader: ConfigLoader) {
-        this.settings = loader.getSettings();
+    constructor(public loader: ConfigLoader) {}
+
+    init(): any {
+        return this.loader.loadSettings()
+            .then((res: any) => this.settings = res);
     }
 
     getSettings(group?: string, key?: string): any {

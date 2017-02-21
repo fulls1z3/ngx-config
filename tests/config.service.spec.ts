@@ -28,7 +28,7 @@ describe('@nglibs/config:',
                 it('should be able to get all settings',
                     inject([ConfigService],
                         (config: ConfigService) => {
-                            config.loader.init()
+                            config.loader.loadSettings()
                                 .then(() => {
                                     expect(config.getSettings()).toEqual(testSettings);
                                 });
@@ -37,7 +37,7 @@ describe('@nglibs/config:',
                 it('should be able to get settings using `group`',
                     inject([ConfigService],
                         (config: ConfigService) => {
-                            config.loader.init()
+                            config.loader.loadSettings()
                                 .then(() => {
                                     expect(config.getSettings('system'))
                                         .toEqual({
@@ -57,7 +57,7 @@ describe('@nglibs/config:',
                 it('should throw if you provide an invalid `group`',
                     inject([ConfigService],
                         (config: ConfigService) => {
-                            config.loader.init()
+                            config.loader.loadSettings()
                                 .then(() => {
                                     expect(() => {
                                             config.getSettings('layout');
@@ -69,7 +69,7 @@ describe('@nglibs/config:',
                 it('should be able to get settings using `group`/`key` combination',
                     inject([ConfigService],
                         (config: ConfigService) => {
-                            config.loader.init()
+                            config.loader.loadSettings()
                                 .then(() => {
                                     expect(config.getSettings('system', 'applicationName')).toEqual('Mighty Mouse');
                                     expect(config.getSettings('system', 'applicationUrl')).toEqual('http://localhost:8000');
@@ -80,7 +80,7 @@ describe('@nglibs/config:',
                 it('should throw if you provide an invalid `key`',
                     inject([ConfigService],
                         (config: ConfigService) => {
-                            config.loader.init()
+                            config.loader.loadSettings()
                                 .then(() => {
                                     expect(() => {
                                             config.getSettings('system', 'workingTheme');

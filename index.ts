@@ -12,8 +12,8 @@ export function configFactory(): ConfigLoader {
     return new ConfigStaticLoader();
 }
 
-function initializerFactory(loader: ConfigLoader): any {
-    return () => loader.init();
+export function initializerFactory(config: ConfigService): any {
+    return () => config.init();
 }
 
 /**
@@ -33,7 +33,7 @@ export class ConfigModule {
                 {
                     provide: APP_INITIALIZER,
                     useFactory: (initializerFactory),
-                    deps: [ConfigLoader],
+                    deps: [ConfigService],
                     multi: true
                 }
             ]

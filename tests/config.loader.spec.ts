@@ -28,9 +28,10 @@ describe('@nglibs/config:',
                 it('should not return any settings unless provided',
                     () => {
                         const loader = new ConfigStaticLoader();
-                        const loadedSettings = loader.getSettings();
 
-                        expect(loadedSettings).toBeUndefined();
+                        loader.loadSettings().then((res: any) => {
+                            expect(res).toBeUndefined();
+                        });
                     });
 
                 it('should be able to provide `ConfigStaticLoader`',
@@ -60,10 +61,8 @@ describe('@nglibs/config:',
                 it('should be able to provide any `ConfigLoader`',
                     () => {
                         class CustomLoader implements ConfigLoader {
-                            init(): any {}
-
-                            getSettings(): any {
-                                return {};
+                            loadSettings(): any {
+                                return Promise.resolve({});
                             }
                         }
 
@@ -92,7 +91,7 @@ describe('@nglibs/config:',
                             // mock response
                             backend.connections.subscribe((c: MockConnection) => mockBackendResponse(c, testSettings));
 
-                            config.loader.init()
+                            config.loader.loadSettings()
                                 .then((res: any) => {
                                     expect(res).toEqual(testSettings);
                                 });
@@ -105,7 +104,7 @@ describe('@nglibs/config:',
                             backend.connections.subscribe((c: MockConnection) => mockBackendError(c, '500'));
 
                             // this will produce error at the backend
-                            config.loader.init()
+                            config.loader.loadSettings()
                                 .catch((res: any) => {
                                     expect(res).toEqual('Endpoint unreachable!');
                                 });
