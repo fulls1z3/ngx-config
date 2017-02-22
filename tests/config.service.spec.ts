@@ -57,9 +57,7 @@ describe('@nglibs/config:',
                         (config: ConfigService) => {
                             config.loader.loadSettings()
                                 .then(() => {
-                                    expect(() => {
-                                            config.getSettings('layout');
-                                        })
+                                    expect(() => config.getSettings('layout'))
                                         .toThrowError('No setting found with the specified group [layout]!');
                                 });
                         }));
@@ -80,9 +78,7 @@ describe('@nglibs/config:',
                         (config: ConfigService) => {
                             config.loader.loadSettings()
                                 .then(() => {
-                                    expect(() => {
-                                            config.getSettings('system', 'workingTheme');
-                                        })
+                                    expect(() => config.getSettings('system', 'workingTheme'))
                                         .toThrowError('No setting found with the specified group/key [system/workingTheme]!');
                                 });
                         }));

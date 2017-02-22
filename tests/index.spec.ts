@@ -1,7 +1,7 @@
 // angular
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { TestBed } from '@angular/core/testing';
-import { Http, BaseRequestOptions, HttpModule } from '@angular/http';
+import { BaseRequestOptions, Http, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
 // module
