@@ -8,9 +8,7 @@ import { testSettings, testModuleConfig } from './index.spec';
 describe('@nglibs/config:',
     () => {
         beforeEach(() => {
-            function configFactory(): ConfigLoader {
-                return new ConfigStaticLoader(testSettings);
-            }
+            const configFactory = () => new ConfigStaticLoader(testSettings);
 
             testModuleConfig({ provide: ConfigLoader, useFactory: (configFactory) });
         });
