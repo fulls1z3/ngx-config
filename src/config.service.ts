@@ -6,28 +6,29 @@ import { ConfigLoader } from './config.loader';
 
 @Injectable()
 export class ConfigService {
-    private settings: any;
+  private settings: any;
 
-    constructor(public loader: ConfigLoader) {}
+  constructor(public loader: ConfigLoader) {
+  }
 
-    init(): any {
-        return this.loader.loadSettings()
-            .then((res: any) => this.settings = res);
-    }
+  init(): any {
+    return this.loader.loadSettings()
+      .then((res: any) => this.settings = res);
+  }
 
-    getSettings(group?: string, key?: string): any {
-        if (!group)
-            return this.settings;
+  getSettings(group?: string, key?: string): any {
+    if (!group)
+      return this.settings;
 
-        if (!this.settings[group])
-            throw new Error(`No setting found with the specified group [${group}]!`);
+    if (!this.settings[group])
+      throw new Error(`No setting found with the specified group [${group}]!`);
 
-        if (!key)
-            return this.settings[group];
+    if (!key)
+      return this.settings[group];
 
-        if (!this.settings[group][key])
-            throw new Error(`No setting found with the specified group/key [${group}/${key}]!`);
+    if (!this.settings[group][key])
+      throw new Error(`No setting found with the specified group/key [${group}/${key}]!`);
 
-        return this.settings[group][key];
-    }
+    return this.settings[group][key];
+  }
 }
