@@ -10,11 +10,13 @@ export * from './src/config.service';
 
 // for AoT compilation
 export function configFactory(): ConfigLoader {
-    return new ConfigStaticLoader();
+  return new ConfigStaticLoader();
 }
 
 export function initializerFactory(config: ConfigService): any {
-    return () => config.init();
+  // workaround for AoT compilation
+  const res = () => config.init();
+  return res;
 }
 
 /**
@@ -22,27 +24,28 @@ export function initializerFactory(config: ConfigService): any {
  */
 @NgModule()
 export class ConfigModule {
-    static forRoot(configuredProvider: any = {
-                       provide: ConfigLoader,
-                       useFactory: (configFactory)
-                   }): ModuleWithProviders {
-        return {
-            ngModule: ConfigModule,
-            providers: [
-                configuredProvider,
-                ConfigService,
-                {
-                    provide: APP_INITIALIZER,
-                    useFactory: (initializerFactory),
-                    deps: [ConfigService],
-                    multi: true
-                }
-            ]
-        };
-    }
+  static forRoot(configuredProvider: any = {
+                   provide: ConfigLoader,
+                   useFactory: (configFactory)
+                 }): ModuleWithProviders {
+    return {
+      ngModule: ConfigModule,
+      providers: [
+        configuredProvider,
+        ConfigService,
+        {
+          provide: APP_INITIALIZER,
+          useFactory: (initializerFactory),
+          deps: [ConfigService],
+          multi: true
+        }
+      ]
+    };
+  }
 
-    constructor(@Optional() @SkipSelf() parentModule: ConfigModule) {
-        if (parentModule)
-            throw new Error('ConfigModule already loaded; import in root module only.');
-    }
+  constructor(@Optional()
+              @SkipSelf() parentModule: ConfigModule) {
+    if (parentModule)
+      throw new Error('ConfigModule already loaded; import in root module only.');
+  }
 }
