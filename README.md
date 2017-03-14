@@ -1,20 +1,22 @@
 # @nglibs/config [![Linux build](https://travis-ci.org/nglibs/config.svg?branch=master)](https://travis-ci.org/nglibs/config) [![Windows build](https://ci.appveyor.com/api/projects/status/github/nglibs/config?branch=master&svg=true)](https://ci.appveyor.com/project/nglibs/config) [![coverage](https://codecov.io/github/nglibs/config/coverage.svg?branch=master)](https://codecov.io/gh/nglibs/config) [![npm version](https://badge.fury.io/js/%40nglibs%2Fconfig.svg)](https://www.npmjs.com/package/@nglibs/config)
 
+> Please support this project by simply putting a Github star. Share this library with friends on Twitter and everywhere else you can.
+
 > This repository holds the TypeScript source code and distributable bundle of **`@nglibs/config`**, the configuration utility for **Angular**.
 
 **`@nglibs/config`** uses `APP_INITIALIZER` which executes a function when **Angular** app is initialized, and delay the completion of initialization process until application settings have been provided.
 
 #### NOTICE
-**`@nglibs/config`** is the successor of **`ng2-config`**, and the current latest version number is **`v0.2.x`**. Releases with version number **`1.X.x`** refer to **`ng2-config`**, and are being kept in order to maintain backwards compability - until **Angular** v4.0 (stable) gets released.
+**`@nglibs/config`** is the successor of **`ng2-config`**, and the actual release is **`v0.2.x`**.
 
 ## Table of contents:
 - [Prerequisites](#prerequisites)
 - [Getting started](#getting-started)
-    - [Installation](#installation)
+  - [Installation](#installation)
 	- [Examples](#examples)
 	- [`@nglibs` packages](#nglibs-packages)
 	- [Adding `@nglibs/config` to your project (SystemJS)](#adding-nglibsconfig-to-your-project-systemjs)
-    - [app.module configuration](#appmodule-configuration)
+  - [app.module configuration](#appmodule-configuration)
 - [Settings](#settings)
 	- [Setting up `ConfigModule` to use `ConfigStaticLoader`](#setting-up-configmodule-to-use-configstaticloader)
 	- [Setting up `ConfigModule` to use `ConfigHttpLoader`](#setting-up-configmodule-to-use-confighttploader)
@@ -26,12 +28,6 @@ This package depends on `@angular v2.0.0` but it's highly recommended that you a
 
 Also, please ensure that you are using **`Typescript v2.1.6`** or higher.
 
-#### WARNING
-
-The pull request [#14327](https://github.com/angular/angular/pull/14327) on **`@angular v2.4.8`** and **`@angular v4.0.0-rc.1`**  introduced a severe error [#14588](https://github.com/angular/angular/issues/14588) which causes the app to fall into an infinite loop before bootstrapping.
-
-In order to avoid issues, avoid using these versions of **Angular**.
-
 ## Getting started
 ### Installation
 You can install **`@nglibs/config`** using `npm`
@@ -40,7 +36,7 @@ npm install @nglibs/config --save
 ```
 
 ### Examples
-- [@nglibs/example-app] is an officially maintained example application showcasing best practices for **[@nglibs]** utilities.
+- [@nglibs/universal-example-app] and [@nglibs/example-app] are officially maintained example applications showcasing best practices for **[@nglibs]** utilities.
 
 ### `@nglibs` packages
 
@@ -48,6 +44,8 @@ npm install @nglibs/config --save
 - [@nglibs/meta]
 - [@nglibs/i18n-router]
 - [@nglibs/i18n-router-config-loader]
+- [@nglibs/universal-express-engine]
+- [@nglibs/universal-transfer-state]
 
 ### Adding `@nglibs/config` to your project (SystemJS)
 Add `map` for **`@nglibs/config`** in your `systemjs.config`
@@ -215,10 +213,13 @@ Copyright (c) 2017 [Burak Tasci]
 
 [@nglibs]: https://github.com/nglibs
 [@nglibs/example-app]: https://github.com/nglibs/example-app
+[@nglibs/universal-example-app]: https://github.com/nglibs/universal-example-app
 [@nglibs/config]: https://github.com/nglibs/config
 [@nglibs/meta]: https://github.com/nglibs/meta
 [@nglibs/i18n-router]: https://github.com/nglibs/i18n-router
 [@nglibs/i18n-router-config-loader]: https://github.com/nglibs/i18n-router-config-loader
+[@nglibs/universal-express-engine]: https://github.com/nglibs/universal-express-engine
+[@nglibs/universal-transfer-state]: https://github.com/nglibs/universal-transfer-state
 [forRoot]: https://angular.io/docs/ts/latest/guide/ngmodule.html#!#core-for-root
 [AoT compilation]: https://angular.io/docs/ts/latest/cookbook/aot-compiler.html
 [Burak Tasci]: http://www.buraktasci.com

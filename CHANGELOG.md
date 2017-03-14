@@ -1,6 +1,15 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## v0.2.0-rc.4 - 2017-03-15
+### Fixed
+- Resolved depend on Angular 2.0.0 (closes [#3](https://github.com/nglibs/config/issues/3))
+- Workaround for AoT compilation
+
+### Changed
+- Updated deps
+- Some refactoring
+
 ## v0.2.0-rc.3 - 2017-02-23
 ### Fixed
 - Forced to use TypeScript 2.1.x
@@ -12,7 +21,7 @@ All notable changes to this project will be documented in this file.
 
 ## v0.2.0-rc.2 - 2017-02-20
 ### Added
-- Added `ConfigStaticLoader`
+- Added `ConfigStaticLoader` (closes [#2](https://github.com/nglibs/config/issues/2))
 
 ## v0.2.0-rc.1 - 2017-02-17
 ### Changed
