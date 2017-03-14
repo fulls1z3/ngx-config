@@ -14,7 +14,9 @@ export function configFactory(): ConfigLoader {
 }
 
 export function initializerFactory(config: ConfigService): any {
-  return () => config.init();
+  // workaround for AoT compilation
+  const res = () => config.init();
+  return res;
 }
 
 /**
