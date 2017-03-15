@@ -32,8 +32,9 @@
   "module": "index.js",
   "typings": "index.d.ts",
   "dependencies": {
-    "tslib": "^1.6.0",
-    "typescript-object-utils": "^0.2.3"
+    "@types/lodash": "^4.14.55",
+    "lodash": "^4.17.4",
+    "tslib": "^1.6.0"
   },
   "devDependencies": {
     "@angular/common": "~2.4.0",

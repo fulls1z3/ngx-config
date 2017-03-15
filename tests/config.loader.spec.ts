@@ -8,7 +8,7 @@ import { ConfigLoader, ConfigStaticLoader, ConfigHttpLoader, ConfigMergedLoader,
 import { testSettings, testModuleConfig } from './index.spec';
 
 // libs
-import { mergeDeep } from 'typescript-object-utils';
+import * as _ from 'lodash';
 
 const mockBackendResponse = (connection: MockConnection, response: any) => {
   connection.mockRespond(new Response(new ResponseOptions({body: response})));
@@ -161,21 +161,37 @@ describe('@nglibs/config:',
         const defaultRoutes = {
           '/config.json': {
             'setting1': 'value1',
-            'setting2': 'from config.json'
+            'setting2': 'from config.json',
+            'arr': [1, 2, 3],
+            'nested': {
+              'k1': 'v1',
+              'k2': 'v2 from config.json'
+            }
           },
           '/config.local.json': {
             'setting2': 'from config.local.json',
-            'setting3': 'value3'
+            'setting3': 'value3',
+            'arr': [4, 5]
           },
           '/env/test.json': {
-            'setting4': 'value4'
+            'setting4': 'value4',
+            'nested': {
+              'k2': 'v2 from env/test.json',
+              'k3': 'v3'
+            }
           }
         };
         const defaultMergedSettings = {
           'setting1': 'value1',
           'setting2': 'from config.local.json',
           'setting3': 'value3',
-          'setting4': 'value4'
+          'setting4': 'value4',
+          'arr': [4, 5],
+          'nested': {
+            'k1': 'v1',
+            'k2': 'v2 from env/test.json',
+            'k3': 'v3'
+          }
         };
 
         beforeEach(() => {
@@ -205,12 +221,18 @@ describe('@nglibs/config:',
           async(inject([MockBackend, ConfigService],
             (backend: MockBackend, config: ConfigService) => {
               // make '/config.local.json' unavailable
-              let routesCopy = mergeDeep(defaultRoutes, defaultRoutes);
+              let routesCopy = _.cloneDeep(defaultRoutes);
               delete routesCopy['/config.local.json'];
               const settings = {
                 'setting1': 'value1',
                 'setting2': 'from config.json',
-                'setting4': 'value4'
+                'setting4': 'value4',
+                'arr': [1, 2, 3],
+                'nested': {
+                  'k1': 'v1',
+                  'k2': 'v2 from env/test.json',
+                  'k3': 'v3'
+                }
               };
 
               // mock response
