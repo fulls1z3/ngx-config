@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/reduce';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs';
 import * as _ from 'lodash';
@@ -55,7 +56,8 @@ export class ConfigMergedLoader implements ConfigLoader {
     };
     const jsons = Observable.onErrorResumeNext(this.paths.map(path => this.http.get(path)))
       .map((res: any) => res.json())
-      .filter((x: any) => x !== null);
+      .filter((x: any) => x !== null)
+      .share();
     return jsons.merge(errorIfEmpty(jsons))
       .reduce((x: any, y: any) => mergeWith(x, y), {})
       .toPromise()
