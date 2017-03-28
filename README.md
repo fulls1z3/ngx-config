@@ -10,11 +10,11 @@
 ## Table of contents:
 - [Prerequisites](#prerequisites)
 - [Getting started](#getting-started)
-    - [Installation](#installation)
+  - [Installation](#installation)
 	- [Examples](#examples)
 	- [`@nglibs` packages](#nglibs-packages)
 	- [Adding `@nglibs/config` to your project (SystemJS)](#adding-nglibsconfig-to-your-project-systemjs)
-    - [app.module configuration](#appmodule-configuration)
+  - [app.module configuration](#appmodule-configuration)
 - [Settings](#settings)
 	- [Setting up `ConfigModule` to use `ConfigStaticLoader`](#setting-up-configmodule-to-use-configstaticloader)
 	- [Setting up `ConfigModule` to use `ConfigHttpLoader`](#setting-up-configmodule-to-use-confighttploader)
@@ -42,6 +42,8 @@ npm install @nglibs/config --save
 - [@nglibs/meta]
 - [@nglibs/i18n-router]
 - [@nglibs/i18n-router-config-loader]
+- [@nglibs/universal-express-engine]
+- [@nglibs/universal-transfer-state]
 
 ### Adding `@nglibs/config` to your project (SystemJS)
 Add `map` for **`@nglibs/config`** in your `systemjs.config`
@@ -213,6 +215,8 @@ Copyright (c) 2017 [Burak Tasci]
 [@nglibs/meta]: https://github.com/nglibs/meta
 [@nglibs/i18n-router]: https://github.com/nglibs/i18n-router
 [@nglibs/i18n-router-config-loader]: https://github.com/nglibs/i18n-router-config-loader
+[@nglibs/universal-express-engine]: https://github.com/nglibs/universal-express-engine
+[@nglibs/universal-transfer-state]: https://github.com/nglibs/universal-transfer-state
 [forRoot]: https://angular.io/docs/ts/latest/guide/ngmodule.html#!#core-for-root
 [AoT compilation]: https://angular.io/docs/ts/latest/cookbook/aot-compiler.html
 [Burak Tasci]: http://www.buraktasci.com
