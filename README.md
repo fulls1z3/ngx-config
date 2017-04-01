@@ -5,7 +5,7 @@
 **`@nglibs/config`** uses `APP_INITIALIZER` which executes a function when **Angular** app is initialized, and delay the completion of initialization process until application settings have been provided.
 
 #### NOTICE
-**`@nglibs/config`** is the successor of **`ng2-config`**, and the current latest version number is **`v0.2.x`**. Releases with version number **`1.X.x`** refer to **`ng2-config`**, and are being kept in order to maintain backwards compability - until **Angular** v4.0 (stable) gets released.
+**`@nglibs/config`** is the successor of **`ng2-config`**, and the actual release is **`v0.2.x`**.
 
 ## Table of contents:
 - [Prerequisites](#prerequisites)
