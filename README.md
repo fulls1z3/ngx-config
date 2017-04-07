@@ -1,5 +1,7 @@
 # @nglibs/config [![Linux build](https://travis-ci.org/nglibs/config.svg?branch=master)](https://travis-ci.org/nglibs/config) [![Windows build](https://ci.appveyor.com/api/projects/status/github/nglibs/config?branch=master&svg=true)](https://ci.appveyor.com/project/nglibs/config) [![coverage](https://codecov.io/github/nglibs/config/coverage.svg?branch=master)](https://codecov.io/gh/nglibs/config) [![npm version](https://badge.fury.io/js/%40nglibs%2Fconfig.svg)](https://www.npmjs.com/package/@nglibs/config)
 
+> Please support this project by simply putting a Github star. Share this library with friends on Twitter and everywhere else you can.
+
 > This repository holds the TypeScript source code and distributable bundle of **`@nglibs/config`**, the configuration utility for **Angular**.
 
 **`@nglibs/config`** uses `APP_INITIALIZER` which executes a function when **Angular** app is initialized, and delay the completion of initialization process until application settings have been provided.
@@ -34,7 +36,7 @@ npm install @nglibs/config --save
 ```
 
 ### Examples
-- [@nglibs/example-app] is an officially maintained example application showcasing best practices for **[@nglibs]** utilities.
+- [@nglibs/universal-example-app] and [@nglibs/example-app] are officially maintained example applications showcasing best practices for **[@nglibs]** utilities.
 
 ### `@nglibs` packages
 
@@ -211,6 +213,7 @@ Copyright (c) 2017 [Burak Tasci]
 
 [@nglibs]: https://github.com/nglibs
 [@nglibs/example-app]: https://github.com/nglibs/example-app
+[@nglibs/universal-example-app]: https://github.com/nglibs/universal-example-app
 [@nglibs/config]: https://github.com/nglibs/config
 [@nglibs/meta]: https://github.com/nglibs/meta
 [@nglibs/i18n-router]: https://github.com/nglibs/i18n-router
