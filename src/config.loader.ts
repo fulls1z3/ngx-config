@@ -2,12 +2,12 @@
 import { Http } from '@angular/http';
 
 // libs
+import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/reduce';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/reduce';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/toPromise';
-import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 
 export abstract class ConfigLoader {
@@ -37,7 +37,7 @@ export class ConfigHttpLoader implements ConfigLoader {
   }
 }
 
-export class ConfigMergedLoader implements ConfigLoader {
+export class ConfigMergedHttpLoader implements ConfigLoader {
   constructor(private readonly http: Http,
               private readonly paths: string[] = ['/config.json', '/config.local.json']) {
   }
@@ -45,8 +45,11 @@ export class ConfigMergedLoader implements ConfigLoader {
   loadSettings(): any {
     const errorIfEmpty = (source: Observable<any>) => {
       return source.isEmpty()
-        .mergeMap((empty: boolean) => (empty) ? Observable.throw(new Error('empty')) : Observable.empty());
+        .mergeMap((isEmpty: boolean) => isEmpty
+          ? Observable.throw(new Error('No setting found at the specified endpoint!'))
+          : Observable.empty());
     };
+
     const mergeWith = (object: any, source: any[]) => {
       return _.mergeWith(object, source, (objValue: any, srcValue: any) => {
         if (_.isArray(objValue)) {
@@ -54,14 +57,16 @@ export class ConfigMergedLoader implements ConfigLoader {
         }
       });
     };
-    const jsons = Observable.onErrorResumeNext(this.paths.map(path => this.http.get(path)))
+
+    const mergedSettings = Observable.onErrorResumeNext(this.paths.map(path => this.http.get(path)))
       .map((res: any) => res.json())
-      .filter((x: any) => x !== null)
+      .filter((settings: any) => !!settings)
       .share();
-    return jsons.merge(errorIfEmpty(jsons))
-      .reduce((x: any, y: any) => mergeWith(x, y), {})
+
+    return mergedSettings.merge(errorIfEmpty(mergedSettings))
+      .reduce((merged: any, current: any) => mergeWith(merged, current), {})
       .toPromise()
       .then((settings: any) => settings)
-      .catch(() => Promise.reject('Config was not loaded!'));
+      .catch(() => Promise.reject('Endpoint unreachable!'));
   }
 }
