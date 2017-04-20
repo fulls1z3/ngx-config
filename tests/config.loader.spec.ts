@@ -20,7 +20,7 @@ const mockBackendError = (connection: MockConnection, error: string) => {
   connection.mockError(new Error(error));
 };
 
-describe('@nglibs/config:',
+describe('@ngx-config/core:',
   () => {
     beforeEach(() => {
       const configFactory = () => new ConfigStaticLoader();

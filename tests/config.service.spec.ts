@@ -5,7 +5,7 @@ import { inject } from '@angular/core/testing';
 import { ConfigLoader, ConfigStaticLoader, ConfigService } from '../index';
 import { testSettings, testModuleConfig } from './index.spec';
 
-describe('@nglibs/config:',
+describe('@ngx-config/core:',
   () => {
     beforeEach(() => {
       const configFactory = () => new ConfigStaticLoader(testSettings);
