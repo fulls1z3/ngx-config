@@ -1,10 +1,10 @@
 {
-  "name": "@nglibs/config",
+  "name": "@ngx-config/core",
   "version": "0.2.0-rc.4",
   "description": "Configuration utility for Angular",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nglibs/config.git"
+    "url": "https://github.com/ngx-config/core.git"
   },
   "keywords": [
     "app initializer",
@@ -22,13 +22,13 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nglibs/config/issues"
+    "url": "https://github.com/ngx-config/core/issues"
   },
-  "homepage": "https://github.com/nglibs/config#readme",
+  "homepage": "https://github.com/ngx-config/core#readme",
   "scripts": {
     "test": "karma start"
   },
-  "main": "bundles/config.umd.min.js",
+  "main": "bundles/core.umd.min.js",
   "module": "index.js",
   "typings": "index.d.ts",
   "dependencies": {
