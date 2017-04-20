@@ -60,10 +60,10 @@ module.exports = {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-filename
      */
-    filename: 'config.umd.min.js',
+    filename: 'core.umd.min.js',
 
     libraryTarget: 'umd',
-    library: 'config'
+    library: 'ngx-config'
   },
 
   /**
