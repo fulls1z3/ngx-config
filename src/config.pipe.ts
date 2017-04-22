@@ -1,12 +1,12 @@
 // angular
-import { Injectable, Pipe, PipeTransform  } from '@angular/core';
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
 
 // module
 import { ConfigService } from './config.service';
 
 @Injectable()
 @Pipe({
-  name: 'config',
+  name: 'config'
 })
 export class ConfigPipe implements PipeTransform {
   constructor(private readonly config: ConfigService) {
