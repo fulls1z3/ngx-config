@@ -149,7 +149,7 @@
     "no-output-rename": true,
     "no-forward-ref": false,
     "use-pipe-transform-interface": true,
-    "pipe-naming": [ true, "camelCase", "ngx" ],
+    "pipe-naming": [ true, "camelCase", "config" ],
     "component-class-suffix": true,
     "directive-class-suffix": true,
     "invoke-injectable": true

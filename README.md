@@ -21,9 +21,9 @@ Configuration utility for **Angular**
 	- [Setting up `ConfigModule` to use `ConfigHttpLoader`](#setting-up-configmodule-to-use-confighttploader)
 	- [Setting up `ConfigModule` to use `ConfigFsLoader`](#setting-up-configmodule-to-use-configfsloader)
 	- [Setting up `ConfigModule` to use `UniversalConfigLoader`](#setting-up-configmodule-to-use-universalconfigloader)
-	- [Setting up `ConfigModule` to use `ConfigParallelLoader`](#setting-up-configmodule-to-use-configparallelloader)
-	- [Setting up `ConfigModule` to use `ConfigSeriesLoader`](#setting-up-configmodule-to-use-configseriesloader)
+	- [Setting up `ConfigModule` to use `ConfigMergeLoader`](#setting-up-configmodule-to-use-configmergeloader)
 - [Usage](#usage)
+- [Pipe](#pipe)
 - [License](#license)
 
 ## Prerequisites
@@ -46,8 +46,7 @@ The following packages may be used in conjunction with **`@ngx-config/core`**:
 - [@ngx-config/http-loader]
 - [@ngx-config/fs-loader]
 - [@ngx-universal/config-loader]
-- [@ngx-config/parallel-loader]
-- [@ngx-config/series-loader]
+- [@ngx-config/merge-loader]
 - [@ngx-i18n-router/config-loader]
 
 ### Recommended packages
@@ -108,7 +107,6 @@ export function configFactory(): ConfigLoader {
 ```
 
 `ConfigStaticLoader` has one parameter:
-
 - **settings**: `any` : application settings
 
 > :+1: Cool! **`@ngx-config/core`** will retrieve application settings before **Angular** initializes the app.
@@ -132,22 +130,17 @@ You can find detailed information about the usage guidelines for the `ConfigFsLo
 
 You can find detailed information about the usage guidelines for the `UniversalConfigLoader` [here](https://github.com/ngx-universal/config-loader).
 
-### Setting up `ConfigModule` to use `ConfigParallelLoader`
-`ConfigParallelLoader` provides application settings by executing loaders in **parallel**.
+### Setting up `ConfigModule` to use `ConfigMergeLoader`
+`ConfigMergeLoader` provides application settings by executing loaders in **parallel** and in **series**.
 
-You can find detailed information about the usage guidelines for the `ConfigParallelLoader` [here](https://github.com/ngx-config/parallel-loader).
-
-### Setting up `ConfigModule` to use `ConfigSeriesLoader`
-`ConfigSeriesLoader` provides application settings by executing loaders in **series**.
-
-You can find detailed information about the usage guidelines for the `ConfigSeriesLoader` [here](https://github.com/ngx-config/series-loader).
+You can find detailed information about the usage guidelines for the `ConfigMergeLoader` [here](https://github.com/ngx-config/merge-loader).
 
 ## Usage
 `ConfigService` has the `getSettings` method, which you can fetch settings loaded during application initialization.
 
-When the `getSettings` method is invoked without parameters, it returns entire application configuration. However, the `getSettings` method can be invoked using two optional parameters: **`group`** and **`key`**.
+When the `getSettings` method is invoked without parameters, it returns entire application configuration. However, the `getSettings` method can be invoked using two optional parameters: **`key`** and **`defaultValue`**.
 
-The following example shows how to read configuration setttings using all available overloads of `getSettings` method.
+The following example shows how to read configuration settings using all available overloads of `getSettings` method.
 
 #### anyclass.ts
 ```TypeScript
@@ -158,19 +151,34 @@ export class AnyClass {
     // note that ConfigService is injected into a private property of AnyClass
   }
   
-  myMethodToGetUrl1() {
+  myMethodToGetUrl1a() {
     // will retrieve 'http://localhost:8000'
-    let url:string = this.config.getSettings('system', 'applicationUrl');
+    let url:string = this.config.getSettings('system.applicationUrl');
   }
 
-  myMethodToGetUrl2() {
+  myMethodToGetUrl1b() {
+    // will retrieve 'http://localhost:8000'
+    let url:string = this.config.getSettings(['system', 'applicationUrl']);
+  }
+
+  myMethodToGetUrl2a() {
     // will retrieve 'http://localhost:8000'
     let url:string = this.config.getSettings('system').applicationUrl;
   }
 
-  myMethodToGetUrl3() {
+  myMethodToGetUrl2b() {
     // will retrieve 'http://localhost:8000'
     let url:string = this.config.getSettings().system.applicationUrl;
+  }
+
+  myMethodToGetUrl3a() {
+    // will throw an exception (system.non_existing is not in the application settings)
+    let url:string = this.config.getSettings('system.non_existing');
+  }
+
+  myMethodToGetUrl3b() {
+    // will retrieve 'no data' (system.non_existing is not in the application settings)
+    let url:string = this.config.getSettings('system.non_existing', 'no data');
   }
   
   myMethodToGetSeo1() {
@@ -185,6 +193,14 @@ export class AnyClass {
 }
 ```
 
+## Pipe
+`ConfigPipe` is used to get the application settings on the view level. Pipe can be appended to a **string** or to an **Array<string>**.
+
+```Html
+<span id="property">{{'some.setting' | config}}</span>
+<span id="property">{{['some', 'setting'] | config}}</span>
+```
+
 ## License
 The MIT License (MIT)
 
@@ -195,8 +211,7 @@ Copyright (c) 2017 [Burak Tasci]
 [@ngx-config/http-loader]: https://github.com/ngx-config/http-loader
 [@ngx-config/fs-loader]: https://github.com/ngx-config/fs-loader
 [@ngx-universal/config-loader]: https://github.com/ngx-universal/config-loader
-[@ngx-config/parallel-loader]: https://github.com/ngx-config/parallel-loader
-[@ngx-config/series-loader]: https://github.com/ngx-config/series-loader
+[@ngx-config/merge-loader]: https://github.com/ngx-config/merge-loader
 [@ngx-i18n-router/config-loader]: https://github.com/ngx-i18n-router/config-loader
 [@ngx-cache/core]: https://github.com/ngx-cache/core
 [forRoot]: https://angular.io/docs/ts/latest/guide/ngmodule.html#!#core-for-root
