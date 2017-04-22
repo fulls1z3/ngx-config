@@ -30,9 +30,9 @@ export function initializerFactory(config: ConfigService): any {
 })
 export class ConfigModule {
   static forRoot(configuredProvider: any = {
-                   provide: ConfigLoader,
-                   useFactory: (configFactory)
-                 }): ModuleWithProviders {
+    provide: ConfigLoader,
+    useFactory: (configFactory)
+  }): ModuleWithProviders {
     return {
       ngModule: ConfigModule,
       providers: [
@@ -48,8 +48,7 @@ export class ConfigModule {
     };
   }
 
-  constructor(@Optional()
-              @SkipSelf() parentModule: ConfigModule) {
+  constructor(@Optional() @SkipSelf() parentModule: ConfigModule) {
     if (parentModule)
       throw new Error('ConfigModule already loaded; import in root module only.');
   }
