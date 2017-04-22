@@ -24,6 +24,7 @@ Configuration utility for **Angular**
 	- [Setting up `ConfigModule` to use `ConfigParallelLoader`](#setting-up-configmodule-to-use-configparallelloader)
 	- [Setting up `ConfigModule` to use `ConfigSeriesLoader`](#setting-up-configmodule-to-use-configseriesloader)
 - [Usage](#usage)
+- [Pipe](#pipe)
 - [License](#license)
 
 ## Prerequisites
@@ -108,7 +109,6 @@ export function configFactory(): ConfigLoader {
 ```
 
 `ConfigStaticLoader` has one parameter:
-
 - **settings**: `any` : application settings
 
 > :+1: Cool! **`@ngx-config/core`** will retrieve application settings before **Angular** initializes the app.
@@ -147,7 +147,7 @@ You can find detailed information about the usage guidelines for the `ConfigSeri
 
 When the `getSettings` method is invoked without parameters, it returns entire application configuration. However, the `getSettings` method can be invoked using two optional parameters: **`group`** and **`key`**.
 
-The following example shows how to read configuration setttings using all available overloads of `getSettings` method.
+The following example shows how to read configuration settings using all available overloads of `getSettings` method.
 
 #### anyclass.ts
 ```TypeScript
@@ -158,19 +158,34 @@ export class AnyClass {
     // note that ConfigService is injected into a private property of AnyClass
   }
   
-  myMethodToGetUrl1() {
+  myMethodToGetUrl1a() {
     // will retrieve 'http://localhost:8000'
-    let url:string = this.config.getSettings('system', 'applicationUrl');
+    let url:string = this.config.getSettings('system.applicationUrl');
   }
 
-  myMethodToGetUrl2() {
+  myMethodToGetUrl1b() {
+    // will retrieve 'http://localhost:8000'
+    let url:string = this.config.getSettings(['system', 'applicationUrl']);
+  }
+
+  myMethodToGetUrl2a() {
     // will retrieve 'http://localhost:8000'
     let url:string = this.config.getSettings('system').applicationUrl;
   }
 
-  myMethodToGetUrl3() {
+  myMethodToGetUrl2b() {
     // will retrieve 'http://localhost:8000'
     let url:string = this.config.getSettings().system.applicationUrl;
+  }
+
+  myMethodToGetUrl3a() {
+    // will throw an exception (system.non_existing is not in the application settings)
+    let url:string = this.config.getSettings('system.non_existing');
+  }
+
+  myMethodToGetUrl3b() {
+    // will retrieve 'no data' (system.non_existing is not in the application settings)
+    let url:string = this.config.getSettings('system.non_existing', 'no data');
   }
   
   myMethodToGetSeo1() {
@@ -183,6 +198,14 @@ export class AnyClass {
     let seoSettings: string = this.config.getSettings().seo;
   }
 }
+```
+
+## Pipe
+`ConfigPipe` is used to get the application settings on the view level. Pipe can be appended to a **string** or to an **Array<string>**.
+
+```Html
+<span id="property">{{'some.setting' | config}}</span>
+<span id="property">{{['some', 'setting'] | config}}</span>
 ```
 
 ## License

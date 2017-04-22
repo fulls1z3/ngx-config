@@ -3,9 +3,11 @@ import { APP_INITIALIZER, NgModule, ModuleWithProviders, Optional, SkipSelf } fr
 
 // module
 import { ConfigLoader, ConfigStaticLoader } from './src/config.loader';
+import { ConfigPipe } from './src/config.pipe';
 import { ConfigService } from './src/config.service';
 
 export * from './src/config.loader';
+export * from './src/config.pipe';
 export * from './src/config.service';
 
 // for AoT compilation
@@ -22,7 +24,10 @@ export function initializerFactory(config: ConfigService): any {
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
-@NgModule()
+@NgModule({
+  declarations: [ConfigPipe],
+  exports: [ConfigPipe]
+})
 export class ConfigModule {
   static forRoot(configuredProvider: any = {
                    provide: ConfigLoader,
