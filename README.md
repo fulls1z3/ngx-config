@@ -145,7 +145,7 @@ You can find detailed information about the usage guidelines for the `ConfigSeri
 ## Usage
 `ConfigService` has the `getSettings` method, which you can fetch settings loaded during application initialization.
 
-When the `getSettings` method is invoked without parameters, it returns entire application configuration. However, the `getSettings` method can be invoked using two optional parameters: **`group`** and **`key`**.
+When the `getSettings` method is invoked without parameters, it returns entire application configuration. However, the `getSettings` method can be invoked using two optional parameters: **`key`** and **`defaultValue`**.
 
 The following example shows how to read configuration settings using all available overloads of `getSettings` method.
 
