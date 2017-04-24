@@ -82,5 +82,32 @@ describe('@ngx-config/core:',
                     .toThrowError('No setting found with the specified key [layout]!');
                 });
             }));
+
+        it('should get zero value',
+          inject([ConfigService],
+            (config: ConfigService) => {
+              config.loader.loadSettings()
+                .then(() => {
+                  expect(config.getSettings('falsy.zero')).toEqual(0);
+                });
+            }));
+
+        it('should get null value',
+          inject([ConfigService],
+            (config: ConfigService) => {
+              config.loader.loadSettings()
+                .then(() => {
+                  expect(config.getSettings('falsy.null')).toBeNull();
+                });
+            }));
+
+        it('should get empty string',
+          inject([ConfigService],
+            (config: ConfigService) => {
+              config.loader.loadSettings()
+                .then(() => {
+                  expect(config.getSettings('falsy.emptyString')).toEqual('');
+                });
+            }));
       });
   });
