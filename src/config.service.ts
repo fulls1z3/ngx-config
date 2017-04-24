@@ -25,9 +25,13 @@ export class ConfigService {
 
     let result = key.reduce((acc: any, current: string) => acc && acc[current], this.settings);
 
-    if (!result && !defaultValue)
-      throw new Error(`No setting found with the specified key [${key.join('/')}]!`);
+    if (result === undefined) {
+      result = defaultValue;
+      if (result === undefined) {
+        throw new Error(`No setting found with the specified key [${key.join('/')}]!`);  
+      }
+    }
 
-    return result || defaultValue;
+    return result;
   }
 }
