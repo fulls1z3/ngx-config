@@ -12,6 +12,11 @@ export const testSettings = {
   },
   'i18n': {
     'locale': 'en'
+  },
+  'falsy': {
+    'zero': 0,
+    'null': null as any,
+    'emptyString': ''
   }
 };
 
