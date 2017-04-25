@@ -28,5 +28,6 @@ appveyor.yml
 # misc
 /.github
 /coverage
+/tests
 npm-debug.log
 tslint.json

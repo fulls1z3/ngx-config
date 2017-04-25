@@ -2,8 +2,8 @@
 import { async, inject } from '@angular/core/testing';
 
 // module
-import { ConfigLoader, ConfigStaticLoader, ConfigService } from '../index';
-import { testSettings, testModuleConfig } from './index.spec';
+import { ConfigLoader, ConfigService, ConfigStaticLoader } from '../index';
+import { testModuleConfig, testSettings } from './index.spec';
 
 describe('@ngx-config/core:',
   () => {
@@ -44,8 +44,8 @@ describe('@ngx-config/core:',
                 .then(() => {
                   expect(config.getSettings('system'))
                     .toEqual({
-                      'applicationName': 'Mighty Mouse',
-                      'applicationUrl': 'http://localhost:8000'
+                      applicationName: 'Mighty Mouse',
+                      applicationUrl: 'http://localhost:8000'
                     });
 
                   expect(config.getSettings(['system', 'applicationName'])).toEqual('Mighty Mouse');
@@ -56,7 +56,7 @@ describe('@ngx-config/core:',
 
                   expect(config.getSettings('i18n'))
                     .toEqual({
-                      'locale': 'en'
+                      locale: 'en'
                     });
 
                   expect(config.getSettings(['i18n', 'locale'])).toEqual('en');
