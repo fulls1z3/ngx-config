@@ -27,9 +27,9 @@ export class ConfigService {
 
     if (result === undefined) {
       result = defaultValue;
-      if (result === undefined) {
-        throw new Error(`No setting found with the specified key [${key.join('/')}]!`);  
-      }
+
+      if (result === undefined)
+        throw new Error(`No setting found with the specified key [${key.join('/')}]!`);
     }
 
     return result;

@@ -1,5 +1,5 @@
 // angular
-import { inject } from '@angular/core/testing';
+import { async, inject } from '@angular/core/testing';
 
 // module
 import { ConfigLoader, ConfigStaticLoader, ConfigService } from '../index';
@@ -27,7 +27,7 @@ describe('@ngx-config/core:',
             }));
 
         it('should be able to get all settings',
-          inject([ConfigService],
+          async(inject([ConfigService],
             (config: ConfigService) => {
               config.loader.loadSettings()
                 .then(() => {
@@ -35,10 +35,10 @@ describe('@ngx-config/core:',
                   expect(config.getSettings('')).toEqual(testSettings);
                   expect(config.getSettings([])).toEqual(testSettings);
                 });
-            }));
+            })));
 
         it('should be able to get setting(s) using `key`',
-          inject([ConfigService],
+          async(inject([ConfigService],
             (config: ConfigService) => {
               config.loader.loadSettings()
                 .then(() => {
@@ -62,52 +62,52 @@ describe('@ngx-config/core:',
                   expect(config.getSettings(['i18n', 'locale'])).toEqual('en');
                   expect(config.getSettings('i18n.locale')).toEqual('en');
                 });
-            }));
+            })));
+
+        it('should be able to get setting(s) using `key` (zero value)',
+          async(inject([ConfigService],
+            (config: ConfigService) => {
+              config.loader.loadSettings()
+                .then(() => {
+                  expect(config.getSettings('falsy.zero')).toEqual(0);
+                });
+            })));
+
+        it('should be able to get setting(s) using `key` (null value)',
+          async(inject([ConfigService],
+            (config: ConfigService) => {
+              config.loader.loadSettings()
+                .then(() => {
+                  expect(config.getSettings('falsy.null')).toBeNull();
+                });
+            })));
+
+        it('should be able to get setting(s) using `key` (empty string)',
+          async(inject([ConfigService],
+            (config: ConfigService) => {
+              config.loader.loadSettings()
+                .then(() => {
+                  expect(config.getSettings('falsy.emptyString')).toEqual('');
+                });
+            })));
 
         it('should be able to get `default value` w/invalid `key`',
-          inject([ConfigService],
+          async(inject([ConfigService],
             (config: ConfigService) => {
               config.loader.loadSettings()
                 .then(() => {
                   expect(config.getSettings('layout', 'default')).toEqual('default');
                 });
-            }));
+            })));
 
         it('should throw if you provide an invalid `key` w/o `default value`',
-          inject([ConfigService],
+          async(inject([ConfigService],
             (config: ConfigService) => {
               config.loader.loadSettings()
                 .then(() => {
                   expect(() => config.getSettings('layout'))
                     .toThrowError('No setting found with the specified key [layout]!');
                 });
-            }));
-
-        it('should get zero value',
-          inject([ConfigService],
-            (config: ConfigService) => {
-              config.loader.loadSettings()
-                .then(() => {
-                  expect(config.getSettings('falsy.zero')).toEqual(0);
-                });
-            }));
-
-        it('should get null value',
-          inject([ConfigService],
-            (config: ConfigService) => {
-              config.loader.loadSettings()
-                .then(() => {
-                  expect(config.getSettings('falsy.null')).toBeNull();
-                });
-            }));
-
-        it('should get empty string',
-          inject([ConfigService],
-            (config: ConfigService) => {
-              config.loader.loadSettings()
-                .then(() => {
-                  expect(config.getSettings('falsy.emptyString')).toEqual('');
-                });
-            }));
+            })));
       });
   });
