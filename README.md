@@ -21,8 +21,7 @@ Configuration utility for **Angular**
 	- [Setting up `ConfigModule` to use `ConfigHttpLoader`](#setting-up-configmodule-to-use-confighttploader)
 	- [Setting up `ConfigModule` to use `ConfigFsLoader`](#setting-up-configmodule-to-use-configfsloader)
 	- [Setting up `ConfigModule` to use `UniversalConfigLoader`](#setting-up-configmodule-to-use-universalconfigloader)
-	- [Setting up `ConfigModule` to use `ConfigParallelLoader`](#setting-up-configmodule-to-use-configparallelloader)
-	- [Setting up `ConfigModule` to use `ConfigSeriesLoader`](#setting-up-configmodule-to-use-configseriesloader)
+	- [Setting up `ConfigModule` to use `ConfigMergeLoader`](#setting-up-configmodule-to-use-configmergeloader)
 - [Usage](#usage)
 - [Pipe](#pipe)
 - [License](#license)
@@ -47,8 +46,7 @@ The following packages may be used in conjunction with **`@ngx-config/core`**:
 - [@ngx-config/http-loader]
 - [@ngx-config/fs-loader]
 - [@ngx-universal/config-loader]
-- [@ngx-config/parallel-loader]
-- [@ngx-config/series-loader]
+- [@ngx-config/merge-loader]
 - [@ngx-i18n-router/config-loader]
 
 ### Recommended packages
@@ -132,15 +130,10 @@ You can find detailed information about the usage guidelines for the `ConfigFsLo
 
 You can find detailed information about the usage guidelines for the `UniversalConfigLoader` [here](https://github.com/ngx-universal/config-loader).
 
-### Setting up `ConfigModule` to use `ConfigParallelLoader`
-`ConfigParallelLoader` provides application settings by executing loaders in **parallel**.
+### Setting up `ConfigModule` to use `ConfigMergeLoader`
+`ConfigMergeLoader` provides application settings by executing loaders in **parallel** and in **series**.
 
-You can find detailed information about the usage guidelines for the `ConfigParallelLoader` [here](https://github.com/ngx-config/parallel-loader).
-
-### Setting up `ConfigModule` to use `ConfigSeriesLoader`
-`ConfigSeriesLoader` provides application settings by executing loaders in **series**.
-
-You can find detailed information about the usage guidelines for the `ConfigSeriesLoader` [here](https://github.com/ngx-config/series-loader).
+You can find detailed information about the usage guidelines for the `ConfigMergeLoader` [here](https://github.com/ngx-config/merge-loader).
 
 ## Usage
 `ConfigService` has the `getSettings` method, which you can fetch settings loaded during application initialization.
@@ -218,8 +211,7 @@ Copyright (c) 2017 [Burak Tasci]
 [@ngx-config/http-loader]: https://github.com/ngx-config/http-loader
 [@ngx-config/fs-loader]: https://github.com/ngx-config/fs-loader
 [@ngx-universal/config-loader]: https://github.com/ngx-universal/config-loader
-[@ngx-config/parallel-loader]: https://github.com/ngx-config/parallel-loader
-[@ngx-config/series-loader]: https://github.com/ngx-config/series-loader
+[@ngx-config/merge-loader]: https://github.com/ngx-config/merge-loader
 [@ngx-i18n-router/config-loader]: https://github.com/ngx-i18n-router/config-loader
 [@ngx-cache/core]: https://github.com/ngx-cache/core
 [forRoot]: https://angular.io/docs/ts/latest/guide/ngmodule.html#!#core-for-root
