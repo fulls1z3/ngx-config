@@ -201,9 +201,9 @@ gulp.task('test',
   ));
 
 /**
- * Task: review:tslint
+ * Task: tslint
  */
-gulp.task('review:tslint',
+gulp.task('tslint',
   gulp.series(
     tasks.ts.lint
   ));
