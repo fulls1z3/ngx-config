@@ -95,6 +95,7 @@ export function configFactory(): ConfigLoader {
     AppComponent,
     ...
   ],
+  ...
   imports: [
     ConfigModule.forRoot({
       provide: ConfigLoader,
@@ -102,6 +103,7 @@ export function configFactory(): ConfigLoader {
     }),
     ...
   ],
+  ...
   bootstrap: [AppComponent]
 })
 ```
@@ -144,8 +146,10 @@ The following example shows how to read configuration settings using all availab
 
 #### anyclass.ts
 ```TypeScript
+...
 import { ConfigService } from '@ngx-config/core';
 
+@Injectable()
 export class AnyClass {
   constructor(private readonly config: ConfigService) {
     // note that ConfigService is injected into a private property of AnyClass
