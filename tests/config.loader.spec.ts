@@ -2,7 +2,7 @@
 import { getTestBed } from '@angular/core/testing';
 
 // module
-import { ConfigLoader, ConfigStaticLoader, ConfigService } from '../index';
+import { ConfigLoader, ConfigService, ConfigStaticLoader } from '../index';
 import { testModuleConfig } from './index.spec';
 
 describe('@ngx-config/core:',

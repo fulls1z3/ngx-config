@@ -2,8 +2,8 @@
 import { inject } from '@angular/core/testing';
 
 // module
-import { ConfigLoader, ConfigStaticLoader, ConfigPipe, ConfigService } from '../index';
-import { testSettings, testModuleConfig } from './index.spec';
+import { ConfigLoader, ConfigPipe, ConfigService, ConfigStaticLoader } from '../index';
+import { testModuleConfig, testSettings } from './index.spec';
 
 describe('@ngx-config/core:',
   () => {

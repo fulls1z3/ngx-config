@@ -6,17 +6,18 @@ import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@ang
 import { ConfigModule } from '../index';
 
 export const testSettings = {
-  'system': {
-    'applicationName': 'Mighty Mouse',
-    'applicationUrl': 'http://localhost:8000'
+  system: {
+    applicationName: 'Mighty Mouse',
+    applicationUrl: 'http://localhost:8000'
   },
-  'i18n': {
-    'locale': 'en'
+  i18n: {
+    locale: 'en'
   },
-  'falsy': {
-    'zero': 0,
-    'null': null as any,
-    'emptyString': ''
+  falsy: {
+    zero: 0,
+    // tslint:disable-next-line
+    null: null as any,
+    emptyString: ''
   }
 };
 

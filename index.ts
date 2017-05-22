@@ -1,5 +1,5 @@
 // angular
-import { APP_INITIALIZER, NgModule, ModuleWithProviders, Optional, SkipSelf } from '@angular/core';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 
 // module
 import { ConfigLoader, ConfigStaticLoader } from './src/config.loader';
@@ -18,6 +18,7 @@ export function configFactory(): ConfigLoader {
 export function initializerFactory(config: ConfigService): any {
   // workaround for AoT compilation
   const res = () => config.init();
+
   return res;
 }
 
