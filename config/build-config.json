@@ -1,0 +1,26 @@
+{
+  "@ngx-config": {
+    "core": {
+      "angularVersion": 2,
+      "runTests": true
+    },
+    "http-loader": {
+      "angularVersion": 2,
+      "runTests": true
+    },
+    "fs-loader": {
+      "angularVersion": 2,
+      "runTests": false
+    },
+    "merge-loader": {
+      "angularVersion": 2,
+      "runTests": true
+    }
+  },
+  "@ngx-universal": {
+    "config-loader": {
+      "angularVersion": 4,
+      "runTests": true
+    }
+  }
+}
