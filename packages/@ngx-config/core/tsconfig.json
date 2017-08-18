@@ -10,13 +10,23 @@
     "suppressImplicitAnyIndexErrors": true,
     "importHelpers": true,
     "lib": [ "es2015", "dom" ],
+    "declaration": true,
     "typeRoots": [
-      "../node_modules/@types"
+      "../../../node_modules/@types"
     ]
   },
-  "include": [
-    "*.spec.ts"
+  "files": [
+    "./index.ts",
+    "./src/config.service.ts",
+    "./src/config.loader.ts"
   ],
+  "exclude": [
+    "node_modules"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true
+  },
   "compileOnSave": false,
   "buildOnSave": false
 }

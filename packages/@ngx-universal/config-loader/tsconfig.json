@@ -1,0 +1,11 @@
+{
+  "extends": "../../../tsconfig.json",
+  "files": [
+    "./index.ts",
+    "./src/universal.config-loader.ts"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true
+  }
+}
