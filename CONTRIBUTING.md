@@ -202,4 +202,4 @@ message is then used for this.
 
 [coc]: https://github.com/fulls1z3/ngx-config/blob/master/CODE_OF_CONDUCT.md
 [github]: https://github.com/fulls1z3/ngx-config
-[angular-tslint-rules]: https://github.com/fulls1z3/angular-tslint-rules
+[angular-tslint-rules]: https://github.com/ng-seed/angular-tslint-rules
