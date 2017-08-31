@@ -2,6 +2,7 @@
 Configuration utility for **Angular**
 
 [![npm version](https://badge.fury.io/js/%40ngx-config%2Fcore.svg)](https://www.npmjs.com/package/@ngx-config/core)
+[![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 
 > Please support this project by simply putting a Github star. Share this library with friends on Twitter and everywhere else you can.
 
@@ -41,8 +42,8 @@ npm install @ngx-config/core --save
 ```
 
 ### <a name="examples"></a> Examples
-- [ng-seed/universal] and [ng-seed/spa] are officially maintained seed projects, showcasing common patterns and best practices
-for **`@ngx-config/core`**.
+- [ng-seed/universal] and [fulls1z3/example-app] are officially maintained projects, showcasing common patterns and best
+practices for **`@ngx-config/core`**.
 
 ### <a name="related-packages"></a> Related packages
 The following packages may be used in conjunction with **`@ngx-config/core`**:
@@ -114,7 +115,7 @@ export function configFactory(): ConfigLoader {
 ```
 
 `ConfigStaticLoader` has one parameter:
-- **settings**: `any` : application settings
+- **providedSettings**: `any` : application settings
 
 > :+1: Cool! **`@ngx-config/core`** will retrieve application settings before **Angular** initializes the app.
 
@@ -222,7 +223,7 @@ The MIT License (MIT)
 Copyright (c) 2017 [Burak Tasci]
 
 [ng-seed/universal]: https://github.com/ng-seed/universal
-[ng-seed/spa]: https://github.com/ng-seed/spa
+[fulls1z3/example-app]: https://github.com/fulls1z3/example-app
 [@ngx-config/http-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/http-loader
 [@ngx-config/fs-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/fs-loader
 [@ngx-universal/config-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-universal/config-loader
