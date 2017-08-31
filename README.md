@@ -4,6 +4,7 @@ Configuration utility for **Angular**
 [![Linux build](https://travis-ci.org/fulls1z3/ngx-config.svg?branch=master)](https://travis-ci.org/fulls1z3/ngx-config)
 [![Windows build](https://ci.appveyor.com/api/projects/status/github/fulls1z3/ngx-config?branch=master&svg=true)](https://ci.appveyor.com/project/fulls1z3/ngx-config)
 [![coverage](https://codecov.io/github/fulls1z3/ngx-config/coverage.svg?branch=master)](https://codecov.io/gh/fulls1z3/ngx-config)
+[![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 
 > Please support this project by simply putting a Github star. Share this library with friends on Twitter and everywhere else you can.
 
@@ -20,14 +21,15 @@ Name | Description | NPM
 [@ngx-universal/config-loader](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-universal/config-loader) | Loader for [ngx-config] that provides application settings to **browser**/**server** platforms | [![npm version](https://badge.fury.io/js/%40ngx-universal%2Fconfig-loader.svg)](https://www.npmjs.com/package/@ngx-universal/config-loader)
 
 ## Examples
-- [ng-seed/universal] and [ng-seed/spa] are officially maintained seed projects, showcasing common patterns and best practices for **`ngx-config`**.
+- [ng-seed/universal] and [fulls1z3/example-app] are officially maintained projects, showcasing common patterns and best
+practices for **`ngx-config`**.
 
 ## Contributing
 If you want to file a bug, contribute some code, or improve documentation, please read up on the following contribution guidelines:
 - [Issue guidelines](CONTRIBUTING.md#submit)
 - [Contributing guidelines](CONTRIBUTING.md)
 - [Coding rules](CONTRIBUTING.md#rules)
-- [ChangeLog](CHANGELOG.md)
+- [Change log](CHANGELOG.md)
 
 ## License
 The MIT License (MIT)
@@ -36,5 +38,5 @@ Copyright (c) 2017 [Burak Tasci]
 
 [ngx-config]: https://github.com/fulls1z3/ngx-config
 [ng-seed/universal]: https://github.com/ng-seed/universal
-[ng-seed/spa]: https://github.com/ng-seed/spa
+[fulls1z3/example-app]: https://github.com/fulls1z3/example-app
 [Burak Tasci]: https://github.com/fulls1z3

@@ -1,0 +1,18 @@
+coverage:
+  status:
+    project:
+      ngx-config/core:
+        target: 80%
+        paths: packages/@ngx-auth/core
+    project:
+      ngx-config/http-loader:
+        target: 80%
+        paths: packages/@ngx-config/http-loader
+    project:
+      ngx-config/config-loader:
+        target: 80%
+        paths: packages/@ngx-universal/config-loader
+    project:
+      ngx-config/merge-loader:
+        target: 80%
+        paths: packages/@ngx-config/merge-loader
