@@ -45,9 +45,7 @@ const testSettingsMerged = {
   }
 };
 
-// test module configuration for each test
 const testModuleConfig = (moduleOptions?: any) => {
-  // reset the test environment before initializing it.
   TestBed.resetTestEnvironment();
 
   TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting())
@@ -144,18 +142,18 @@ describe('@ngx-config/merge-loader:',
         it('should throw w/o any reachable `loaders`',
           async(inject([ConfigService],
             (config: ConfigService) => {
-            const configFactory = () => new ConfigMergeLoader();
+              const configFactory = () => new ConfigMergeLoader();
 
-            testModuleConfig({
-              provide: ConfigLoader,
-              useFactory: (configFactory)
-            });
-
-            config.loader.loadSettings()
-              .catch((res: any) => {
-                expect(res).toEqual('Loaders unreachable!');
+              testModuleConfig({
+                provide: ConfigLoader,
+                useFactory: (configFactory)
               });
-          })));
+
+              config.loader.loadSettings()
+                .catch((res: any) => {
+                  expect(res).toEqual('Loaders unreachable!');
+                });
+            })));
 
         it('should be able to retrieve and merge settings `in series`',
           async(() => {

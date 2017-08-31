@@ -6,7 +6,7 @@ import { ConfigLoader } from './config.loader';
 
 @Injectable()
 export class ConfigService {
-  private settings: any;
+  protected settings: any;
 
   constructor(public readonly loader: ConfigLoader) {
   }
@@ -23,7 +23,8 @@ export class ConfigService {
     if (!Array.isArray(key))
       key = key.split('.');
 
-    let result = key.reduce((acc: any, current: string) => acc && acc[current], this.settings);
+    let result = key
+      .reduce((acc: any, current: string) => acc && acc[current], this.settings);
 
     if (result === undefined) {
       result = defaultValue;

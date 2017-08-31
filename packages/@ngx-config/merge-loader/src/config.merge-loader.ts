@@ -37,7 +37,7 @@ export class ConfigMergeLoader implements ConfigLoader {
   }
 
   loadSettings(): any {
-    if (!!this.nextLoader)
+    if (this.nextLoader)
       return this.mergeParallel()
         .then((res: any) => mergeSeries(res, this.nextLoader(res).loadSettings()));
 
@@ -54,7 +54,7 @@ export class ConfigMergeLoader implements ConfigLoader {
     const loaders: Array<ConfigLoader> = [new ConfigStaticLoader(), ...this.loaders];
 
     const mergedSettings = Observable.onErrorResumeNext(loaders.map((loader: ConfigLoader) => loader.loadSettings()))
-      .filter((settings: any) => !!settings)
+      .filter((settings: any) => settings)
       .share();
 
     return mergedSettings.merge(errorIfEmpty(mergedSettings))

@@ -22,9 +22,6 @@ export function initializerFactory(config: ConfigService): any {
   return res;
 }
 
-/**
- * Do not specify providers for modules that might be imported by a lazy loaded module.
- */
 @NgModule({
   declarations: [ConfigPipe],
   exports: [ConfigPipe]

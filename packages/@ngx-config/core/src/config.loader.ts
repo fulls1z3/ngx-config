@@ -3,10 +3,10 @@ export abstract class ConfigLoader {
 }
 
 export class ConfigStaticLoader implements ConfigLoader {
-  constructor(private readonly settings?: any) {
+  constructor(private readonly providedSettings?: any) {
   }
 
   loadSettings(): any {
-    return Promise.resolve(this.settings);
+    return Promise.resolve(this.providedSettings);
   }
 }
