@@ -16,14 +16,14 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
   backend.connections
     .subscribe((connection: MockConnection) => {
       if ((connection.request.url.endsWith('/api/settings')
-        || connection.request.url.endsWith('/config.json')
-        && connection.request.method === RequestMethod.Get))
-          connection.mockRespond(new Response(
-            new ResponseOptions({
-              status: 200,
-              body: testSettings
-            })
-          ));
+          || connection.request.url.endsWith('/config.json')
+          && connection.request.method === RequestMethod.Get))
+        connection.mockRespond(new Response(
+          new ResponseOptions({
+            status: 200,
+            body: testSettings
+          })
+        ));
       else
         connection.mockError(new Error('500'));
     });
