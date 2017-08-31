@@ -21,9 +21,7 @@ export const testSettings = {
   }
 };
 
-// test module configuration for each test
 export const testModuleConfig = (moduleOptions?: any) => {
-  // reset the test environment before initializing it.
   TestBed.resetTestEnvironment();
 
   TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting())
