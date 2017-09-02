@@ -1,9 +1,9 @@
 // angular
-import { getTestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 // module
 import { ConfigLoader, ConfigService, ConfigStaticLoader } from '../index';
-import { testModuleConfig } from './index.spec';
+import { testModuleConfig } from './common';
 
 describe('@ngx-config/core:',
   () => {
@@ -29,8 +29,7 @@ describe('@ngx-config/core:',
 
         it('should be able to provide `ConfigStaticLoader`',
           () => {
-            const injector = getTestBed();
-            const config = injector.get(ConfigService);
+            const config = TestBed.get(ConfigService);
 
             expect(ConfigStaticLoader).toBeDefined();
             expect(config.loader).toBeDefined();
@@ -50,8 +49,7 @@ describe('@ngx-config/core:',
               useClass: CustomLoader
             });
 
-            const injector = getTestBed();
-            const config = injector.get(ConfigService);
+            const config = TestBed.get(ConfigService);
 
             expect(CustomLoader).toBeDefined();
             expect(config.loader).toBeDefined();

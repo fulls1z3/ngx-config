@@ -1,5 +1,5 @@
 // angular
-import { async, getTestBed, inject, TestBed } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
 // libs
@@ -58,49 +58,48 @@ const testModuleConfig = (moduleOptions?: any) => {
 
 describe('@ngx-config/merge-loader:',
   () => {
-    it('should be able to provide `ConfigMergeLoader`',
-      () => {
-        const configFactory = () => new ConfigMergeLoader();
+    beforeEach(() => {
+      const mainLoader = new ConfigStaticLoader(testSettingsMain);
+      const localLoader = new ConfigStaticLoader(testSettingsLocal);
+      const envLoader = new ConfigStaticLoader(testSettingsEnv);
 
-        testModuleConfig({
-          provide: ConfigLoader,
-          useFactory: (configFactory)
-        });
+      const configFactory = () => new ConfigMergeLoader([mainLoader, localLoader, envLoader]);
 
-        const injector = getTestBed();
-        const config = injector.get(ConfigService);
-
-        expect(ConfigMergeLoader).toBeDefined();
-        expect(config.loader).toBeDefined();
-        expect(config.loader instanceof ConfigMergeLoader).toBeTruthy();
+      testModuleConfig({
+        provide: ConfigLoader,
+        useFactory: (configFactory)
       });
+    });
 
     describe('ConfigMergeLoader',
       () => {
-        beforeEach(() => {
-          const mainLoader = new ConfigStaticLoader(testSettingsMain);
-          const localLoader = new ConfigStaticLoader(testSettingsLocal);
-          const envLoader = new ConfigStaticLoader(testSettingsEnv);
+        it('should be able to provide `ConfigMergeLoader`',
+          () => {
+            const configFactory = () => new ConfigMergeLoader();
 
-          const configFactory = () => new ConfigMergeLoader([mainLoader, localLoader, envLoader]);
+            testModuleConfig({
+              provide: ConfigLoader,
+              useFactory: (configFactory)
+            });
 
-          testModuleConfig({
-            provide: ConfigLoader,
-            useFactory: (configFactory)
+            const config = TestBed.get(ConfigService);
+
+            expect(ConfigMergeLoader).toBeDefined();
+            expect(config.loader).toBeDefined();
+            expect(config.loader instanceof ConfigMergeLoader).toBeTruthy();
           });
-        });
 
         it('should be able to retrieve and merge settings `in parallel`',
-          async(inject([ConfigService],
+          inject([ConfigService],
             (config: ConfigService) => {
               config.loader.loadSettings()
                 .then((res: any) => {
                   expect(res).toEqual(testSettingsMerged);
                 });
-            })));
+            }));
 
         it('should be able to retrieve and merge settings `in parallel` w/some of the `loaders` are unavailable',
-          async(() => {
+          () => {
             class UnavailableLoader implements ConfigLoader {
               loadSettings(): any {
                 return Promise.reject('Endpoint unreachable!');
@@ -118,8 +117,7 @@ describe('@ngx-config/merge-loader:',
               useFactory: (configFactory)
             });
 
-            const injector = getTestBed();
-            const config = injector.get(ConfigService);
+            const config = TestBed.get(ConfigService);
 
             const expectedSettings = {
               setting1: 'value1',
@@ -137,11 +135,11 @@ describe('@ngx-config/merge-loader:',
               .then((res: any) => {
                 expect(res).toEqual(expectedSettings);
               });
-          }));
+          });
 
         it('should throw w/o any reachable `loaders`',
-          async(inject([ConfigService],
-            (config: ConfigService) => {
+          inject([],
+            async () => {
               const configFactory = () => new ConfigMergeLoader();
 
               testModuleConfig({
@@ -149,14 +147,18 @@ describe('@ngx-config/merge-loader:',
                 useFactory: (configFactory)
               });
 
-              config.loader.loadSettings()
-                .catch((res: any) => {
-                  expect(res).toEqual('Loaders unreachable!');
-                });
-            })));
+              expect.assertions(2);
+
+              try {
+                const config = TestBed.get(ConfigService);
+                await config.loader.loadSettings();
+              } catch (e) {
+                expect(e).toEqual('Loaders unreachable!');
+              }
+            }));
 
         it('should be able to retrieve and merge settings `in series`',
-          async(() => {
+          () => {
             const mainLoader = new ConfigStaticLoader(testSettingsMain);
             const localLoader = new ConfigStaticLoader(testSettingsLocal);
             const envLoader = new ConfigStaticLoader(testSettingsEnv);
@@ -169,17 +171,16 @@ describe('@ngx-config/merge-loader:',
               useFactory: (configFactory)
             });
 
-            const injector = getTestBed();
-            const config = injector.get(ConfigService);
+            const config = TestBed.get(ConfigService);
 
             config.loader.loadSettings()
               .then((res: any) => {
                 expect(res).toEqual(testSettingsMerged);
               });
-          }));
+          });
 
         it('should be able to retrieve and merge settings `in series` w/data from parent `loaders`',
-          async(() => {
+          () => {
             const envLoader = new ConfigStaticLoader(testSettingsEnv);
 
             const configFactory = () => new ConfigMergeLoader([envLoader])
@@ -190,8 +191,7 @@ describe('@ngx-config/merge-loader:',
               useFactory: (configFactory)
             });
 
-            const injector = getTestBed();
-            const config = injector.get(ConfigService);
+            const config = TestBed.get(ConfigService);
 
             const expectedSettings = {
               setting4: 'value4',
@@ -212,6 +212,6 @@ describe('@ngx-config/merge-loader:',
               .then((res: any) => {
                 expect(res).toEqual(expectedSettings);
               });
-          }));
+          });
       });
   });

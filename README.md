@@ -4,6 +4,7 @@ Configuration utility for **Angular**
 [![Linux build](https://travis-ci.org/fulls1z3/ngx-config.svg?branch=master)](https://travis-ci.org/fulls1z3/ngx-config)
 [![Windows build](https://ci.appveyor.com/api/projects/status/github/fulls1z3/ngx-config?branch=master&svg=true)](https://ci.appveyor.com/project/fulls1z3/ngx-config)
 [![coverage](https://codecov.io/github/fulls1z3/ngx-config/coverage.svg?branch=master)](https://codecov.io/gh/fulls1z3/ngx-config)
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 
 > Please support this project by simply putting a Github star. Share this library with friends on Twitter and everywhere else you can.
