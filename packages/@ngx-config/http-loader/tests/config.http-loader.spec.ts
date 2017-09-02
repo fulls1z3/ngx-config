@@ -1,5 +1,5 @@
 // angular
-import { async, getTestBed, inject, TestBed } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { Http } from '@angular/http';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
@@ -24,9 +24,29 @@ const testModuleConfig = (moduleOptions?: any) => {
 
 describe('@ngx-config/http-loader:',
   () => {
-    it('should be able to provide `ConfigHttpLoader`',
+    describe('ConfigHttpLoader',
       () => {
-        const configFactory = (http: Http) => new ConfigHttpLoader(http);
+        it('should be able to provide `ConfigHttpLoader`',
+          () => {
+            const configFactory = (http: Http) => new ConfigHttpLoader(http);
+
+            testModuleConfig({
+              provide: ConfigLoader,
+              useFactory: (configFactory),
+              deps: [Http]
+            });
+
+            const config = TestBed.get(ConfigService);
+
+            expect(ConfigHttpLoader).toBeDefined();
+            expect(config.loader).toBeDefined();
+            expect(config.loader instanceof ConfigHttpLoader).toBeTruthy();
+          });
+      });
+
+    it('should be able to retrieve settings from the specified `endpoint`',
+      async(() => {
+        const configFactory = (http: Http) => new ConfigHttpLoader(http, '/api/settings');
 
         testModuleConfig({
           provide: ConfigLoader,
@@ -34,55 +54,31 @@ describe('@ngx-config/http-loader:',
           deps: [Http]
         });
 
-        const injector = getTestBed();
-        const config = injector.get(ConfigService);
+        const config = TestBed.get(ConfigService);
 
-        expect(ConfigHttpLoader).toBeDefined();
-        expect(config.loader).toBeDefined();
-        expect(config.loader instanceof ConfigHttpLoader).toBeTruthy();
-      });
-
-    describe('ConfigHttpLoader',
-      () => {
-        beforeEach(() => {
-          const configFactory = (http: Http) => new ConfigHttpLoader(http, '/api/settings');
-
-          testModuleConfig({
-            provide: ConfigLoader,
-            useFactory: (configFactory),
-            deps: [Http]
+        config.loader.loadSettings()
+          .then((res: any) => {
+            expect(res).toEqual(testSettings);
           });
+      }));
+
+    it('should throw w/o a valid `endpoint`',
+      async () => {
+        const configFactory = (http: Http) => new ConfigHttpLoader(http, '/api/wrong-settings');
+
+        testModuleConfig({
+          provide: ConfigLoader,
+          useFactory: (configFactory),
+          deps: [Http]
         });
 
-        it('should be able to retrieve settings from the specified `endpoint`',
-          async(inject([ConfigService],
-            (config: ConfigService) => {
-              config.loader.loadSettings()
-                .then((res: any) => {
-                  expect(res).toEqual(testSettings);
-                });
-            })));
-      });
+        expect.assertions(1);
 
-    describe('ConfigHttpLoader',
-      () => {
-        beforeEach(() => {
-          const configFactory = (http: Http) => new ConfigHttpLoader(http, '/api/wrong-settings');
-
-          testModuleConfig({
-            provide: ConfigLoader,
-            useFactory: (configFactory),
-            deps: [Http]
-          });
-        });
-
-        it('should throw w/o a valid `endpoint`',
-          inject([ConfigService],
-            (config: ConfigService) => {
-              config.loader.loadSettings()
-                .catch((res: any) => {
-                  expect(res).toEqual('Endpoint unreachable!');
-                });
-            }));
+        try {
+          const config = TestBed.get(ConfigService);
+          await config.loader.loadSettings();
+        } catch (e) {
+          expect(e).toEqual('Endpoint unreachable!');
+        }
       });
   });
