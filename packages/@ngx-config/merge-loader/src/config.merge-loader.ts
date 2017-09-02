@@ -53,11 +53,15 @@ export class ConfigMergeLoader implements ConfigLoader {
   private mergeParallel(): Promise<any> {
     const loaders: Array<ConfigLoader> = [new ConfigStaticLoader(), ...this.loaders];
 
-    const mergedSettings = Observable.onErrorResumeNext(loaders.map((loader: ConfigLoader) => loader.loadSettings()))
+    const mergedSettings = Observable.onErrorResumeNext(loaders
+      .map((loader: ConfigLoader) => loader.loadSettings())
+    )
       .filter((settings: any) => settings)
       .share();
 
-    return mergedSettings.merge(errorIfEmpty(mergedSettings))
+    return mergedSettings
+      .merge(errorIfEmpty(mergedSettings))
+      .merge(mergedSettings)
       .reduce((merged: any, current: any) => mergeWith(merged, current), {})
       .toPromise()
       .then((settings: any) => settings)

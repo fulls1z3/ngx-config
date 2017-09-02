@@ -3,7 +3,7 @@ import { async, inject } from '@angular/core/testing';
 
 // module
 import { ConfigLoader, ConfigService, ConfigStaticLoader } from '../index';
-import { testModuleConfig, testSettings } from './index.spec';
+import { testModuleConfig, testSettings } from './common';
 
 describe('@ngx-config/core:',
   () => {
@@ -27,7 +27,7 @@ describe('@ngx-config/core:',
             }));
 
         it('should be able to get all settings',
-          async(inject([ConfigService],
+          inject([ConfigService],
             (config: ConfigService) => {
               config.loader.loadSettings()
                 .then(() => {
@@ -35,7 +35,7 @@ describe('@ngx-config/core:',
                   expect(config.getSettings('')).toEqual(testSettings);
                   expect(config.getSettings([])).toEqual(testSettings);
                 });
-            })));
+            }));
 
         it('should be able to get setting(s) using `key`',
           async(inject([ConfigService],
