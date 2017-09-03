@@ -25,22 +25,17 @@
     "url": "https://github.com/fulls1z3/ngx-config/issues"
   },
   "homepage": "https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/merge-loader#readme",
-  "main": "./bundles/merge-loader.umd.min.js",
-  "module": "./index.js",
-  "typings": "./index.d.ts",
+  "main": "./bundles/merge-loader.umd.js",
+  "module": "./@ngx-config/merge-loader.es5.js",
+  "es2015": "./@ngx-config/merge-loader.js",
+  "typings": "./merge-loader.d.ts",
   "dependencies": {
-    "tslib": "^1.7.1"
-  },
-  "devDependencies": {
-    "@angular/compiler-cli": "~2.4.0",
-    "lodash": "^4.17.4",
-    "@ngx-config/core": "^0.2.0-rc.5",
-    "@types/lodash": "4.14.55"
+    "tslib": "~1.7.1"
   },
   "peerDependencies": {
-    "@angular/core": "^2.0.0 || ^4.0.0",
-    "rxjs": "^5.0.1",
-    "lodash": "^4.17.4",
-    "@ngx-config/core": "^0.2.0-rc.5"
+    "@angular/core": ">=2.0.0 <5.0.0",
+    "rxjs": ">=5.0.1",
+    "lodash": ">=4.17.4",
+    "@ngx-config/core": ">=0.2.0-rc.5"
   }
 }
