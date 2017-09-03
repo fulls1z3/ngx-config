@@ -23,20 +23,15 @@
     "url": "https://github.com/fulls1z3/ngx-config/issues"
   },
   "homepage": "https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/fs-loader#readme",
-  "main": "./bundles/fs-loader.umd.min.js",
-  "module": "./index.js",
-  "typings": "./index.d.ts",
+  "main": "./bundles/fs-loader.umd.js",
+  "module": "./@ngx-config/fs-loader.es5.js",
+  "es2015": "./@ngx-config/fs-loader.js",
+  "typings": "./fs-loader.d.ts",
   "dependencies": {
-    "tslib": "^1.7.1"
-  },
-  "devDependencies": {
-    "@angular/compiler-cli": "~2.4.0",
-    "@types/node": "^8.0.25",
-    "@ngx-config/core": "^0.2.0-rc.5"
+    "tslib": "~1.7.1"
   },
   "peerDependencies": {
-    "@angular/core": "^2.0.0 || ^4.0.0",
-    "rxjs": "^5.0.1",
-    "@ngx-config/core": "^0.2.0-rc.5"
+    "@angular/core": ">=2.0.0 <5.0.0",
+    "@ngx-config/core": ">=0.2.0-rc.5"
   }
 }
