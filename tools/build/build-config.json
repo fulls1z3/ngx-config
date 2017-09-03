@@ -1,0 +1,60 @@
+{
+  "@ngx-config": {
+    "core": {
+      "angularVersion": 2,
+      "bundle": {
+        "globals": {},
+        "external": []
+      },
+      "runTests": true
+    },
+    "http-loader": {
+      "angularVersion": 2,
+      "bundle": {
+        "globals": {
+          "@angular/http": "ng.http",
+          "@ngx-config/core": "_ngxConfig_core"
+        },
+        "external": [
+          "rxjs/add/operator/map",
+          "rxjs/add/operator/toPromise"
+        ]
+      },
+      "runTests": true
+    },
+    "fs-loader": {
+      "angularVersion": 2,
+      "bundle": {
+        "globals": {
+          "fs": "fs",
+          "@ngx-config/core": "_ngxConfig_core"
+        },
+        "external": []
+      },
+      "runTests": false
+    },
+    "merge-loader": {
+      "angularVersion": 2,
+      "bundle": {
+        "globals": {
+          "rxjs/Observable": "Rx.Observable",
+          "lodash": "_",
+          "lodash/index": "_",
+          "@ngx-config/core": "_ngxConfig_core"
+        },
+        "external": [
+          "rxjs/add/observable/empty",
+          "rxjs/add/observable/onErrorResumeNext",
+          "rxjs/add/operator/isEmpty",
+          "rxjs/add/operator/filter",
+          "rxjs/add/operator/merge",
+          "rxjs/add/operator/mergeMap",
+          "rxjs/add/operator/reduce",
+          "rxjs/add/operator/share",
+          "rxjs/add/operator/toPromise"
+        ]
+      },
+      "runTests": true
+    }
+  }
+}
