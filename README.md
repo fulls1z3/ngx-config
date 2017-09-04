@@ -1,8 +1,7 @@
 # ngx-config
 Configuration utility for **Angular**
 
-[![Linux build](https://travis-ci.org/fulls1z3/ngx-config.svg?branch=master)](https://travis-ci.org/fulls1z3/ngx-config)
-[![Windows build](https://ci.appveyor.com/api/projects/status/github/fulls1z3/ngx-config?branch=master&svg=true)](https://ci.appveyor.com/project/fulls1z3/ngx-config)
+[![CircleCI](https://circleci.com/gh/fulls1z3/ngx-config.svg?style=shield)](https://circleci.com/gh/fulls1z3/ngx-config)
 [![coverage](https://codecov.io/github/fulls1z3/ngx-config/coverage.svg?branch=master)](https://codecov.io/gh/fulls1z3/ngx-config)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
@@ -19,7 +18,6 @@ Name | Description | NPM
 [@ngx-config/http-loader](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/http-loader) | Loader for [ngx-config] that provides application settings using **`http`** | [![npm version](https://badge.fury.io/js/%40ngx-config%2Fhttp-loader.svg)](https://www.npmjs.com/package/@ngx-config/http-loader)
 [@ngx-config/fs-loader](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/fs-loader) | Loader for [ngx-config] that provides application settings using **`fs`** (server platform) | [![npm version](https://badge.fury.io/js/%40ngx-config%2Ffs-loader.svg)](https://www.npmjs.com/package/@ngx-config/fs-loader)
 [@ngx-config/merge-loader](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/merge-loader) | Loader for [ngx-config] that provides application settings by executing loaders in **parallel** and in **series** | [![npm version](https://badge.fury.io/js/%40ngx-config%2Fmerge-loader.svg)](https://www.npmjs.com/package/@ngx-config/merge-loader)
-[@ngx-universal/config-loader](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-universal/config-loader) | Loader for [ngx-config] that provides application settings to **browser**/**server** platforms | [![npm version](https://badge.fury.io/js/%40ngx-universal%2Fconfig-loader.svg)](https://www.npmjs.com/package/@ngx-universal/config-loader)
 
 ## Examples
 - [ng-seed/universal] and [fulls1z3/example-app] are officially maintained projects, showcasing common patterns and best
