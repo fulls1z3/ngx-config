@@ -1,4 +1,6 @@
 # ngx-config
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/fulls1z3/ngx-config.svg)](https://greenkeeper.io/)
 Configuration utility for **Angular**
 
 [![CircleCI](https://circleci.com/gh/fulls1z3/ngx-config.svg?style=shield)](https://circleci.com/gh/fulls1z3/ngx-config)
