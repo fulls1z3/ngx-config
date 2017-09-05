@@ -1,6 +1,6 @@
 {
   "name": "@ngx-config/core",
-  "version": "0.2.0-rc.5",
+  "version": "4.0.0",
   "description": "Configuration utility for Angular",
   "repository": {
     "type": "git",
@@ -33,6 +33,6 @@
     "tslib": "~1.7.1"
   },
   "peerDependencies": {
-    "@angular/core": ">=2.0.0 <5.0.0 || >=4.0.0 <5.0.0"
+    "@angular/core": ">=4.0.0 <5.0.0"
   }
 }
