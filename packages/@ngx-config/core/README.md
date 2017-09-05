@@ -1,8 +1,8 @@
 # @ngx-config/core [![npm version](https://badge.fury.io/js/%40ngx-config%2Fcore.svg)](https://www.npmjs.com/package/@ngx-config/core) [![npm downloads](https://img.shields.io/npm/dm/%40ngx-config%2Fcore.svg)](https://www.npmjs.com/package/@ngx-config/core)
 Configuration utility for **Angular**
 
-[![CircleCI](https://circleci.com/gh/fulls1z3/ngx-config.svg?style=shield)](https://circleci.com/gh/fulls1z3/ngx-config)
-[![coverage](https://codecov.io/github/fulls1z3/ngx-config/coverage.svg?branch=master)](https://codecov.io/gh/fulls1z3/ngx-config)
+[![CircleCI](https://circleci.com/gh/fulls1z3/ngx-config/tree/2.x.x.svg.svg?style=shield)](https://circleci.com/gh/fulls1z3/ngx-config)
+[![coverage](https://codecov.io/github/fulls1z3/ngx-config/coverage.svg?branch=2.x.x)](https://codecov.io/gh/fulls1z3/ngx-config)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
@@ -11,6 +11,10 @@ Configuration utility for **Angular**
 
 **`@ngx-config/core`** uses `APP_INITIALIZER` which executes a function when **Angular** app is initialized, and delay the
 completion of initialization process until application settings have been provided.
+
+#### NOTICE
+> This *[2.x.x] branch* is intented to work with `@angular v2.x.x`. If you're developing on a later release of **Angular**
+than `v2.x.x`, then you should probably choose the appropriate version of this library by visiting the *[master] branch*.
 
 ## Table of contents:
 - [Prerequisites](#prerequisites)
@@ -32,8 +36,8 @@ completion of initialization process until application settings have been provid
 - [License](#license)
 
 ## <a name="prerequisites"></a> Prerequisites
-This package depends on `Angular v2.0.0` but it's highly recommended that you are running at least **`@angular v2.4.0`**
-and **`@angular/router v3.4.0`**. Older versions contain outdated dependencies, might produce errors.
+This library depends on `Angular v2.0.0` but it's highly recommended that you are running at least **`@angular v2.4.0`**.
+Older versions contain outdated dependencies, might produce errors.
 
 Also, please ensure that you are using **`Typescript v2.1.6`** or higher.
 
@@ -225,13 +229,15 @@ The MIT License (MIT)
 
 Copyright (c) 2017 [Burak Tasci]
 
+[master]: https://github.com/ngx-config/core/tree/master
+[2.x.x]: https://github.com/ngx-config/core/tree/2.x.x
 [ng-seed/universal]: https://github.com/ng-seed/universal
 [fulls1z3/example-app]: https://github.com/fulls1z3/example-app
 [@ngx-config/http-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/http-loader
 [@ngx-config/fs-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/fs-loader
 [@ngx-universal/config-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-universal/config-loader
 [@ngx-config/merge-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/merge-loader
-[@ngx-i18n-router/config-loader]: https://github.com/fulls1z3/ngx-i18n-router/tree/v0.2.x/packages/@ngx-i18n-router/config-loader
+[@ngx-i18n-router/config-loader]: https://github.com/fulls1z3/ngx-i18n-router/tree/master/packages/@ngx-i18n-router/config-loader
 [@ngx-cache/core]: https://github.com/fulls1z3/ngx-cache/tree/master/packages/@ngx-cache/core
 [forRoot]: https://angular.io/docs/ts/latest/guide/ngmodule.html#!#core-for-root
 [AoT compilation]: https://angular.io/docs/ts/latest/cookbook/aot-compiler.html
