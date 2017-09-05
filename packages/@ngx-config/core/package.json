@@ -33,6 +33,6 @@
     "tslib": "~1.7.1"
   },
   "peerDependencies": {
-    "@angular/core": ">=2.0.0 <5.0.0"
+    "@angular/core": ">=2.0.0 <5.0.0 || >=4.0.0 <5.0.0"
   }
 }

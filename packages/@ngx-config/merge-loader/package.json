@@ -33,7 +33,7 @@
     "tslib": "~1.7.1"
   },
   "peerDependencies": {
-    "@angular/core": ">=2.0.0 <5.0.0",
+    "@angular/core": ">=2.0.0 <5.0.0 || >=4.0.0 <5.0.0",
     "rxjs": ">=5.0.1",
     "lodash": ">=4.17.4",
     "@ngx-config/core": ">=0.2.0-rc.5"
