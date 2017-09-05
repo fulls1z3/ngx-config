@@ -1,5 +1,5 @@
-# @ngx-config/http-loader [![npm version](https://badge.fury.io/js/%40ngx-config%2Fhttp-loader.svg)](https://www.npmjs.com/package/@ngx-config/http-loader) [![npm downloads](https://img.shields.io/npm/dm/%40ngx-config%2Fhttp-loader.svg)](https://www.npmjs.com/package/@ngx-config/http-loader)
-Loader for [ngx-config] that provides application settings using **`http`**
+# @ngx-universal/config-loader
+Loader for [ngx-config] that provides application settings to **browser**/**server** platforms
 
 [![CircleCI](https://circleci.com/gh/fulls1z3/ngx-config.svg?style=shield)](https://circleci.com/gh/fulls1z3/ngx-config)
 [![coverage](https://codecov.io/github/fulls1z3/ngx-config/coverage.svg?branch=master)](https://codecov.io/gh/fulls1z3/ngx-config)
@@ -19,9 +19,9 @@ than `v4.x.x`, then you should probably choose the appropriate version of this l
   - [Installation](#installation)
 	- [Examples](#examples)
 	- [Related packages](#related-packages)
-	- [Adding `@ngx-config/http-loader` to your project (SystemJS)](#adding-systemjs)
+	- [Adding `@ngx-universal/config-loader` to your project (SystemJS)](#adding-systemjs)
 - [Settings](#settings)
-	- [Setting up `ConfigModule` to use `ConfigHttpLoader`](#setting-up-httploader)
+	- [Setting up `ConfigModule` to use `UniversalConfigLoader`](#setting-up-universalloader)
 - [License](#license)
 
 ## <a name="prerequisites"></a> Prerequisites
@@ -31,40 +31,34 @@ Also, please ensure that you are using **`Typescript v2.3.4`** or higher.
 
 ## <a name="getting-started"> Getting started
 ### <a name="installation"> Installation
-You can install **`@ngx-config/http-loader`** using `npm`
+You can install **`@ngx-universal/config-loader`** using `npm`
 ```
-npm install @ngx-config/http-loader --save
+npm install @ngx-universal/config-loader --save
 ```
 
 **Note**: You should have already installed [@ngx-config/core].
 
 ### <a name="examples"></a> Examples
-- [ng-seed/universal] and [fulls1z3/example-app] are officially maintained projects, showcasing common patterns and best
-practices for **`@ngx-config/http-loader`**.
+- [ng-seed/universal] is an officially maintained seed project, showcasing common patterns and best practices for **`@ngx-universal/config-loader`**.
 
 ### <a name="related-packages"></a> Related packages
-The following packages may be used in conjunction with **`@ngx-config/http-loader`**:
+The following packages may be used in conjunction with **`@ngx-universal/config-loader`**:
 - [@ngx-config/core]
-- [@ngx-universal/config-loader]
-- [@ngx-config/merge-loader]
+- [@ngx-config/http-loader]
+- [@ngx-config/fs-loader]
 
-### <a name="adding-systemjs"></a> Adding `@ngx-config/http-loader` to your project (SystemJS)
-Add `map` for **`@ngx-config/http-loader`** in your `systemjs.config`
+### <a name="adding-systemjs"></a> Adding `@ngx-universal/config-loader` to your project (SystemJS)
+Add `map` for **`@ngx-universal/config-loader`** in your `systemjs.config`
 ```javascript
-'@ngx-config/http-loader': 'node_modules/@ngx-config/http-loader/bundles/http-loader.umd.min.js'
+'@ngx-universal/config-loader': 'node_modules/@ngx-universal/config-loader/bundles/config-loader.umd.min.js'
 ```
 
 ## <a name="settings"></a> Settings
-### <a name="setting-up-httploader"></a> Setting up `ConfigModule` to use `ConfigHttpLoader`
-If you provide application settings using a `JSON` file or an `API`, you can call the [forRoot] static method using the
-`ConfigHttpLoader`. By default, it is configured to retrieve **application settings** from the endpoint `/config.json`
-(*if not specified*).
-
-> You can customize this behavior (*and ofc other settings*) by supplying a **api endpoint** to `ConfigHttpLoader`.
-
+### <a name="setting-up-universalloader"></a> Setting up `ConfigModule` to use `UniversalConfigLoader`
+`UniversalConfigLoader` requires a `browserLoader` and a `serverLoader` to load application settings on both platforms.
 - Import `ConfigModule` using the mapping `'@ngx-config/core'` and append `ConfigModule.forRoot({...})` within the imports
 property of **app.module**.
-- Import `ConfigHttpLoader` using the mapping `'@ngx-config/http-loader'`.
+- Import `UniversalConfigLoader` using the mapping `'@ngx-universal/config-loader'`.
 
 **Note**: *Considering the app.module is the core module in Angular application*.
 
@@ -87,13 +81,17 @@ property of **app.module**.
 #### app.module.ts
 ```TypeScript
 ...
-import { Http } from '@angular/http';
-import { ConfigModule, ConfigLoader,  } from '@ngx-config/core';
+import { ConfigModule, ConfigLoader, ConfigStaticLoader } from '@ngx-config/core';
+import { ConfigFsLoader } from '@ngx-config/fs-loader';
 import { ConfigHttpLoader } from '@ngx-config/http-loader';
+import { UniversalConfigLoader } from '@ngx-universal/config-loader';
 ...
 
-export function configFactory(http: Http): ConfigLoader {
-  return new ConfigHttpLoader(http, './config.json'); // API ENDPOINT
+export function configFactory(platformId: any, http: Http): ConfigLoader {
+  const serverLoader = new ConfigFsLoader('./public/assets/config.json'); // FILE PATH
+  const browserLoader = new ConfigHttpLoader(http, './assets/config.json'); // API ENDPOINT
+
+  return new UniversalConfigLoader(platformId, serverLoader, browserLoader);
 }
 
 @NgModule({
@@ -106,20 +104,24 @@ export function configFactory(http: Http): ConfigLoader {
     ConfigModule.forRoot({
       provide: ConfigLoader,
       useFactory: (configFactory),
-      deps: [Http]
+      deps: [PLATFORM_ID, Http]
     }),
     ...
   ],
   ...
   bootstrap: [AppComponent]
 })
+export class AppModule {
+  constructor(@Inject(PLATFORM_ID) private readonly platformId: any) {
+  }
+}
 ```
 
-`ConfigHttpLoader` has two parameters:
-- **http**: `Http` : Http instance
-- **endpoint**: `string` : the `API endpoint`, to retrieve application settings from (*by default, `config.json`*)
+`UniversalConfigLoader` has two parameters:
+- **serverLoader**: `ConfigLoader` : the loader which will run on the `server` platform (*ex: `ConfigFsLoader`, or `ConfigStaticLoader`*)
+- **browserLoader**: `ConfigLoader` : the loader which will run on the `browser` platform (*ex: `ConfigHttpLoader`, or `ConfigStaticLoader`*)
 
-> :+1: Well! **`@ngx-config/http-loader`** will now provide **application settings** to [@ngx-config/core] using `http`.
+> :+1: Well! **`@ngx-universal/config-loader`** will now provide **application settings** to **browser**/**server** platforms.
 
 ## <a name="license"></a> License
 The MIT License (MIT)
@@ -130,9 +132,7 @@ Copyright (c) 2017 [Burak Tasci]
 [4.x.x]: https://github.com/ngx-config/core/tree/4.x.x
 [ngx-config]: https://github.com/fulls1z3/ngx-config
 [ng-seed/universal]: https://github.com/ng-seed/universal
-[fulls1z3/example-app]: https://github.com/fulls1z3/example-app
 [@ngx-config/core]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/core
-[@ngx-universal/config-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-universal/config-loader
-[@ngx-config/merge-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/merge-loader
-[forRoot]: https://angular.io/docs/ts/latest/guide/ngmodule.html#!#core-for-root
+[@ngx-config/http-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/http-loader
+[@ngx-config/fs-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/fs-loader
 [Burak Tasci]: https://github.com/fulls1z3
