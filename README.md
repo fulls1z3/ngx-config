@@ -1,7 +1,7 @@
 # ngx-config
 Configuration utility for **Angular**
 
-[![CircleCI](https://circleci.com/gh/fulls1z3/ngx-config/tree/2.x.x.svg.svg?style=shield)](https://circleci.com/gh/fulls1z3/ngx-config)
+[![CircleCI](https://circleci.com/gh/fulls1z3/ngx-config/tree/2.x.x.svg?style=shield)](https://circleci.com/gh/fulls1z3/ngx-config)
 [![coverage](https://codecov.io/github/fulls1z3/ngx-config/coverage.svg?branch=2.x.x)](https://codecov.io/gh/fulls1z3/ngx-config)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
