@@ -71,19 +71,15 @@
       },
       "__TRANSFORM_HTML__": true
     },
-    "moduleNameMapper": {
-      "^ngx-config/core$": "<rootDir>/packages/@ngx-config/core/index.ts",
-      "^ngx-config/core/src/(.*)": "<rootDir>/packages/@ngx-config/core/$1",
-      "(.*)": "<rootDir>/packages/$1"
-    },
+    "moduleNameMapper": null,
     "cache": false,
-    "noStackTrace": true,
     "silent": true,
     "collectCoverage": true,
     "collectCoverageFrom": [
       "packages/@ngx-config/core/src/**.ts",
       "packages/@ngx-config/http-loader/src/**.ts",
-      "packages/@ngx-config/merge-loader/src/**.ts"
+      "packages/@ngx-config/merge-loader/src/**.ts",
+      "packages/@ngx-universal/merge-loader/src/**.ts"
     ]
   },
   "greenkeeper": {
