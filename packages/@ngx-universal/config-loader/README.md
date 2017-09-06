@@ -1,4 +1,4 @@
-# @ngx-universal/config-loader
+# @ngx-universal/config-loader [![npm version](https://badge.fury.io/js/%40ngx-universal%2Fconfig-loader.svg)](https://www.npmjs.com/package/@ngx-universal/config-loader) [![npm downloads](https://img.shields.io/npm/dm/%40ngx-universal%2Fconfig-loader.svg)](https://www.npmjs.com/package/@ngx-universal/config-loader)
 Loader for [ngx-config] that provides application settings to **browser**/**server** platforms
 
 [![CircleCI](https://circleci.com/gh/fulls1z3/ngx-config.svg?style=shield)](https://circleci.com/gh/fulls1z3/ngx-config)
