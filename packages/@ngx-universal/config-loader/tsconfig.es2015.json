@@ -11,7 +11,7 @@
     "declaration": true,
     "removeComments": true,
     "stripInternal": true,
-    "outDir": "../../../../.temp/packages/@ngx-config/config-loader-es2015/",
+    "outDir": "../../../../.temp/packages/@ngx-universal/config-loader-es2015/",
     "rootDir": "./",
     "baseUrl": "",
     "paths": {
