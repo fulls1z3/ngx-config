@@ -14,6 +14,10 @@ Configuration utility for **Angular**
 **`ngx-config`** uses `APP_INITIALIZER` which executes a function when **Angular** app is initialized, and delay the completion
 of initialization process until application settings have been provided.
 
+#### NOTICE
+> This *[4.x.x] branch* is intented to work with `@angular v4.x.x`. If you're developing on a later release of **Angular**
+than `v4.x.x`, then you should probably choose the appropriate version of this library by visiting the *[master] branch*.
+
 ## Packages:
 Name | Description | NPM
 --- | --- | ---
@@ -38,6 +42,8 @@ The MIT License (MIT)
 
 Copyright (c) 2017 [Burak Tasci]
 
+[master]: https://github.com/ngx-config/core/tree/master
+[4.x.x]: https://github.com/ngx-config/core/tree/4.x.x
 [ngx-config]: https://github.com/fulls1z3/ngx-config
 [ng-seed/universal]: https://github.com/ng-seed/universal
 [fulls1z3/example-app]: https://github.com/fulls1z3/example-app

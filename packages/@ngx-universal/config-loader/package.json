@@ -1,0 +1,40 @@
+{
+  "name": "@ngx-universal/config-loader",
+  "version": "4.0.0",
+  "description": "Loader for ngx-config that provides application settings to browser/server platforms",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fulls1z3/ngx-config.git"
+  },
+  "keywords": [
+    "plugin",
+    "loader",
+    "platform-browser",
+    "platform-server",
+    "cache",
+    "configmodule",
+    "config",
+    "universal",
+    "angular"
+  ],
+  "author": {
+    "name": "Burak Tasci",
+    "email": "me@fulls1z3.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fulls1z3/ngx-config/issues"
+  },
+  "homepage": "https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-universal/config-loader#readme",
+  "main": "./bundles/config-loader.umd.min.js",
+  "module": "./index.js",
+  "typings": "./index.d.ts",
+  "dependencies": {
+    "tslib": "~1.7.1"
+  },
+  "peerDependencies": {
+    "@angular/common": ">=4.0.0 <5.0.0",
+    "@ngx-config/core": ">=4.0.0 <5.0.0",
+    "@ngx-cache/core": ">=4.0.0 <5.0.0"
+  }
+}
