@@ -2,7 +2,7 @@
   "extends": "./tsconfig.es2015.json",
   "compilerOptions": {
     "target": "es5",
-    "outDir": "../../../../.temp/packages/@ngx-config/config-loader-es5/"
+    "outDir": "../../../../.temp/packages/@ngx-universal/config-loader-es5/"
   },
   "files": ["./index.ts"],
   "angularCompilerOptions": {
