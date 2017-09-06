@@ -71,6 +71,10 @@
       },
       "__TRANSFORM_HTML__": true
     },
+    "moduleDirectories": [
+      "node_modules",
+      "packages"
+    ],
     "moduleNameMapper": null,
     "cache": false,
     "silent": true,
