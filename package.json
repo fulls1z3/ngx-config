@@ -83,7 +83,7 @@
       "packages/@ngx-config/core/src/**.ts",
       "packages/@ngx-config/http-loader/src/**.ts",
       "packages/@ngx-config/merge-loader/src/**.ts",
-      "packages/@ngx-universal/merge-loader/src/**.ts"
+      "packages/@ngx-universal/config-loader/src/**.ts"
     ]
   },
   "greenkeeper": {
