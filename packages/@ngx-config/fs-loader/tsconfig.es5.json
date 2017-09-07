@@ -32,7 +32,7 @@
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "flatModuleOutFile": "fs-loader.js",
-    "flatModuleId": "fs-loader",
+    "flatModuleId": "@ngx-config/fs-loader",
     "genDir": "../../../../.temp/gen-dir/"
   }
 }
