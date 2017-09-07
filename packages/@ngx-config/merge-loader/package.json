@@ -1,6 +1,6 @@
 {
   "name": "@ngx-config/merge-loader",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Loader for ngx-config that provides application settings by executing loaders in parallel and in series",
   "repository": {
     "type": "git",

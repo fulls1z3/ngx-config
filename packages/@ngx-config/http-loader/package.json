@@ -1,6 +1,6 @@
 {
   "name": "@ngx-config/http-loader",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Loader for ngx-config that provides application settings using http",
   "repository": {
     "type": "git",

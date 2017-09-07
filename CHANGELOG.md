@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.1"></a>
+## 2.0.1 (2017-09-07)
+
+
+### Bug Fixes
+
+* fix moduleId for AoT compilation ([#49](https://github.com/fulls1z3/ngx-config/issues/49)) ([82d0acb](https://github.com/fulls1z3/ngx-config/commit/82d0acb))
+
+
+
 <a name="2.0.0"></a>
 # 2.0.0 (2017-09-05)
 
