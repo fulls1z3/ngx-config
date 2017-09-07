@@ -10,7 +10,7 @@
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "flatModuleOutFile": "config-loader.js",
-    "flatModuleId": "config-loader",
+    "flatModuleId": "@ngx-universal/config-loader",
     "genDir": "../../../../.temp/gen-dir/"
   }
 }
