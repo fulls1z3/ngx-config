@@ -32,7 +32,7 @@
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "flatModuleOutFile": "http-loader.js",
-    "flatModuleId": "http-loader",
+    "flatModuleId": "@ngx-config/http-loader",
     "genDir": "../../../../.temp/gen-dir/"
   }
 }

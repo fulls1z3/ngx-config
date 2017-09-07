@@ -35,7 +35,7 @@
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
     "flatModuleOutFile": "merge-loader.js",
-    "flatModuleId": "merge-loader",
+    "flatModuleId": "@ngx-config/merge-loader",
     "genDir": "../../../../.temp/gen-dir/"
   }
 }
