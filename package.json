@@ -1,6 +1,6 @@
 {
   "name": "ngx-config",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Configuration utility for Angular",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
     "rxjs": "^5.4.3",
     "zone.js": "^0.8.17",
     "lodash": "^4.17.4",
-    "@ngx-cache/core": "^4.0.0",
+    "@ngx-cache/core": "^4.0.1",
     "@types/node": "^8.0.26",
     "@types/jest": "^20.0.8",
     "@types/lodash": "4.14.55",

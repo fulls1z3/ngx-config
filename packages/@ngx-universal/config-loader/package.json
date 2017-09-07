@@ -1,6 +1,6 @@
 {
   "name": "@ngx-universal/config-loader",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Loader for ngx-config that provides application settings to browser/server platforms",
   "repository": {
     "type": "git",

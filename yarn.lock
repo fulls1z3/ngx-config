@@ -52,9 +52,9 @@
   dependencies:
     tsickle "^0.21.0"
 
-"@ngx-cache/core@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@ngx-cache/core/-/core-4.0.0.tgz#c28d74ba9afa63e88781d13f9f4d300a449184a7"
+"@ngx-cache/core@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@ngx-cache/core/-/core-4.0.1.tgz#242385dba01aa00b6eb4c48df3c3d69294d8ac9b"
   dependencies:
     tslib "~1.7.1"
 
