@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: sudo npm install -g yarn@latest
-      - run: sudo yarn global add greenkeeper-lockfile@1.8
+      - run: sudo yarn global add greenkeeper-lockfile@1
       - restore_cache:
           keys:
           - deps-{{ .Branch }}-{{ checksum "yarn.lock" }}
