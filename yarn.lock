@@ -28,9 +28,9 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/http@~4.4.4":
-  version "4.4.4"
-  resolved "https://registry.yarnpkg.com/@angular/http/-/http-4.4.4.tgz#667faf616bb624168eafae6ee92e5eba23a9d1f2"
+"@angular/http@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-5.0.0.tgz#0728a2be0cfbb078727c5eb87d4c85d53fec9a51"
   dependencies:
     tslib "^1.7.1"
 
