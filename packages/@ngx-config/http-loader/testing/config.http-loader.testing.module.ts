@@ -1,6 +1,7 @@
 // angular
 import { NgModule } from '@angular/core';
-import { BaseRequestOptions, Http } from '@angular/http';
+import { BaseRequestOptions } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { MockBackend } from '@angular/http/testing';
 
 // module
@@ -11,7 +12,7 @@ export * from './mocks/config-backend.mock';
 @NgModule({
   providers: [
     {
-      provide: Http,
+      provide: HttpClient,
       useFactory: fakeBackendFactory,
       deps: [
         MockBackend,
