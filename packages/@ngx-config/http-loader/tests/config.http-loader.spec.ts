@@ -1,6 +1,6 @@
 // angular
 import { async, TestBed } from '@angular/core/testing';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
 // libs
@@ -28,12 +28,12 @@ describe('@ngx-config/http-loader:',
       () => {
         it('should be able to provide `ConfigHttpLoader`',
           () => {
-            const configFactory = (http: Http) => new ConfigHttpLoader(http);
+            const configFactory = (http: HttpClient) => new ConfigHttpLoader(http);
 
             testModuleConfig({
               provide: ConfigLoader,
               useFactory: (configFactory),
-              deps: [Http]
+              deps: [HttpClient]
             });
 
             const config = TestBed.get(ConfigService);
@@ -46,30 +46,29 @@ describe('@ngx-config/http-loader:',
 
     it('should be able to retrieve settings from the specified `endpoint`',
       async(() => {
-        const configFactory = (http: Http) => new ConfigHttpLoader(http, '/api/settings');
+        const configFactory = (http: HttpClient) => new ConfigHttpLoader(http, '/api/settings');
 
         testModuleConfig({
           provide: ConfigLoader,
           useFactory: (configFactory),
-          deps: [Http]
+          deps: [HttpClient]
         });
 
         const config = TestBed.get(ConfigService);
-
         config.loader.loadSettings()
           .then((res: any) => {
-            expect(res).toEqual(testSettings);
+            expect(res._body).toEqual(testSettings);
           });
       }));
 
     it('should throw w/o a valid `endpoint`',
       async () => {
-        const configFactory = (http: Http) => new ConfigHttpLoader(http, '/api/wrong-settings');
+        const configFactory = (http: HttpClient) => new ConfigHttpLoader(http, '/api/wrong-settings');
 
         testModuleConfig({
           provide: ConfigLoader,
           useFactory: (configFactory),
-          deps: [Http]
+          deps: [HttpClient]
         });
 
         expect.assertions(1);
