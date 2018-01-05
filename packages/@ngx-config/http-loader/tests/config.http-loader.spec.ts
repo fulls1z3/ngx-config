@@ -85,7 +85,7 @@ describe('@ngx-config/http-loader:',
       }));
 
     it('should throw w/o a valid `endpoint`',
-      ((done: jest.DoneCallback) => {
+      (done: jest.DoneCallback) => {
         const configFactory = (http: HttpClient) => new ConfigHttpLoader(http, '/api/wrong-settings');
 
         testModuleConfig({
@@ -109,5 +109,5 @@ describe('@ngx-config/http-loader:',
           req.flush({}, {status: 500, statusText: ''});
 
         httpMock.verify();
-      }));
+      });
   });
