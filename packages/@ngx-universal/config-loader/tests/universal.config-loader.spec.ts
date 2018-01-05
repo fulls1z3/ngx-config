@@ -1,6 +1,6 @@
 // angular
 import { PLATFORM_ID } from '@angular/core';
-import { getTestBed, inject, TestBed } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
 // libs
@@ -44,8 +44,7 @@ describe('@ngx-universal/config-loader:',
           deps: [PLATFORM_ID]
         });
 
-        const injector = getTestBed();
-        const config = injector.get(ConfigService);
+        const config = TestBed.get(ConfigService);
 
         expect(UniversalConfigLoader).toBeDefined();
         expect(config.loader).toBeDefined();

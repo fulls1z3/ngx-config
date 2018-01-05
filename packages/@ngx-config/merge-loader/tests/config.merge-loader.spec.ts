@@ -1,5 +1,5 @@
 // angular
-import { inject, TestBed } from '@angular/core/testing';
+import { async, inject, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
 // libs
@@ -90,13 +90,13 @@ describe('@ngx-config/merge-loader:',
           });
 
         it('should be able to retrieve and merge settings `in parallel`',
-          inject([ConfigService],
+          async(inject([ConfigService],
             (config: ConfigService) => {
               config.loader.loadSettings()
                 .then((res: any) => {
                   expect(res).toEqual(testSettingsMerged);
                 });
-            }));
+            })));
 
         it('should be able to retrieve and merge settings `in parallel` w/some of the `loaders` are unavailable',
           () => {
