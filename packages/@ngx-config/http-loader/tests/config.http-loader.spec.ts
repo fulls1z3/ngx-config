@@ -1,14 +1,24 @@
 // angular
 import { async, TestBed } from '@angular/core/testing';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
 // libs
 import { ConfigLoader, ConfigModule, ConfigService } from '@ngx-config/core';
 
 // module
-import { ConfigHttpLoaderTestingModule, testSettings } from '../testing/config.http-loader.testing.module';
 import { ConfigHttpLoader } from '../index';
+
+const testSettings = {
+  system: {
+    applicationName: 'Mighty Mouse',
+    applicationUrl: 'http://localhost:8000'
+  },
+  i18n: {
+    locale: 'en'
+  }
+};
 
 const testModuleConfig = (moduleOptions?: any) => {
   TestBed.resetTestEnvironment();
@@ -16,8 +26,8 @@ const testModuleConfig = (moduleOptions?: any) => {
   TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting())
     .configureTestingModule({
       imports: [
-        ConfigModule.forRoot(moduleOptions),
-        ConfigHttpLoaderTestingModule
+        HttpClientTestingModule,
+        ConfigModule.forRoot(moduleOptions)
       ]
     });
 };
@@ -28,12 +38,12 @@ describe('@ngx-config/http-loader:',
       () => {
         it('should be able to provide `ConfigHttpLoader`',
           () => {
-            const configFactory = (http: Http) => new ConfigHttpLoader(http);
+            const configFactory = (http: HttpClient) => new ConfigHttpLoader(http);
 
             testModuleConfig({
               provide: ConfigLoader,
               useFactory: (configFactory),
-              deps: [Http]
+              deps: [HttpClient]
             });
 
             const config = TestBed.get(ConfigService);
@@ -41,17 +51,21 @@ describe('@ngx-config/http-loader:',
             expect(ConfigHttpLoader).toBeDefined();
             expect(config.loader).toBeDefined();
             expect(config.loader instanceof ConfigHttpLoader).toBeTruthy();
+
+            const httpMock = TestBed.get(HttpTestingController);
+            httpMock.expectOne({method: 'GET', url: '/config.json'}).flush(testSettings);
+            httpMock.verify();
           });
       });
 
     it('should be able to retrieve settings from the specified `endpoint`',
       async(() => {
-        const configFactory = (http: Http) => new ConfigHttpLoader(http, '/api/settings');
+        const configFactory = (http: HttpClient) => new ConfigHttpLoader(http, '/api/settings');
 
         testModuleConfig({
           provide: ConfigLoader,
           useFactory: (configFactory),
-          deps: [Http]
+          deps: [HttpClient]
         });
 
         const config = TestBed.get(ConfigService);
@@ -60,25 +74,40 @@ describe('@ngx-config/http-loader:',
           .then((res: any) => {
             expect(res).toEqual(testSettings);
           });
+
+        const httpMock = TestBed.get(HttpTestingController);
+        const reqs = httpMock.match('/api/settings');
+
+        for (const req of reqs)
+          req.flush(testSettings);
+
+        httpMock.verify();
       }));
 
     it('should throw w/o a valid `endpoint`',
-      async () => {
-        const configFactory = (http: Http) => new ConfigHttpLoader(http, '/api/wrong-settings');
+      ((done: jest.DoneCallback) => {
+        const configFactory = (http: HttpClient) => new ConfigHttpLoader(http, '/api/wrong-settings');
 
         testModuleConfig({
           provide: ConfigLoader,
           useFactory: (configFactory),
-          deps: [Http]
+          deps: [HttpClient]
         });
 
-        expect.assertions(1);
+        const config = TestBed.get(ConfigService);
 
-        try {
-          const config = TestBed.get(ConfigService);
-          await config.loader.loadSettings();
-        } catch (e) {
-          expect(e).toEqual('Endpoint unreachable!');
-        }
-      });
+        config.loader.loadSettings()
+          .catch(err => {
+            expect(err).toEqual('Endpoint unreachable!');
+            done();
+          });
+
+        const httpMock = TestBed.get(HttpTestingController);
+        const reqs = httpMock.match('/api/wrong-settings');
+
+        for (const req of reqs)
+          req.flush({}, {status: 500, statusText: ''});
+
+        httpMock.verify();
+      }));
   });

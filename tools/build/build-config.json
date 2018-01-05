@@ -12,7 +12,6 @@
       "angularVersion": 4,
       "bundle": {
         "globals": {
-          "@angular/http": "ng.http",
           "@ngx-config/core": "_ngxConfig_core"
         },
         "external": [

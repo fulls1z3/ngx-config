@@ -28,10 +28,9 @@
   "es2015": "./@ngx-config/fs-loader.js",
   "typings": "./fs-loader.d.ts",
   "dependencies": {
-    "tslib": "~1.7.1"
+    "tslib": "~1.8.1"
   },
   "peerDependencies": {
-    "@angular/core": ">=4.0.0 <5.0.0",
-    "@ngx-config/core": ">=4.0.0 <5.0.0"
+    "@ngx-config/core": ">=5.0.0 <6.0.0"
   }
 }

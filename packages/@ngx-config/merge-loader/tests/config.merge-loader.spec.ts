@@ -138,8 +138,7 @@ describe('@ngx-config/merge-loader:',
           });
 
         it('should throw w/o any reachable `loaders`',
-          inject([],
-            async () => {
+          ((done: jest.DoneCallback) => {
               const configFactory = () => new ConfigMergeLoader();
 
               testModuleConfig({
@@ -147,14 +146,13 @@ describe('@ngx-config/merge-loader:',
                 useFactory: (configFactory)
               });
 
-              expect.assertions(2);
+              const config = TestBed.get(ConfigService);
 
-              try {
-                const config = TestBed.get(ConfigService);
-                await config.loader.loadSettings();
-              } catch (e) {
-                expect(e).toEqual('Loaders unreachable!');
-              }
+              config.loader.loadSettings()
+                .catch(err => {
+                  expect(err).toEqual('Loaders unreachable!');
+                  done();
+                });
             }));
 
         it('should be able to retrieve and merge settings `in series`',
@@ -164,7 +162,7 @@ describe('@ngx-config/merge-loader:',
             const envLoader = new ConfigStaticLoader(testSettingsEnv);
 
             const configFactory = () => new ConfigMergeLoader([mainLoader, localLoader])
-              .next((res: any) => envLoader);
+              .next(() => envLoader);
 
             testModuleConfig({
               provide: ConfigLoader,
