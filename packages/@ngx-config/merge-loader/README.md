@@ -10,8 +10,8 @@ Loader for [ngx-config] that provides application settings by executing loaders 
 > Please support this project by simply putting a Github star. Share this library with friends on Twitter and everywhere else you can.
 
 #### NOTICE
-> This *[4.x.x] branch* is intented to work with `@angular v4.x.x`. If you're developing on a later release of **Angular**
-than `v4.x.x`, then you should probably choose the appropriate version of this library by visiting the *[master] branch*.
+> This *[5.x.x] branch* is intented to work with `@angular v5.x.x`. If you're developing on a later release of **Angular**
+than `v5.x.x`, then you should probably choose the appropriate version of this library by visiting the *[master] branch*.
 
 ## Table of contents:
 - [Prerequisites](#prerequisites)
@@ -27,7 +27,7 @@ than `v4.x.x`, then you should probably choose the appropriate version of this l
 ## <a name="prerequisites"></a> Prerequisites
 This library depends on `Angular v4.0.0`. Older versions contain outdated dependencies, might produce errors.
 
-Also, please ensure that you are using **`Typescript v2.3.4`** or higher.
+Also, please ensure that you are using **`Typescript v2.5.3`** or higher.
 
 ## <a name="getting-started"> Getting started
 ### <a name="installation"> Installation
@@ -67,20 +67,20 @@ property of **app.module**.
 #### app.module.ts
 ```TypeScript
 ...
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { ConfigModule, ConfigLoader } from '@ngx-config/core';
 import { ConfigHttpLoader } from '@ngx-config/http-loader';
 import { ConfigMergeLoader } from '@ngx-config/merge-loader';
 ...
 
-export function configFactory(http: Http): ConfigLoader {
+export function configFactory(http: HttpClient): ConfigLoader {
   const remoteConfigLoader = new ConfigHttpLoader(http, 'http://mysite.com/api/settings'); // API ENDPOINT (remote)
   const localConfigLoader = new ConfigHttpLoader(http, './config.local.json'); // API ENDPOINT (local)
   
   return new ConfigMergeLoader([remoteConfigLoader, localConfigLoader]); // PARALLEL EXECUTION
 }
 
-export function configFactorySeries(http: Http): ConfigLoader {
+export function configFactorySeries(http: HttpClient): ConfigLoader {
   const localConfigLoader = new ConfigHttpLoader(http, './config.local.json'); // API ENDPOINT (local)
 
   return new ConfigMergeLoader([localConfigLoader])
@@ -117,10 +117,10 @@ loaders in **parallel** and in **series**.
 ## <a name="license"></a> License
 The MIT License (MIT)
 
-Copyright (c) 2017 [Burak Tasci]
+Copyright (c) 2018 [Burak Tasci]
 
 [master]: https://github.com/ngx-config/core/tree/master
-[4.x.x]: https://github.com/ngx-config/core/tree/4.x.x
+[5.x.x]: https://github.com/ngx-config/core/tree/5.x.x
 [ngx-config]: https://github.com/fulls1z3/ngx-config
 [ng-seed/universal]: https://github.com/ng-seed/universal
 [fulls1z3/example-app]: https://github.com/fulls1z3/example-app

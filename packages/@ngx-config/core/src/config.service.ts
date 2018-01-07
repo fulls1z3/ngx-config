@@ -8,7 +8,7 @@ import { ConfigLoader } from './config.loader';
 export class ConfigService {
   protected settings: any;
 
-  constructor(public readonly loader: ConfigLoader) {
+  constructor(readonly loader: ConfigLoader) {
   }
 
   init(): any {

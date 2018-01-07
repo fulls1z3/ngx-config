@@ -2,7 +2,9 @@
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
-  "extends": ["angular-tslint-rules"],
+  "extends": [
+    "angular-tslint-rules"
+  ],
   "rules": {
     "pipe-naming": [
       true,

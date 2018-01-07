@@ -12,7 +12,6 @@
       "angularVersion": 4,
       "bundle": {
         "globals": {
-          "@angular/http": "ng.http",
           "@ngx-config/core": "_ngxConfig_core"
         },
         "external": [
@@ -38,20 +37,15 @@
       "bundle": {
         "globals": {
           "rxjs/Observable": "Rx.Observable",
+          "rxjs/operators": "Rx.operators",
+          "rxjs/observable/EmptyObservable": "Rx.observable.EmptyObservable",
           "lodash": "_",
           "lodash/index": "_",
           "@ngx-config/core": "_ngxConfig_core"
         },
         "external": [
-          "rxjs/add/observable/empty",
-          "rxjs/add/observable/onErrorResumeNext",
-          "rxjs/add/operator/isEmpty",
-          "rxjs/add/operator/filter",
-          "rxjs/add/operator/merge",
-          "rxjs/add/operator/mergeMap",
-          "rxjs/add/operator/reduce",
-          "rxjs/add/operator/share",
-          "rxjs/add/operator/toPromise"
+          "rxjs/add/observable/fromPromise",
+          "rxjs/add/observable/onErrorResumeNext"
         ]
       },
       "runTests": true

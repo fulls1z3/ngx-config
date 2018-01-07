@@ -14,8 +14,8 @@ Configuration utility for **Angular**
 of initialization process until application settings have been provided.
 
 #### NOTICE
-> This *[4.x.x] branch* is intented to work with `@angular v4.x.x`. If you're developing on a later release of **Angular**
-than `v4.x.x`, then you should probably choose the appropriate version of this library by visiting the *[master] branch*.
+> This *[5.x.x] branch* is intented to work with `@angular v5.x.x`. If you're developing on a later release of **Angular**
+than `v5.x.x`, then you should probably choose the appropriate version of this library by visiting the *[master] branch*.
 
 ## Packages:
 Name | Description | NPM
@@ -40,10 +40,10 @@ If you want to file a bug, contribute some code, or improve documentation, pleas
 ## License
 The MIT License (MIT)
 
-Copyright (c) 2017 [Burak Tasci]
+Copyright (c) 2018 [Burak Tasci]
 
 [master]: https://github.com/ngx-config/core/tree/master
-[4.x.x]: https://github.com/ngx-config/core/tree/4.x.x
+[5.x.x]: https://github.com/ngx-config/core/tree/5.x.x
 [ngx-config]: https://github.com/fulls1z3/ngx-config
 [ng-seed/universal]: https://github.com/ng-seed/universal
 [fulls1z3/example-app]: https://github.com/fulls1z3/example-app

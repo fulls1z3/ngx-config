@@ -8,7 +8,7 @@ export class ConfigFsLoader implements ConfigLoader {
 
   loadSettings(): any {
     return Promise.resolve(JSON.parse(readFileSync(this.path, 'utf8')))
-      .then((settings: any) => settings)
+      .then(res => res)
       .catch(() => Promise.reject('Path unreachable!'));
   }
 }

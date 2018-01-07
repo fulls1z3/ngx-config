@@ -1,22 +1,21 @@
 // libs
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/empty';
+import { filter, isEmpty, merge, mergeMap, reduce, share } from 'rxjs/operators';
+import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
+import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/onErrorResumeNext';
-import 'rxjs/add/operator/isEmpty';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/merge';
-import 'rxjs/add/operator/mergeMap';
-import 'rxjs/add/operator/reduce';
-import 'rxjs/add/operator/share';
-import 'rxjs/add/operator/toPromise';
+
 import * as _ from 'lodash';
 import { ConfigLoader, ConfigStaticLoader } from '@ngx-config/core';
 
 const errorIfEmpty = (source: Observable<any>): Observable<any> => {
-  return source.isEmpty()
-    .mergeMap((isEmpty: boolean) => isEmpty
-      ? Observable.throw(new Error('No setting found at the specified loader!'))
-      : Observable.empty());
+  return source
+    .pipe(
+      isEmpty(),
+      mergeMap((empty: boolean) => empty
+        ? Observable.throw(new Error('No setting found at the specified loader!'))
+        : new EmptyObservable())
+    );
 };
 
 const mergeWith = (object: any, source: Array<any>): any => {
@@ -54,17 +53,21 @@ export class ConfigMergeLoader implements ConfigLoader {
     const loaders: Array<ConfigLoader> = [new ConfigStaticLoader(), ...this.loaders];
 
     const mergedSettings = Observable.onErrorResumeNext(loaders
-      .map((loader: ConfigLoader) => loader.loadSettings())
+      .map((loader: ConfigLoader) => Observable.fromPromise(loader.loadSettings()))
     )
-      .filter((settings: any) => settings)
-      .share();
+      .pipe(
+        filter((res: any) => res),
+        share()
+      );
 
-    return mergedSettings
-      .merge(errorIfEmpty(mergedSettings))
-      .merge(mergedSettings)
-      .reduce((merged: any, current: any) => mergeWith(merged, current), {})
-      .toPromise()
-      .then((settings: any) => settings)
-      .catch(() => Promise.reject('Loaders unreachable!'));
+    return new Promise((resolve, reject) => {
+      mergedSettings
+        .pipe(
+          merge(errorIfEmpty(mergedSettings)),
+          merge(mergedSettings),
+          reduce((merged: any, current: any) => mergeWith(merged, current), {})
+        )
+        .subscribe((res: any) => resolve(res), () => reject('Loaders unreachable!'));
+    });
   }
 }
