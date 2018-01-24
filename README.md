@@ -37,6 +37,9 @@ If you want to file a bug, contribute some code, or improve documentation, pleas
 - [Coding rules](CONTRIBUTING.md#rules)
 - [Change log](CHANGELOG.md)
 
+#### Thanks to
+- [JetBrains], for their support to this open source project with free [WebStorm] licenses.
+
 ## License
 The MIT License (MIT)
 
@@ -47,4 +50,6 @@ Copyright (c) 2018 [Burak Tasci]
 [ngx-config]: https://github.com/fulls1z3/ngx-config
 [ng-seed/universal]: https://github.com/ng-seed/universal
 [fulls1z3/example-app]: https://github.com/fulls1z3/example-app
+[JetBrains]: https://www.jetbrains.com/community/opensource
+[WebStorm]:   https://www.jetbrains.com/webstorm
 [Burak Tasci]: https://github.com/fulls1z3
