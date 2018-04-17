@@ -21,9 +21,12 @@ describe('@ngx-config/core:',
         it('is defined',
           inject([ConfigService],
             (config: ConfigService) => {
-              expect(ConfigService).toBeDefined();
-              expect(config).toBeDefined();
-              expect(config instanceof ConfigService).toBeTruthy();
+              expect(ConfigService)
+                .toBeDefined();
+              expect(config)
+                .toBeDefined();
+              expect(config instanceof ConfigService)
+                .toBeTruthy();
             }));
 
         it('should be able to get all settings',
@@ -31,9 +34,12 @@ describe('@ngx-config/core:',
             (config: ConfigService) => {
               config.loader.loadSettings()
                 .then(() => {
-                  expect(config.getSettings()).toEqual(testSettings);
-                  expect(config.getSettings('')).toEqual(testSettings);
-                  expect(config.getSettings([])).toEqual(testSettings);
+                  expect(config.getSettings())
+                    .toEqual(testSettings);
+                  expect(config.getSettings(''))
+                    .toEqual(testSettings);
+                  expect(config.getSettings([]))
+                    .toEqual(testSettings);
                 });
             }));
 
@@ -48,19 +54,25 @@ describe('@ngx-config/core:',
                       applicationUrl: 'http://localhost:8000'
                     });
 
-                  expect(config.getSettings(['system', 'applicationName'])).toEqual('Mighty Mouse');
-                  expect(config.getSettings('system.applicationName')).toEqual('Mighty Mouse');
+                  expect(config.getSettings(['system', 'applicationName']))
+                    .toEqual('Mighty Mouse');
+                  expect(config.getSettings('system.applicationName'))
+                    .toEqual('Mighty Mouse');
 
-                  expect(config.getSettings(['system', 'applicationUrl'])).toEqual('http://localhost:8000');
-                  expect(config.getSettings('system.applicationUrl')).toEqual('http://localhost:8000');
+                  expect(config.getSettings(['system', 'applicationUrl']))
+                    .toEqual('http://localhost:8000');
+                  expect(config.getSettings('system.applicationUrl'))
+                    .toEqual('http://localhost:8000');
 
                   expect(config.getSettings('i18n'))
                     .toEqual({
                       locale: 'en'
                     });
 
-                  expect(config.getSettings(['i18n', 'locale'])).toEqual('en');
-                  expect(config.getSettings('i18n.locale')).toEqual('en');
+                  expect(config.getSettings(['i18n', 'locale']))
+                    .toEqual('en');
+                  expect(config.getSettings('i18n.locale'))
+                    .toEqual('en');
                 });
             })));
 
@@ -69,7 +81,8 @@ describe('@ngx-config/core:',
             (config: ConfigService) => {
               config.loader.loadSettings()
                 .then(() => {
-                  expect(config.getSettings('falsy.zero')).toEqual(0);
+                  expect(config.getSettings('falsy.zero'))
+                    .toEqual(0);
                 });
             })));
 
@@ -78,7 +91,8 @@ describe('@ngx-config/core:',
             (config: ConfigService) => {
               config.loader.loadSettings()
                 .then(() => {
-                  expect(config.getSettings('falsy.null')).toBeNull();
+                  expect(config.getSettings('falsy.null'))
+                    .toBeNull();
                 });
             })));
 
@@ -87,7 +101,8 @@ describe('@ngx-config/core:',
             (config: ConfigService) => {
               config.loader.loadSettings()
                 .then(() => {
-                  expect(config.getSettings('falsy.emptyString')).toEqual('');
+                  expect(config.getSettings('falsy.emptyString'))
+                    .toEqual('');
                 });
             })));
 
@@ -96,7 +111,8 @@ describe('@ngx-config/core:',
             (config: ConfigService) => {
               config.loader.loadSettings()
                 .then(() => {
-                  expect(config.getSettings('layout', 'default')).toEqual('default');
+                  expect(config.getSettings('layout', 'default'))
+                    .toEqual('default');
                 });
             })));
 

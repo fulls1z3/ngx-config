@@ -10,8 +10,8 @@ Loader for [ngx-config] that provides application settings by executing loaders 
 > Please support this project by simply putting a Github star. Share this library with friends on Twitter and everywhere else you can.
 
 #### NOTICE
-> This *[5.x.x] branch* is intented to work with `@angular v5.x.x`. If you're developing on a later release of **Angular**
-than `v5.x.x`, then you should probably choose the appropriate version of this library by visiting the *[master] branch*.
+> This *[6.x.x] branch* is intented to work with `Angular v6.x.x`. If you're developing on a later release of **Angular**
+than `v6.x.x`, then you should probably choose the appropriate version of this library by visiting the *[master] branch*.
 
 ## Table of contents:
 - [Prerequisites](#prerequisites)
@@ -25,9 +25,9 @@ than `v5.x.x`, then you should probably choose the appropriate version of this l
 - [License](#license)
 
 ## <a name="prerequisites"></a> Prerequisites
-This library depends on `Angular v4.0.0`. Older versions contain outdated dependencies, might produce errors.
+This library depends on `Angular v6.0.0`. Older versions contain outdated dependencies, might produce errors.
 
-Also, please ensure that you are using **`Typescript v2.5.3`** or higher.
+Also, please ensure that you are using **`Typescript v2.7.2`** or higher.
 
 ## <a name="getting-started"> Getting started
 ### <a name="installation"> Installation
@@ -46,7 +46,6 @@ practices for **`@ngx-config/merge-loader`**.
 The following packages may be used in conjunction with **`@ngx-config/merge-loader`**:
 - [@ngx-config/core]
 - [@ngx-config/http-loader]
-- [@ngx-config/fs-loader]
 
 ### <a name="adding-systemjs"></a> Adding `@ngx-config/merge-loader` to your project (SystemJS)
 Add `map` for **`@ngx-config/merge-loader`** in your `systemjs.config`
@@ -120,11 +119,10 @@ The MIT License (MIT)
 Copyright (c) 2018 [Burak Tasci]
 
 [master]: https://github.com/ngx-config/core/tree/master
-[5.x.x]: https://github.com/ngx-config/core/tree/5.x.x
+[6.x.x]: https://github.com/ngx-config/core/tree/6.x.x
 [ngx-config]: https://github.com/fulls1z3/ngx-config
 [ng-seed/universal]: https://github.com/ng-seed/universal
 [fulls1z3/example-app]: https://github.com/fulls1z3/example-app
 [@ngx-config/core]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/core
 [@ngx-config/http-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/http-loader
-[@ngx-config/fs-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/fs-loader
 [Burak Tasci]: https://github.com/fulls1z3

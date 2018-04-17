@@ -22,8 +22,10 @@ describe('@ngx-config/core:',
           () => {
             const loader = new ConfigStaticLoader();
 
-            loader.loadSettings().then((res: any) => {
-              expect(res).toBeUndefined();
+            loader.loadSettings()
+              .then((res: any) => {
+              expect(res)
+                .toBeUndefined();
             });
           });
 
@@ -31,9 +33,12 @@ describe('@ngx-config/core:',
           () => {
             const config = TestBed.get(ConfigService);
 
-            expect(ConfigStaticLoader).toBeDefined();
-            expect(config.loader).toBeDefined();
-            expect(config.loader instanceof ConfigStaticLoader).toBeTruthy();
+            expect(ConfigStaticLoader)
+              .toBeDefined();
+            expect(config.loader)
+              .toBeDefined();
+            expect(config.loader instanceof ConfigStaticLoader)
+              .toBeTruthy();
           });
 
         it('should be able to provide any `ConfigLoader`',
@@ -51,9 +56,12 @@ describe('@ngx-config/core:',
 
             const config = TestBed.get(ConfigService);
 
-            expect(CustomLoader).toBeDefined();
-            expect(config.loader).toBeDefined();
-            expect(config.loader instanceof CustomLoader).toBeTruthy();
+            expect(CustomLoader)
+              .toBeDefined();
+            expect(config.loader)
+              .toBeDefined();
+            expect(config.loader instanceof CustomLoader)
+              .toBeTruthy();
           });
       });
   });

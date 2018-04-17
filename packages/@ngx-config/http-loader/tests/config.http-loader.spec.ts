@@ -48,12 +48,16 @@ describe('@ngx-config/http-loader:',
 
             const config = TestBed.get(ConfigService);
 
-            expect(ConfigHttpLoader).toBeDefined();
-            expect(config.loader).toBeDefined();
-            expect(config.loader instanceof ConfigHttpLoader).toBeTruthy();
+            expect(ConfigHttpLoader)
+              .toBeDefined();
+            expect(config.loader)
+              .toBeDefined();
+            expect(config.loader instanceof ConfigHttpLoader)
+              .toBeTruthy();
 
             const httpMock = TestBed.get(HttpTestingController);
-            httpMock.expectOne({method: 'GET', url: '/config.json'}).flush(testSettings);
+            httpMock.expectOne({method: 'GET', url: '/config.json'})
+              .flush(testSettings);
             httpMock.verify();
           });
       });
@@ -72,7 +76,8 @@ describe('@ngx-config/http-loader:',
 
         config.loader.loadSettings()
           .then((res: any) => {
-            expect(res).toEqual(testSettings);
+            expect(res)
+              .toEqual(testSettings);
           });
 
         const httpMock = TestBed.get(HttpTestingController);
@@ -98,7 +103,8 @@ describe('@ngx-config/http-loader:',
 
         config.loader.loadSettings()
           .catch(err => {
-            expect(err).toEqual('Endpoint unreachable!');
+            expect(err)
+              .toEqual('Endpoint unreachable!');
             done();
           });
 

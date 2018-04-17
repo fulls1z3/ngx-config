@@ -84,9 +84,12 @@ describe('@ngx-config/merge-loader:',
 
             const config = TestBed.get(ConfigService);
 
-            expect(ConfigMergeLoader).toBeDefined();
-            expect(config.loader).toBeDefined();
-            expect(config.loader instanceof ConfigMergeLoader).toBeTruthy();
+            expect(ConfigMergeLoader)
+              .toBeDefined();
+            expect(config.loader)
+              .toBeDefined();
+            expect(config.loader instanceof ConfigMergeLoader)
+              .toBeTruthy();
           });
 
         it('should be able to retrieve and merge settings `in parallel`',
@@ -94,7 +97,8 @@ describe('@ngx-config/merge-loader:',
             (config: ConfigService) => {
               config.loader.loadSettings()
                 .then((res: any) => {
-                  expect(res).toEqual(testSettingsMerged);
+                  expect(res)
+                    .toEqual(testSettingsMerged);
                 });
             })));
 
@@ -133,7 +137,8 @@ describe('@ngx-config/merge-loader:',
 
             config.loader.loadSettings()
               .then((res: any) => {
-                expect(res).toEqual(expectedSettings);
+                expect(res)
+                  .toEqual(expectedSettings);
               });
           });
 
@@ -150,7 +155,8 @@ describe('@ngx-config/merge-loader:',
 
               config.loader.loadSettings()
                 .catch(err => {
-                  expect(err).toEqual('Loaders unreachable!');
+                  expect(err)
+                    .toEqual('Loaders unreachable!');
                   done();
                 });
             }));
@@ -173,7 +179,8 @@ describe('@ngx-config/merge-loader:',
 
             config.loader.loadSettings()
               .then((res: any) => {
-                expect(res).toEqual(testSettingsMerged);
+                expect(res)
+                  .toEqual(testSettingsMerged);
               });
           });
 
@@ -208,7 +215,8 @@ describe('@ngx-config/merge-loader:',
 
             config.loader.loadSettings()
               .then((res: any) => {
-                expect(res).toEqual(expectedSettings);
+                expect(res)
+                  .toEqual(expectedSettings);
               });
           });
       });
