@@ -14,17 +14,15 @@ Configuration utility for **Angular**
 of initialization process until application settings have been provided.
 
 #### NOTICE
-> This *[5.x.x] branch* is intented to work with `@angular v5.x.x`. If you're developing on a later release of **Angular**
-than `v5.x.x`, then you should probably choose the appropriate version of this library by visiting the *[master] branch*.
+> This *[6.x.x] branch* is intented to work with `Angular v6.x.x`. If you're developing on a later release of **Angular**
+than `v6.x.x`, then you should probably choose the appropriate version of this library by visiting the *[master] branch*.
 
 ## Packages:
 Name | Description | NPM
 --- | --- | ---
 [@ngx-config/core](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/core) | Configuration utility for **Angular** | [![npm version](https://badge.fury.io/js/%40ngx-config%2Fcore.svg)](https://www.npmjs.com/package/@ngx-config/core)
 [@ngx-config/http-loader](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/http-loader) | Loader for [ngx-config] that provides application settings using **`http`** | [![npm version](https://badge.fury.io/js/%40ngx-config%2Fhttp-loader.svg)](https://www.npmjs.com/package/@ngx-config/http-loader)
-[@ngx-config/fs-loader](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/fs-loader) | Loader for [ngx-config] that provides application settings using **`fs`** (server platform) | [![npm version](https://badge.fury.io/js/%40ngx-config%2Ffs-loader.svg)](https://www.npmjs.com/package/@ngx-config/fs-loader)
 [@ngx-config/merge-loader](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/merge-loader) | Loader for [ngx-config] that provides application settings by executing loaders in **parallel** and in **series** | [![npm version](https://badge.fury.io/js/%40ngx-config%2Fmerge-loader.svg)](https://www.npmjs.com/package/@ngx-config/merge-loader)
-[@ngx-universal/config-loader](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-universal/config-loader) | Loader for [ngx-config] that provides application settings to **browser**/**server** platforms | [![npm version](https://badge.fury.io/js/%40ngx-universal%2Fconfig-loader.svg)](https://www.npmjs.com/package/@ngx-universal/config-loader)
 
 ## Examples
 - [ng-seed/universal] and [fulls1z3/example-app] are officially maintained projects, showcasing common patterns and best
@@ -46,7 +44,7 @@ The MIT License (MIT)
 Copyright (c) 2018 [Burak Tasci]
 
 [master]: https://github.com/ngx-config/core/tree/master
-[5.x.x]: https://github.com/ngx-config/core/tree/5.x.x
+[6.x.x]: https://github.com/ngx-config/core/tree/6.x.x
 [ngx-config]: https://github.com/fulls1z3/ngx-config
 [ng-seed/universal]: https://github.com/ng-seed/universal
 [fulls1z3/example-app]: https://github.com/fulls1z3/example-app

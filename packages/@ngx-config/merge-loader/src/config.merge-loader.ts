@@ -1,9 +1,6 @@
 // libs
-import { Observable } from 'rxjs/Observable';
-import { filter, isEmpty, merge, mergeMap, reduce, share } from 'rxjs/operators';
-import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
-import 'rxjs/add/observable/fromPromise';
-import 'rxjs/add/observable/onErrorResumeNext';
+import { EMPTY, from as fromObservable, merge, Observable, onErrorResumeNext, throwError } from 'rxjs';
+import { filter, isEmpty, mergeMap, reduce, share } from 'rxjs/operators';
 
 import * as _ from 'lodash';
 import { ConfigLoader, ConfigStaticLoader } from '@ngx-config/core';
@@ -13,8 +10,8 @@ const errorIfEmpty = (source: Observable<any>): Observable<any> => {
     .pipe(
       isEmpty(),
       mergeMap((empty: boolean) => empty
-        ? Observable.throw(new Error('No setting found at the specified loader!'))
-        : new EmptyObservable())
+        ? throwError(new Error('No setting found at the specified loader!'))
+        : EMPTY)
     );
 };
 
@@ -38,7 +35,8 @@ export class ConfigMergeLoader implements ConfigLoader {
   loadSettings(): any {
     if (this.nextLoader)
       return this.mergeParallel()
-        .then((res: any) => mergeSeries(res, this.nextLoader(res).loadSettings()));
+        .then((res: any) => mergeSeries(res, this.nextLoader(res)
+          .loadSettings()));
 
     return this.mergeParallel();
   }
@@ -52,8 +50,8 @@ export class ConfigMergeLoader implements ConfigLoader {
   private mergeParallel(): Promise<any> {
     const loaders: Array<ConfigLoader> = [new ConfigStaticLoader(), ...this.loaders];
 
-    const mergedSettings = Observable.onErrorResumeNext(loaders
-      .map((loader: ConfigLoader) => Observable.fromPromise(loader.loadSettings()))
+    const mergedSettings = onErrorResumeNext(loaders
+      .map((loader: ConfigLoader) => fromObservable(loader.loadSettings()))
     )
       .pipe(
         filter((res: any) => res),
@@ -61,10 +59,8 @@ export class ConfigMergeLoader implements ConfigLoader {
       );
 
     return new Promise((resolve, reject) => {
-      mergedSettings
+      merge(mergedSettings, errorIfEmpty(mergedSettings), mergedSettings)
         .pipe(
-          merge(errorIfEmpty(mergedSettings)),
-          merge(mergedSettings),
           reduce((merged: any, current: any) => mergeWith(merged, current), {})
         )
         .subscribe((res: any) => resolve(res), () => reject('Loaders unreachable!'));

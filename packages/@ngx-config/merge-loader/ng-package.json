@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "lib": {
+    "entryFile": "index.ts",
+    "umdModuleIds": {
+      "rxjs": "rxjs",
+      "lodash": "_",
+      "@ngx-config/core": "_ngxConfig_core"
+    }
+  },
+  "dest": "../../../dist/@ngx-config/merge-loader"
+}

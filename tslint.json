@@ -6,6 +6,7 @@
     "angular-tslint-rules"
   ],
   "rules": {
+    "no-forward-ref": false,
     "pipe-naming": [
       true,
       "camelCase",

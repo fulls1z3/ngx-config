@@ -13,8 +13,8 @@ Configuration utility for **Angular**
 completion of initialization process until application settings have been provided.
 
 #### NOTICE
-> This *[5.x.x] branch* is intented to work with `@angular v5.x.x`. If you're developing on a later release of **Angular**
-than `v5.x.x`, then you should probably choose the appropriate version of this library by visiting the *[master] branch*.
+> This *[6.x.x] branch* is intented to work with `Angular v6.x.x`. If you're developing on a later release of **Angular**
+than `v6.x.x`, then you should probably choose the appropriate version of this library by visiting the *[master] branch*.
 
 ## Table of contents:
 - [Prerequisites](#prerequisites)
@@ -28,17 +28,15 @@ than `v5.x.x`, then you should probably choose the appropriate version of this l
 - [Settings](#settings)
 	- [Setting up `ConfigModule` to use `ConfigStaticLoader`](#setting-up-staticloader)
 	- [Setting up `ConfigModule` to use `ConfigHttpLoader`](#setting-up-httploader)
-	- [Setting up `ConfigModule` to use `ConfigFsLoader`](#setting-up-fsloader)
-	- [Setting up `ConfigModule` to use `UniversalConfigLoader`](#setting-up-universalloader)
 	- [Setting up `ConfigModule` to use `ConfigMergeLoader`](#setting-up-mergeloader)
 - [Usage](#usage)
 - [Pipe](#pipe)
 - [License](#license)
 
 ## <a name="prerequisites"></a> Prerequisites
-This library depends on `Angular v4.0.0`. Older versions contain outdated dependencies, might produce errors.
+This library depends on `Angular v6.0.0`. Older versions contain outdated dependencies, might produce errors.
 
-Also, please ensure that you are using **`Typescript v2.5.3`** or higher.
+Also, please ensure that you are using **`Typescript v2.7.2`** or higher.
 
 ## <a name="getting-started"> Getting started
 ### <a name="installation"> Installation
@@ -54,15 +52,13 @@ practices for **`@ngx-config/core`**.
 ### <a name="related-packages"></a> Related packages
 The following packages may be used in conjunction with **`@ngx-config/core`**:
 - [@ngx-config/http-loader]
-- [@ngx-config/fs-loader]
-- [@ngx-universal/config-loader]
 - [@ngx-config/merge-loader]
 - [@ngx-i18n-router/config-loader]
 
 ### <a name="recommended-packages"></a> Recommended packages
 The following package(s) have no dependency for **`@ngx-config/core`**, however may provide supplementary/shorthand functionality:
-- [@ngx-cache/core]: provides caching features to retrieve the application settings using `non-static loaders` (`http`,
-`fs`, etc.)
+- [@ngx-cache/core]: provides caching features to retrieve the application settings using `non-static loaders` (*[@ngx-config/http-loader],
+[@ngx-i18n-router/config-loader]*).
 
 ### <a name="adding-systemjs"></a> Adding `@ngx-config/core` to your project (SystemJS)
 Add `map` for **`@ngx-config/core`** in your `systemjs.config`
@@ -133,20 +129,6 @@ If you provide application settings using a `JSON` file or an `API`, you can cal
 > You can customize this behavior (*and ofc other settings*) by supplying a **api endpoint** to `ConfigHttpLoader`.
 
 You can find detailed information about the usage guidelines for the `ConfigHttpLoader` [here](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/http-loader).
-
-### <a name="setting-up-fsloader"></a> Setting up `ConfigModule` to use `ConfigFsLoader`
-If you provide application settings using a `JSON` file (*on the `server platform`*), you can call the [forRoot] static
-method using the `ConfigFsLoader`. By default, it is configured to retrieve **application settings** from the path `/config.json`
-(*if not specified*).
-
-> You can customize this behavior (*and ofc other settings*) by supplying a **file path** to `ConfigFsLoader`.
-
-You can find detailed information about the usage guidelines for the `ConfigFsLoader` [here](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/fs-loader).
-
-### <a name="setting-up-universalloader"></a> Setting up `ConfigModule` to use `UniversalConfigLoader`
-`UniversalConfigLoader` provides application settings to **browser**/**server** platforms.
-
-You can find detailed information about the usage guidelines for the `UniversalConfigLoader` [here](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-universal/config-loader).
 
 ### <a name="setting-up-mergeloader"></a> Setting up `ConfigModule` to use `ConfigMergeLoader`
 `ConfigMergeLoader` provides application settings by executing loaders in **parallel** and in **series**.
@@ -229,12 +211,10 @@ The MIT License (MIT)
 Copyright (c) 2018 [Burak Tasci]
 
 [master]: https://github.com/ngx-config/core/tree/master
-[5.x.x]: https://github.com/ngx-config/core/tree/5.x.x
+[6.x.x]: https://github.com/ngx-config/core/tree/6.x.x
 [ng-seed/universal]: https://github.com/ng-seed/universal
 [fulls1z3/example-app]: https://github.com/fulls1z3/example-app
 [@ngx-config/http-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/http-loader
-[@ngx-config/fs-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/fs-loader
-[@ngx-universal/config-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-universal/config-loader
 [@ngx-config/merge-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/merge-loader
 [@ngx-i18n-router/config-loader]: https://github.com/fulls1z3/ngx-i18n-router/tree/master/packages/@ngx-i18n-router/config-loader
 [@ngx-cache/core]: https://github.com/fulls1z3/ngx-cache/tree/master/packages/@ngx-cache/core

@@ -23,9 +23,12 @@ describe('@ngx-config/core:',
             (config: ConfigService) => {
               const pipe = new ConfigPipe(config);
 
-              expect(ConfigPipe).toBeDefined();
-              expect(pipe).toBeDefined();
-              expect(pipe instanceof ConfigPipe).toBeTruthy();
+              expect(ConfigPipe)
+                .toBeDefined();
+              expect(pipe)
+                .toBeDefined();
+              expect(pipe instanceof ConfigPipe)
+                .toBeTruthy();
             }));
 
         it('should be able to get setting(s) using `key`',
@@ -36,10 +39,12 @@ describe('@ngx-config/core:',
                   const pipe = new ConfigPipe(config);
 
                   let setting = pipe.transform(['system', 'applicationName']);
-                  expect(setting).toEqual('Mighty Mouse');
+                  expect(setting)
+                    .toEqual('Mighty Mouse');
 
                   setting = pipe.transform('system.applicationUrl');
-                  expect(setting).toEqual('http://localhost:8000');
+                  expect(setting)
+                    .toEqual('http://localhost:8000');
                 });
             }));
 
