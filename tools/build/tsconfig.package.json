@@ -14,7 +14,7 @@
     "rootDir": "./",
     "baseUrl": "",
     "paths": {
-      "@ngx-config/*": ["../../../dist/@ngx-config/*"]
+      "@ngx-config/*": ["../../dist/@ngx-config/*"]
     },
     "typeRoots": ["../../node_modules/@types"],
     "lib": [

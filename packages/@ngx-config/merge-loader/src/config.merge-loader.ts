@@ -2,7 +2,7 @@
 import { EMPTY, from as fromObservable, merge, Observable, onErrorResumeNext, throwError } from 'rxjs';
 import { filter, isEmpty, mergeMap, reduce, share } from 'rxjs/operators';
 
-import * as _ from 'lodash';
+import { mergeWith as _mergeWith } from 'lodash/fp';
 import { ConfigLoader, ConfigStaticLoader } from '@ngx-config/core';
 
 const errorIfEmpty = (source: Observable<any>): Observable<any> => {
@@ -15,15 +15,15 @@ const errorIfEmpty = (source: Observable<any>): Observable<any> => {
     );
 };
 
-const mergeWith = (object: any, source: Array<any>): any => {
-  return _.mergeWith(object, source, (objValue: any, srcValue: any) => {
+const mergeWith = (object: any) => (source: Array<any>): any => {
+  return _mergeWith((objValue: any, srcValue: any) => {
     if (Array.isArray(objValue))
       return srcValue;
-  });
+  })(object)(source);
 };
 
 const mergeSeries = (merged: any, current: Promise<any>): any => {
-  return current.then((res: any) => mergeWith(merged, res));
+  return current.then(mergeWith(merged));
 };
 
 export class ConfigMergeLoader implements ConfigLoader {
@@ -61,7 +61,7 @@ export class ConfigMergeLoader implements ConfigLoader {
     return new Promise((resolve, reject) => {
       merge(mergedSettings, errorIfEmpty(mergedSettings), mergedSettings)
         .pipe(
-          reduce((merged: any, current: any) => mergeWith(merged, current), {})
+          reduce((merged: any, current: any) => mergeWith(merged)(current), {})
         )
         .subscribe((res: any) => resolve(res), () => reject('Loaders unreachable!'));
     });
