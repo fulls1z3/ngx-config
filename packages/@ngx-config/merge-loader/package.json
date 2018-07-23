@@ -4,7 +4,7 @@
   "description": "Loader for ngx-config that provides application settings by executing loaders in parallel and in series",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fulls1z3/ngx-config.git"
+    "url": "https://github.com/holidaylab/ngx-config.git"
   },
   "keywords": [
     "plugin",
@@ -18,13 +18,13 @@
   ],
   "author": {
     "name": "Burak Tasci",
-    "email": "me@fulls1z3.com"
+    "email": "b.tasci@holidaylab.io"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fulls1z3/ngx-config/issues"
+    "url": "https://github.com/holidaylab/ngx-config/issues"
   },
-  "homepage": "https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/merge-loader#readme",
+  "homepage": "https://github.com/holidaylab/ngx-config/tree/master/packages/@ngx-config/merge-loader#readme",
   "dependencies": {
     "tslib": "~1.9.0"
   },
@@ -32,7 +32,7 @@
     "@angular/core": ">=6.0.0 <7.0.0",
     "@angular/platform-browser-dynamic": ">=6.0.0 <7.0.0",
     "rxjs": ">=6.0.0",
-    "lodash": ">=4.17.5",
+    "lodash": ">=4.17.10",
     "@ngx-config/core": ">=6.0.0 <7.0.0"
   }
 }
