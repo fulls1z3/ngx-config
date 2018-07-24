@@ -1,8 +1,8 @@
 # @ngx-config/core [![npm version](https://badge.fury.io/js/%40ngx-config%2Fcore.svg)](https://www.npmjs.com/package/@ngx-config/core) [![npm downloads](https://img.shields.io/npm/dm/%40ngx-config%2Fcore.svg)](https://www.npmjs.com/package/@ngx-config/core)
 Configuration utility for **Angular**
 
-[![CircleCI](https://circleci.com/gh/holidaylab/ngx-config.svg?style=shield)](https://circleci.com/gh/holidaylab/ngx-config)
-[![coverage](https://codecov.io/github/holidaylab/ngx-config/coverage.svg?branch=master)](https://codecov.io/gh/holidaylab/ngx-config)
+[![CircleCI](https://circleci.com/gh/fulls1z3/ngx-config.svg?style=shield)](https://circleci.com/gh/fulls1z3/ngx-config)
+[![coverage](https://codecov.io/github/fulls1z3/ngx-config/coverage.svg?branch=master)](https://codecov.io/gh/fulls1z3/ngx-config)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
@@ -128,12 +128,12 @@ If you provide application settings using a `JSON` file or an `API`, you can cal
 
 > You can customize this behavior (*and ofc other settings*) by supplying a **api endpoint** to `ConfigHttpLoader`.
 
-You can find detailed information about the usage guidelines for the `ConfigHttpLoader` [here](https://github.com/holidaylab/ngx-config/tree/master/packages/@ngx-config/http-loader).
+You can find detailed information about the usage guidelines for the `ConfigHttpLoader` [here](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/http-loader).
 
 ### <a name="setting-up-mergeloader"></a> Setting up `ConfigModule` to use `ConfigMergeLoader`
 `ConfigMergeLoader` provides application settings by executing loaders in **parallel** and in **series**.
 
-You can find detailed information about the usage guidelines for the `ConfigMergeLoader` [here](https://github.com/holidaylab/ngx-config/tree/master/packages/@ngx-config/merge-loader).
+You can find detailed information about the usage guidelines for the `ConfigMergeLoader` [here](https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/merge-loader).
 
 ## <a name="usage"></a> Usage
 `ConfigService` has the `getSettings` method, which you can fetch settings loaded during application initialization.
@@ -208,16 +208,16 @@ export class AnyClass {
 ## <a name="license"></a> License
 The MIT License (MIT)
 
-Copyright (c) 2018 [HolidayLAB]
+Copyright (c) 2018 [Burak Tasci]
 
-[master]: https://github.com/holidaylab/ngx-config/core/tree/master
-[6.x.x]: https://github.com/holidaylab/ngx-config/core/tree/6.x.x
+[master]: https://github.com/fulls1z3/ngx-config/core/tree/master
+[6.x.x]: https://github.com/fulls1z3/ngx-config/core/tree/6.x.x
 [ng-seed/universal]: https://github.com/ng-seed/universal
 [fulls1z3/example-app]: https://github.com/fulls1z3/example-app
-[@ngx-config/http-loader]: https://github.com/holidaylab/ngx-config/tree/master/packages/@ngx-config/http-loader
-[@ngx-config/merge-loader]: https://github.com/holidaylab/ngx-config/tree/master/packages/@ngx-config/merge-loader
+[@ngx-config/http-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/http-loader
+[@ngx-config/merge-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/merge-loader
 [@ngx-i18n-router/config-loader]: https://github.com/fulls1z3/ngx-i18n-router/tree/master/packages/@ngx-i18n-router/config-loader
-[@ngx-cache/core]: https://github.com/holidaylab/ngx-cache/tree/master/packages/@ngx-cache/core
+[@ngx-cache/core]: https://github.com/fulls1z3/ngx-cache/tree/master/packages/@ngx-cache/core
 [forRoot]: https://angular.io/docs/ts/latest/guide/ngmodule.html#!#core-for-root
 [AoT compilation]: https://angular.io/docs/ts/latest/cookbook/aot-compiler.html
-[HolidayLAB]: https://github.com/holidaylab
+[Burak Tasci]: https://github.com/fulls1z3

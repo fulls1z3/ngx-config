@@ -4,7 +4,7 @@
   "description": "Configuration utility for Angular",
   "repository": {
     "type": "git",
-    "url": "https://github.com/holidaylab/ngx-config.git"
+    "url": "https://github.com/fulls1z3/ngx-config.git"
   },
   "keywords": [
     "app initializer",
@@ -18,13 +18,13 @@
   ],
   "author": {
     "name": "Burak Tasci",
-    "email": "b.tasci@holidaylab.io"
+    "email": "me@fulls1z3.com"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/holidaylab/ngx-config/issues"
+    "url": "https://github.com/fulls1z3/ngx-config/issues"
   },
-  "homepage": "https://github.com/holidaylab/ngx-config/tree/master/packages/@ngx-config/core#readme",
+  "homepage": "https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/core#readme",
   "dependencies": {
     "tslib": "~1.9.0"
   },

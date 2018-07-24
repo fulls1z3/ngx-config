@@ -1,8 +1,8 @@
 # @ngx-config/merge-loader [![npm version](https://badge.fury.io/js/%40ngx-config%2Fmerge-loader.svg)](https://www.npmjs.com/package/@ngx-config/merge-loader) [![npm downloads](https://img.shields.io/npm/dm/%40ngx-config%2Fmerge-loader.svg)](https://www.npmjs.com/package/@ngx-config/merge-loader)
 Loader for [ngx-config] that provides application settings by executing loaders in **parallel** and in **series**
 
-[![CircleCI](https://circleci.com/gh/holidaylab/ngx-config.svg?style=shield)](https://circleci.com/gh/holidaylab/ngx-config)
-[![coverage](https://codecov.io/github/holidaylab/ngx-config/coverage.svg?branch=master)](https://codecov.io/gh/holidaylab/ngx-config)
+[![CircleCI](https://circleci.com/gh/fulls1z3/ngx-config.svg?style=shield)](https://circleci.com/gh/fulls1z3/ngx-config)
+[![coverage](https://codecov.io/github/fulls1z3/ngx-config/coverage.svg?branch=master)](https://codecov.io/gh/fulls1z3/ngx-config)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
@@ -116,13 +116,13 @@ loaders in **parallel** and in **series**.
 ## <a name="license"></a> License
 The MIT License (MIT)
 
-Copyright (c) 2018 [HolidayLAB]
+Copyright (c) 2018 [Burak Tasci]
 
-[master]: https://github.com/holidaylab/ngx-config/core/tree/master
-[6.x.x]: https://github.com/holidaylab/ngx-config/core/tree/6.x.x
-[ngx-config]: https://github.com/holidaylab/ngx-config
+[master]: https://github.com/fulls1z3/ngx-config/core/tree/master
+[6.x.x]: https://github.com/fulls1z3/ngx-config/core/tree/6.x.x
+[ngx-config]: https://github.com/fulls1z3/ngx-config
 [ng-seed/universal]: https://github.com/ng-seed/universal
 [fulls1z3/example-app]: https://github.com/fulls1z3/example-app
-[@ngx-config/core]: https://github.com/holidaylab/ngx-config/tree/master/packages/@ngx-config/core
-[@ngx-config/http-loader]: https://github.com/holidaylab/ngx-config/tree/master/packages/@ngx-config/http-loader
-[HolidayLAB]: https://github.com/holidaylab
+[@ngx-config/core]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/core
+[@ngx-config/http-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/http-loader
+[Burak Tasci]: https://github.com/fulls1z3
