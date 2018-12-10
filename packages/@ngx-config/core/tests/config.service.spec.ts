@@ -125,5 +125,20 @@ describe('@ngx-config/core:',
                     .toThrowError('No setting found with the specified key [layout]!');
                 });
             })));
+
+        it('whenConfigLoaded should be resolved after loadSettings', async(() => {
+          const resolved = Promise.resolve('RED');
+          const config: ConfigService = inject([ConfigService], $ => $)();
+          Promise.race([config.whenConfigLoaded, resolved])
+            .then(result => {
+              expect(result).toEqual('RED');
+            })
+            .then(() => config.loader.loadSettings())
+            .then(() => Promise.race([config.whenConfigLoaded, resolved]))
+            .then(result => {
+              expect(result).not.toEqual('RED');
+            });
+        }));
+
       });
   });

@@ -7,13 +7,18 @@ import { ConfigLoader } from './config.loader';
 @Injectable()
 export class ConfigService {
   protected settings: any;
+  private onLoadSettings: () => void;
+  readonly whenConfigLoaded = new Promise<void>(resolve => this.onLoadSettings = resolve);
 
   constructor(readonly loader: ConfigLoader) {
   }
 
   init(): any {
     return this.loader.loadSettings()
-      .then((res: any) => this.settings = res);
+      .then((res: any) => {
+        this.settings = res;
+        this.onLoadSettings();
+      });
   }
 
   getSettings(key?: string | Array<string>, defaultValue?: any): any {
