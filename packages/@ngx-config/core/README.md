@@ -158,42 +158,42 @@ export class AnyClass {
   
   myMethodToGetUrl1a() {
     // will retrieve 'http://localhost:8000'
-    let url = this.config.getSettings<string>('system.applicationUrl');
+    const url = this.config.getSettings<string>('system.applicationUrl');
   }
 
   myMethodToGetUrl1b() {
     // will retrieve 'http://localhost:8000'
-    let url = this.config.getSettings<string>(['system', 'applicationUrl']);
+    const url = this.config.getSettings<string>(['system', 'applicationUrl']);
   }
 
   myMethodToGetUrl2a() {
     // will retrieve 'http://localhost:8000'
-    let url = this.config.getSettings<string>('system').applicationUrl;
+    const url = this.config.getSettings<string>('system').applicationUrl;
   }
 
   myMethodToGetUrl2b() {
     // will retrieve 'http://localhost:8000'
-    let url = this.config.getSettings<string>().system.applicationUrl;
+    const url = this.config.getSettings<string>().system.applicationUrl;
   }
 
   myMethodToGetUrl3a() {
     // will throw an exception (system.non_existing is not in the application settings)
-    let url = this.config.getSettings<string>('system.non_existing');
+    const url = this.config.getSettings<string>('system.non_existing');
   }
 
   myMethodToGetUrl3b() {
     // will retrieve 'no data' (system.non_existing is not in the application settings)
-    let url = this.config.getSettings<string>('system.non_existing', 'no data');
+    const url = this.config.getSettings<string>('system.non_existing', 'no data');
   }
   
   myMethodToGetSeo1() {
     // will retrieve {"pageTitle":"Tweeting bird"}
-    let seoSettings = this.config.getSettings<string>('seo');
+    const seoSettings = this.config.getSettings<string>('seo');
   }
 
   myMethodToGetSeo1() {
     // will retrieve {"pageTitle":"Tweeting bird"}
-    let seoSettings = this.config.getSettings<string>().seo;
+    const seoSettings = this.config.getSettings<string>().seo;
   }
 }
 ```
