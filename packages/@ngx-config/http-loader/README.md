@@ -86,7 +86,7 @@ property of **app.module**.
 #### app.module.ts
 ```TypeScript
 ...
-import { HttpClient } from '@angular/common.http';
+import { HttpClient } from '@angular/common/http';
 import { ConfigModule, ConfigLoader,  } from '@ngx-config/core';
 import { ConfigHttpLoader } from '@ngx-config/http-loader';
 ...
@@ -105,7 +105,7 @@ export function configFactory(http: HttpClient): ConfigLoader {
     ConfigModule.forRoot({
       provide: ConfigLoader,
       useFactory: (configFactory),
-      deps: [Http]
+      deps: [HttpClient]
     }),
     ...
   ],
@@ -115,7 +115,7 @@ export function configFactory(http: HttpClient): ConfigLoader {
 ```
 
 `ConfigHttpLoader` has two parameters:
-- **http**: `Http` : Http instance
+- **http**: `HttpClient` : Http instance
 - **endpoint**: `string` : the `API endpoint`, to retrieve application settings from (*by default, `config.json`*)
 
 > :+1: Well! **`@ngx-config/http-loader`** will now provide **application settings** to [@ngx-config/core] using `http`.
