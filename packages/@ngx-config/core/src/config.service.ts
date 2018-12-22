@@ -33,6 +33,6 @@ export class ConfigService {
         throw new Error(`No setting found with the specified key [${key.join('/')}]!`);
     }
 
-    return result as T;
+    return result;
   }
 }
