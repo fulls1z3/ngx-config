@@ -16,7 +16,7 @@ export class ConfigService {
       .then((res: any) => this.settings = res);
   }
 
-  getSettings(key?: string | Array<string>, defaultValue?: any): any {
+  getSettings<T = any>(key?: string | Array<string>, defaultValue?: any): T {
     if (!key || (Array.isArray(key) && !key[0]))
       return this.settings;
 
