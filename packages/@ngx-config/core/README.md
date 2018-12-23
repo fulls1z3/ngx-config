@@ -141,6 +141,8 @@ You can find detailed information about the usage guidelines for the `ConfigMerg
 When the `getSettings` method is invoked without parameters, it returns entire application configuration. However, the `getSettings`
 method can be invoked using two optional parameters: **`key`** and **`defaultValue`**.
 
+To specify returning value type you can add generic type in `getSettings`.
+
 The following example shows how to read configuration settings using all available overloads of `getSettings` method.
 
 #### anyclass.ts
@@ -156,42 +158,42 @@ export class AnyClass {
   
   myMethodToGetUrl1a() {
     // will retrieve 'http://localhost:8000'
-    let url:string = this.config.getSettings('system.applicationUrl');
+    const url = this.config.getSettings<string>('system.applicationUrl');
   }
 
   myMethodToGetUrl1b() {
     // will retrieve 'http://localhost:8000'
-    let url:string = this.config.getSettings(['system', 'applicationUrl']);
+    const url = this.config.getSettings<string>(['system', 'applicationUrl']);
   }
 
   myMethodToGetUrl2a() {
     // will retrieve 'http://localhost:8000'
-    let url:string = this.config.getSettings('system').applicationUrl;
+    const url = this.config.getSettings<string>('system').applicationUrl;
   }
 
   myMethodToGetUrl2b() {
     // will retrieve 'http://localhost:8000'
-    let url:string = this.config.getSettings().system.applicationUrl;
+    const url = this.config.getSettings<string>().system.applicationUrl;
   }
 
   myMethodToGetUrl3a() {
     // will throw an exception (system.non_existing is not in the application settings)
-    let url:string = this.config.getSettings('system.non_existing');
+    const url = this.config.getSettings<string>('system.non_existing');
   }
 
   myMethodToGetUrl3b() {
     // will retrieve 'no data' (system.non_existing is not in the application settings)
-    let url:string = this.config.getSettings('system.non_existing', 'no data');
+    const url = this.config.getSettings<string>('system.non_existing', 'no data');
   }
   
   myMethodToGetSeo1() {
     // will retrieve {"pageTitle":"Tweeting bird"}
-    let seoSettings: string = this.config.getSettings('seo');
+    const seoSettings = this.config.getSettings<string>('seo');
   }
 
   myMethodToGetSeo1() {
     // will retrieve {"pageTitle":"Tweeting bird"}
-    let seoSettings: string = this.config.getSettings().seo;
+    const seoSettings = this.config.getSettings<string>().seo;
   }
 }
 ```
