@@ -1,6 +1,6 @@
 {
   "name": "@ngx-config/merge-loader",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Loader for ngx-config that provides application settings by executing loaders in parallel and in series",
   "repository": {
     "type": "git",
@@ -29,10 +29,10 @@
     "tslib": "~1.9.0"
   },
   "peerDependencies": {
-    "@angular/core": ">=6.0.0 <7.0.0",
-    "@angular/platform-browser-dynamic": ">=6.0.0 <7.0.0",
+    "@angular/core": ">=7.0.0 <8.0.0",
+    "@angular/platform-browser-dynamic": ">=7.0.0 <8.0.0",
     "rxjs": ">=6.0.0",
     "lodash": ">=4.17.10",
-    "@ngx-config/core": ">=6.0.0 <7.0.0"
+    "@ngx-config/core": ">=7.0.0 <8.0.0"
   }
 }
