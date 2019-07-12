@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 
 import { ConfigLoader, ConfigStaticLoader } from './src/config.loader';
 import { ConfigPipe } from './src/config.pipe';
@@ -46,11 +46,5 @@ export class ConfigModule {
         }
       ]
     };
-  }
-
-  constructor(@Optional() @SkipSelf() parentModule?: ConfigModule) {
-    if (parentModule) {
-      throw new Error('ConfigModule already loaded; import in root module only.');
-    }
   }
 }
