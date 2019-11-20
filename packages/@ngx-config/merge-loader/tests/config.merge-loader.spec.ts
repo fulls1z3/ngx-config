@@ -2,7 +2,7 @@ import { async, inject, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { ConfigLoader, ConfigModule, ConfigService, ConfigStaticLoader } from '@ngx-config/core';
 
-import { ConfigMergeLoader } from '../index';
+import { ConfigMergeLoader } from '../src';
 
 const testSettingsMain = {
   setting1: 'value1',

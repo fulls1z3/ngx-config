@@ -1,6 +1,6 @@
 {
   "name": "@ngx-config/core",
-  "version": "7.0.0",
+  "version": "0.0.0",
   "description": "Configuration utility for Angular",
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
   ],
   "author": {
     "name": "Burak Tasci",
-    "email": "me@fulls1z3.com"
+    "email": "mail@buraktasci.com"
   },
   "license": "MIT",
   "bugs": {
@@ -32,5 +32,8 @@
     "@angular/common": ">=7.0.0 <8.0.0",
     "@angular/core": ">=7.0.0 <8.0.0",
     "@angular/platform-browser-dynamic": ">=7.0.0 <8.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

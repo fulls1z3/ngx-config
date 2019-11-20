@@ -8,11 +8,14 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
     "importHelpers": true,
-    "baseUrl": "",
+    "baseUrl": ".",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "paths": {
-      "@ngx-config/*": ["./packages/@ngx-config/*"]
-    },
-    "lib": ["es2017", "dom"]
+      "@ngx-config/core": ["packages/@ngx-config/core/src/index.ts"],
+      "@ngx-config/http-loader": ["packages/@ngx-config/http-loader/src/index.ts"],
+      "@ngx-config/merge-loader": ["packages/@ngx-config/merge-loader/src/index.ts"]
+    }
   },
   "include": ["tools/**/*.ts", "packages/**/*.ts"]
 }

@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/@ngx-config/http-loader",
   "lib": {
-    "entryFile": "index.ts"
-  },
-  "dest": "../../../dist/@ngx-config/http-loader"
+    "entryFile": "src/index.ts"
+  }
 }

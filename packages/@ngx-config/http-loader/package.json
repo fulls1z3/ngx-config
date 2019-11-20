@@ -1,6 +1,6 @@
 {
   "name": "@ngx-config/http-loader",
-  "version": "7.0.0",
+  "version": "0.0.0",
   "description": "Loader for ngx-config that provides application settings using http",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
   ],
   "author": {
     "name": "Burak Tasci",
-    "email": "me@fulls1z3.com"
+    "email": "mail@buraktasci.com"
   },
   "license": "MIT",
   "bugs": {

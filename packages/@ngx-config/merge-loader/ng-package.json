@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/@ngx-config/merge-loader",
   "lib": {
-    "entryFile": "index.ts",
+    "entryFile": "src/index.ts",
     "umdModuleIds": {
       "rxjs": "rxjs",
       "lodash": "_",
       "@ngx-config/core": "_ngxConfig_core"
     }
-  },
-  "dest": "../../../dist/@ngx-config/merge-loader"
+  }
 }

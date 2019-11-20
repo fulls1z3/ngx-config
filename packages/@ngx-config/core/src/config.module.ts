@@ -1,26 +1,17 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 
-import { ConfigLoader, ConfigStaticLoader } from './src/config.loader';
-import { ConfigPipe } from './src/config.pipe';
-import { ConfigService } from './src/config.service';
+import { ConfigLoader, ConfigStaticLoader } from './config.loader';
+import { ConfigPipe } from './config.pipe';
+import { ConfigService } from './config.service';
 
-export * from './src/config.loader';
-export * from './src/config.pipe';
-export * from './src/config.service';
+export const configFactory = () => new ConfigStaticLoader();
 
-// for AoT compilation
-// tslint:disable-next-line
-export function configFactory(): ConfigLoader {
-  return new ConfigStaticLoader();
-}
-
-// tslint:disable-next-line
-export function initializerFactory(config: ConfigService): any {
+export const initializerFactory = (config: ConfigService) => {
   // workaround for AoT compilation
   const res = () => config.init();
 
   return res;
-}
+};
 
 @NgModule({
   declarations: [ConfigPipe],

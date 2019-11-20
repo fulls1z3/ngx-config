@@ -1,6 +1,6 @@
 import { inject } from '@angular/core/testing';
 
-import { ConfigLoader, ConfigPipe, ConfigService, ConfigStaticLoader } from '../index';
+import { ConfigLoader, ConfigPipe, ConfigService, ConfigStaticLoader } from '../src';
 
 import { testModuleConfig, testSettings } from './common';
 

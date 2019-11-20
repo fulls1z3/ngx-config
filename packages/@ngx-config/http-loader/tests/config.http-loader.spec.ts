@@ -4,7 +4,7 @@ import { async, TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { ConfigLoader, ConfigModule, ConfigService } from '@ngx-config/core';
 
-import { ConfigHttpLoader } from '../index';
+import { ConfigHttpLoader } from '../src';
 
 const testSettings = {
   system: {
@@ -83,7 +83,7 @@ describe('@ngx-config/http-loader:', () => {
 
     const config = TestBed.get(ConfigService);
 
-    config.loader.loadSettings().catch(err => {
+    config.loader.loadSettings().catch((err: any) => {
       expect(err).toEqual('Endpoint unreachable!');
       done();
     });

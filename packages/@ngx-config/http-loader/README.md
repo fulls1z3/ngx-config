@@ -2,32 +2,20 @@
 
 Loader for [ngx-config] that provides application settings using **`http`**
 
-[![CircleCI](https://circleci.com/gh/fulls1z3/ngx-config.svg?style=shield)](https://circleci.com/gh/fulls1z3/ngx-config)
-[![coverage](https://codecov.io/github/fulls1z3/ngx-config/coverage.svg?branch=master)](https://codecov.io/gh/fulls1z3/ngx-config)
-[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![CircleCI](https://circleci.com/gh/fulls1z3/ngx-config.svg?style=shield)](https://circleci.com/gh/fulls1z3/ngx-config)
+[![coverage](https://codecov.io/github/fulls1z3/ngx-config/coverage.svg?branch=master)](https://codecov.io/gh/fulls1z3/ngx-config)
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![Angular Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 
 > Please support this project by simply putting a Github star. Share this library with friends on Twitter and everywhere else you can.
 
-#### NOTICE
-
-> This _[7.x.x] branch_ is intented to work with `Angular v7.x.x`. If you're developing on a later release of **Angular**
-> than `v7.x.x`, then you should probably choose the appropriate version of this library by visiting the _[master] branch_.
-
 ## Table of contents:
 
-- [Prerequisites](#prerequisites)
 - [Getting started](#getting-started)
   - [Installation](#installation) - [Examples](#examples) - [Related packages](#related-packages) - [Adding `@ngx-config/http-loader` to your project (SystemJS)](#adding-systemjs)
 - [Settings](#settings) - [Setting up `ConfigModule` to use `ConfigHttpLoader`](#setting-up-httploader)
 - [License](#license)
-
-## <a name="prerequisites"></a> Prerequisites
-
-This library depends on `Angular v6.0.0`. Older versions contain outdated dependencies, might produce errors.
-
-Also, please ensure that you are using **`Typescript v2.7.2`** or higher.
 
 ## <a name="getting-started"> Getting started
 
@@ -137,10 +125,8 @@ export function configFactory(http: HttpClient): ConfigLoader {
 
 The MIT License (MIT)
 
-Copyright (c) 2018 [Burak Tasci]
+Copyright (c) 2019 [Burak Tasci]
 
-[master]: https://github.com/fulls1z3/ngx-config/core/tree/master
-[7.x.x]: https://github.com/fulls1z3/ngx-config/core/tree/7.x.x
 [ngx-config]: https://github.com/fulls1z3/ngx-config
 [ng-seed/universal]: https://github.com/ng-seed/universal
 [fulls1z3/example-app]: https://github.com/fulls1z3/example-app

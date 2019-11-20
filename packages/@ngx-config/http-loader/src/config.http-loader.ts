@@ -9,7 +9,7 @@ export class ConfigHttpLoader implements ConfigLoader {
   ) {}
 
   loadSettings(): any {
-    return new Promise((resolve: Function, reject: Function) => {
+    return new Promise((resolve: any, reject: Function) => {
       const http = resolveForwardRef(this.http);
 
       http.get(this.endpoint).subscribe(resolve, () => reject('Endpoint unreachable!'));

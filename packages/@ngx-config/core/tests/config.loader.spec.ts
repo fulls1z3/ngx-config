@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ConfigLoader, ConfigService, ConfigStaticLoader } from '../index';
+import { ConfigLoader, ConfigService, ConfigStaticLoader } from '../src';
 
 import { testModuleConfig } from './common';
 

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
-import { ConfigModule } from '../index';
+import { ConfigModule } from '../src';
 
 export const testSettings = {
   system: {
