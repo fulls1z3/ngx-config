@@ -98,44 +98,5 @@
       "packages/@ngx-config/http-loader/src/**.ts",
       "packages/@ngx-config/merge-loader/src/**.ts"
     ]
-  },
-  "release": {
-    "branch": "master",
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "angular",
-          "releaseRules": "./release-rules.js",
-          "parserOpts": {
-            "noteKeywords": [
-              "BREAKING CHANGE",
-              "BREAKING CHANGES",
-              "BREAKING"
-            ]
-          }
-        }
-      ],
-      "@semantic-release/github",
-      [
-        "@semantic-release/npm",
-        {
-          "pkgRoot": "./dist"
-        }
-      ],
-      [
-        "@semantic-release/release-notes-generator",
-        {
-          "preset": "angular",
-          "parserOpts": {
-            "noteKeywords": [
-              "BREAKING CHANGE",
-              "BREAKING CHANGES",
-              "BREAKING"
-            ]
-          }
-        }
-      ]
-    ]
   }
 }
