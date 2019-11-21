@@ -50,7 +50,8 @@
     "jest": "~23.6.0",
     "jest-junit-reporter": "~1.1.0",
     "jest-preset-angular": "~6.0.2",
-    "lerna": "^3.19.0",
+    "lerna": "^2.11.0",
+    "lerna-semantic-release": "^9.1.0",
     "lint-staged": "~8.1.0",
     "lodash": "~4.17.11",
     "ng-packagr": "^5.7.1",
@@ -89,7 +90,11 @@
       "node_modules",
       "packages"
     ],
-    "moduleNameMapper": null,
+    "moduleNameMapper": {
+      "^@ngx-config/core": "<rootDir>/packages/@ngx-config/core/src/index.ts",
+      "^@ngx-config/http-loader": "<rootDir>/packages/@ngx-config/http-loader/src/index.ts",
+      "^@ngx-config/merge-loader": "<rootDir>/packages/@ngx-config/merge-loader/src/index.ts"
+    },
     "cache": false,
     "silent": true,
     "collectCoverage": true,
