@@ -211,6 +211,8 @@ export class AnyClass {
 <span id="property">{{['some', 'setting'] | config}}</span>
 ```
 
+In order to use this pipe, you must import `ConfigModule` (without `forRoot`) in your component's NgModule.
+
 ## <a name="license"></a> License
 
 The MIT License (MIT)
