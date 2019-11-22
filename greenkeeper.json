@@ -1,0 +1,12 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "packages/@ngx-config/core/package.json",
+        "packages/@ngx-config/http-loader/package.json",
+        "packages/@ngx-config/merge-loader/package.json"
+      ]
+    }
+  }
+}
