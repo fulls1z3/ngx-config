@@ -4,7 +4,7 @@
   "description": "Loader for ngx-config that provides application settings using http",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fulls1z3/ngx-config.git"
+    "url": "https://github.com/fulls1z3/ngx-config"
   },
   "keywords": [
     "plugin",
