@@ -13,7 +13,7 @@ export const initializerFactory = (config: ConfigService) => {
   return res;
 };
 
-export const CONFIG_FORROOT_GUARD = new InjectionToken<void>('CONFIG_FORROOT_GUARD');
+export const CONFIG_FORROOT_GUARD = new InjectionToken('CONFIG_FORROOT_GUARD');
 
 /**
  * Used to check if the user has called ConfigModule.forRoot() in a lazy-loaded module.
