@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/fulls1z3/ngx-config/compare/v8.0.2...v8.1.0) (2020-03-10)
+
+
+### Features
+
+* **core:** Make ConfigModule importable in every NgModule ([#157](https://github.com/fulls1z3/ngx-config/issues/157)) ([30d9e09](https://github.com/fulls1z3/ngx-config/commit/30d9e095945144246b57b8664ec59d9d1226c427))
+
+
+
+
+
 ## [8.0.2](https://github.com/fulls1z3/ngx-config/compare/v8.0.1...v8.0.2) (2019-12-02)
 
 
