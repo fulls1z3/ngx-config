@@ -211,6 +211,8 @@ export class AnyClass {
 <span id="property">{{['some', 'setting'] | config}}</span>
 ```
 
+In order to use this pipe in lazy-loaded modules, you must import `ConfigModule.forChild()`.
+
 ## <a name="license"></a> License
 
 The MIT License (MIT)
