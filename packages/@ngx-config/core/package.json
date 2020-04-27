@@ -25,9 +25,6 @@
     "url": "https://github.com/fulls1z3/ngx-config/issues"
   },
   "homepage": "https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/core#readme",
-  "dependencies": {
-    "tslib": "^1.10.0"
-  },
   "peerDependencies": {
     "@angular/common": ">=9.0.0 <10.0.0",
     "@angular/core": ">=9.0.0 <10.0.0",
