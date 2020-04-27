@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/fulls1z3/ngx-config/compare/v8.1.0...v8.2.0) (2020-04-27)
+
+
+### Features
+
+* **package:** migrate to ng9 ([#161](https://github.com/fulls1z3/ngx-config/issues/161)) ([58fdac3](https://github.com/fulls1z3/ngx-config/commit/58fdac3d0e8c581440e8854c66b3db58dc2ef47c))
+
+
+
+
+
 ## [8.0.2](https://github.com/fulls1z3/ngx-config/compare/v8.0.1...v8.0.2) (2019-12-02)
 
 
