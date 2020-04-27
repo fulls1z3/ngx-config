@@ -29,9 +29,9 @@
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@angular/core": ">=8.0.0 <9.0.0",
-    "@angular/platform-browser-dynamic": ">=8.0.0 <9.0.0",
-    "@ngx-config/core": ">=8.0.0 <9.0.0",
+    "@angular/core": ">=9.0.0 <10.0.0",
+    "@angular/platform-browser-dynamic": ">=9.0.0 <10.0.0",
+    "@ngx-config/core": ">=9.0.0 <10.0.0",
     "lodash": ">=4.17.10",
     "rxjs": ">=6.0.0"
   },
