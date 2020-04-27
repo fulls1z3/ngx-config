@@ -16,10 +16,9 @@ export const initializerFactory = (config: ConfigService) => {
 export const CONFIG_FORROOT_GUARD = new InjectionToken('CONFIG_FORROOT_GUARD');
 
 // tslint:disable-next-line:only-arrow-functions
-export function provideForRootGuard(config: ConfigService): any {
+export function provideForRootGuard(config?: ConfigService): any {
   if (config) {
-    throw new Error(
-        `ConfigModule.forRoot() called twice. Lazy loaded modules should use ConfigModule.forChild() instead.`);
+    throw new Error(`ConfigModule.forRoot() called twice. Lazy loaded modules should use ConfigModule.forChild() instead.`);
   }
 
   return 'guarded';
@@ -30,7 +29,6 @@ export function provideForRootGuard(config: ConfigService): any {
   exports: [ConfigPipe]
 })
 export class ConfigModule {
-  
   static forRoot(
     configuredProvider: any = {
       provide: ConfigLoader,
@@ -56,13 +54,13 @@ export class ConfigModule {
       ]
     };
   }
-  
+
   static forChild(): ModuleWithProviders<ConfigModule> {
     return {
       ngModule: ConfigModule
     };
   }
-  
+
   // tslint:disable-next-line:no-empty
   constructor(@Optional() @Inject(CONFIG_FORROOT_GUARD) guard: any) {}
 }
