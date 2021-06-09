@@ -6,7 +6,7 @@ import { filter, isEmpty, mergeMap, reduce, share } from 'rxjs/operators';
 const errorIfEmpty = (source: Observable<any>) =>
   source.pipe(
     isEmpty(),
-    mergeMap((empty: boolean) => (empty ? throwError(new Error('No setting found at the specified loader!')) : EMPTY))
+    mergeMap((empty: boolean) => (empty ? throwError(() => new Error('No setting found at the specified loader!')) : EMPTY))
   );
 
 const mergeWith = (object: any) => (source: Array<any>) =>
@@ -38,14 +38,14 @@ export class ConfigMergeLoader implements ConfigLoader {
   }
 
   private async mergeParallel(): Promise<any> {
-    const loaders: Array<ConfigLoader> = [new ConfigStaticLoader(), ...this.loaders];
+    const loaders: Array<ConfigLoader> = [new ConfigStaticLoader()].concat(this.loaders);
 
     const mergedSettings = onErrorResumeNext(loaders.map((loader: ConfigLoader) => fromObservable(loader.loadSettings()))).pipe(
       filter((res: any) => res),
       share()
     );
 
-    return new Promise((resolve: () => void, reject: Function) => {
+    return new Promise((resolve: (value: unknown) => void, reject: Function) => {
       merge(mergedSettings, errorIfEmpty(mergedSettings), mergedSettings)
         .pipe(reduce((merged: any, current: any) => mergeWith(merged)(current), {}))
         .subscribe(resolve, () => reject('Loaders unreachable!'));
