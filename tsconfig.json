@@ -8,7 +8,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
-    "module": "commonjs",
+    "module": "esnext",
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
@@ -18,9 +18,7 @@
       "@ngx-config/core": ["packages/@ngx-config/core/src/index.ts"],
       "@ngx-config/http-loader": ["packages/@ngx-config/http-loader/src/index.ts"],
       "@ngx-config/merge-loader": ["packages/@ngx-config/merge-loader/src/index.ts"]
-    },
-    "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
+    }
   },
-  "include": ["tools/**/*.ts", "packages/**/*.ts"]
+  "include": ["packages/**/*.ts"]
 }

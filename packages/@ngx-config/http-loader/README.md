@@ -31,7 +31,7 @@ npm install @ngx-config/http-loader --save
 
 ### <a name="examples"></a> Examples
 
-- [ng-seed/universal] and [fulls1z3/example-app] are officially maintained projects, showcasing common patterns and best
+- [fulls1z3/universal] and [fulls1z3/example-app] are officially maintained projects, showcasing common patterns and best
   practices for **`@ngx-config/http-loader`**.
 
 ### <a name="related-packages"></a> Related packages
@@ -125,10 +125,10 @@ export function configFactory(http: HttpClient): ConfigLoader {
 
 The MIT License (MIT)
 
-Copyright (c) 2019 [Burak Tasci]
+Copyright (c) 2021 [Burak Tasci]
 
 [ngx-config]: https://github.com/fulls1z3/ngx-config
-[ng-seed/universal]: https://github.com/ng-seed/universal
+[fulls1z3/universal]: https://github.com/fulls1z3/universal
 [fulls1z3/example-app]: https://github.com/fulls1z3/example-app
 [@ngx-config/core]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/core
 [@ngx-config/merge-loader]: https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/merge-loader

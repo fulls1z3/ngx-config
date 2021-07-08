@@ -42,7 +42,12 @@ describe('@ngx-config/http-loader:', () => {
       expect(config.loader instanceof ConfigHttpLoader).toBeTruthy();
 
       const httpMock = TestBed.get(HttpTestingController);
-      httpMock.expectOne({ method: 'GET', url: '/config.json' }).flush(testSettings);
+      httpMock
+        .expectOne({
+          method: 'GET',
+          url: '/config.json'
+        })
+        .flush(testSettings);
       httpMock.verify();
     });
   });
@@ -92,7 +97,13 @@ describe('@ngx-config/http-loader:', () => {
     const reqs = httpMock.match('/api/wrong-settings');
 
     for (const req of reqs) {
-      req.flush({}, { status: 500, statusText: '' });
+      req.flush(
+        {},
+        {
+          status: 500,
+          statusText: ''
+        }
+      );
     }
 
     httpMock.verify();

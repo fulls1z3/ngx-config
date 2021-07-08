@@ -162,7 +162,8 @@ describe('@ngx-config/merge-loader:', () => {
     it('should be able to retrieve and merge settings `in series` w/data from parent `loaders`', () => {
       const envLoader = new ConfigStaticLoader(testSettingsEnv);
 
-      const configFactory = () => new ConfigMergeLoader([envLoader]).next((res: any) => new ConfigStaticLoader({ env: res }));
+      const configFactory = () =>
+        new ConfigMergeLoader([envLoader]).next((res: any) => new ConfigStaticLoader({ env: res }));
 
       testModuleConfig({
         provide: ConfigLoader,
