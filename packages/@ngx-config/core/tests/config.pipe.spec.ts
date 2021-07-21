@@ -35,12 +35,15 @@ describe('@ngx-config/core:', () => {
       });
     }));
 
-    it('should throw if you provide an invalid `key` w/o `default value`', inject([ConfigService], (config: ConfigService) => {
-      config.loader.loadSettings().then(() => {
-        const pipe = new ConfigPipe(config);
+    it('should throw if you provide an invalid `key` w/o `default value`', inject(
+      [ConfigService],
+      (config: ConfigService) => {
+        config.loader.loadSettings().then(() => {
+          const pipe = new ConfigPipe(config);
 
-        expect(() => pipe.transform('layout')).toThrowError('No setting found with the specified key [layout]!');
-      });
-    }));
+          expect(() => pipe.transform('layout')).toThrowError('No setting found with the specified key [layout]!');
+        });
+      }
+    ));
   });
 });

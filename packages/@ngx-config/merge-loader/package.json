@@ -1,4 +1,5 @@
 {
+  "$schema": "../../../node_modules/ng-packagr/package.schema.json",
   "name": "@ngx-config/merge-loader",
   "version": "9.0.0",
   "description": "Loader for ngx-config that provides application settings by executing loaders in parallel and in series",
@@ -26,11 +27,22 @@
   },
   "homepage": "https://github.com/fulls1z3/ngx-config/tree/master/packages/@ngx-config/merge-loader#readme",
   "peerDependencies": {
-    "@angular/core": ">=9.0.0 <10.0.0",
-    "@angular/platform-browser-dynamic": ">=9.0.0 <10.0.0",
-    "@ngx-config/core": ">=9.0.0 <10.0.0",
+    "@angular/core": ">=10.0.0 <11.0.0",
+    "@angular/platform-browser-dynamic": ">=10.0.0 <11.0.0",
+    "@ngx-config/core": ">=10.0.0 <11.0.0",
     "lodash": ">=4.17.10",
     "rxjs": ">=6.0.0"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "src/index.ts",
+      "umdModuleIds": {
+        "rxjs": "rxjs",
+        "lodash": "_",
+        "@ngx-config/core": "_ngxConfig_core"
+      }
+    },
+    "dest": "../../../dist/@ngx-config/merge-loader"
   },
   "publishConfig": {
     "access": "public",
